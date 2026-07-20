@@ -1,0 +1,27 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/ccp-games-esi-openapi-original.json
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+  scheme_names:
+  - EVE SSO (OAuth 2.0 / OpenID Connect)
+  oidc: true
+  pkce: S256
+schemes:
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://login.eveonline.com/v2/oauth/authorize
+    tokenUrl: https://login.eveonline.com/v2/oauth/token
+    scopes: 70
+  sources:
+  - openapi/ccp-games-esi-openapi-original.json
+docs: https://docs.esi.evetech.net/docs/sso/
+discovery:
+  oauth_authorization_server: https://login.eveonline.com/.well-known/oauth-authorization-server
+  openid_configuration: https://login.eveonline.com/.well-known/openid-configuration
+  jwks_uri: https://login.eveonline.com/oauth/jwks
