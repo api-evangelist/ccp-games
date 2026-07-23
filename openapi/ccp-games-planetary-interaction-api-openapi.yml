@@ -1,0 +1,676 @@
+openapi: 3.1.0
+info:
+  contact:
+    name: ESI Support
+    url: https://developers.eveonline.com/docs/support/
+  license:
+    name: EVE Developer License
+    url: https://developers.eveonline.com/license-agreement
+  termsOfService: https://support.eveonline.com/hc/en-us/articles/8414770561948-EVE-Online-Terms-of-Service
+  title: EVE Swagger Incineration (ESI) - tranquility Alliance Planetary Interaction API
+  version: '2020-01-01'
+servers:
+- url: https://esi.evetech.net
+tags:
+- name: Planetary Interaction
+paths:
+  /characters/{character_id}/planets:
+    get:
+      description: Returns a list of all planetary colonies owned by a character.
+      operationId: GetCharactersCharacterIdPlanets
+      parameters:
+      - description: The ID of the character
+        in: path
+        name: character_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/CharacterID'
+      - $ref: '#/components/parameters/AcceptLanguage'
+      - $ref: '#/components/parameters/IfNoneMatch'
+      - $ref: '#/components/parameters/CompatibilityDate'
+      - $ref: '#/components/parameters/Tenant'
+      - $ref: '#/components/parameters/IfModifiedSince'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CharactersCharacterIdPlanetsGet'
+          description: OK
+          headers:
+            Cache-Control:
+              $ref: '#/components/headers/CacheControl'
+            ETag:
+              $ref: '#/components/headers/ETag'
+            Last-Modified:
+              $ref: '#/components/headers/LastModified'
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      security:
+      - OAuth2:
+        - esi-planets.manage_planets.v1
+      summary: Get colonies
+      tags:
+      - Planetary Interaction
+      x-cache-age: 600
+      x-compatibility-date: '2020-01-01'
+      x-rate-limit:
+        group: char-industry
+        max-tokens: 600
+        window-size: 15m
+  /characters/{character_id}/planets/{planet_id}:
+    get:
+      description: 'Returns full details on the layout of a single planetary colony, including links, pins and routes. Note: Planetary information is only recalculated when the colony is viewed through the client. Information will not update until this criteria is met.'
+      operationId: GetCharactersCharacterIdPlanetsPlanetId
+      parameters:
+      - description: The ID of the character
+        in: path
+        name: character_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/CharacterID'
+      - in: path
+        name: planet_id
+        required: true
+        schema:
+          description: Planet id of the target planet
+          format: int64
+          type: integer
+      - $ref: '#/components/parameters/AcceptLanguage'
+      - $ref: '#/components/parameters/IfNoneMatch'
+      - $ref: '#/components/parameters/CompatibilityDate'
+      - $ref: '#/components/parameters/Tenant'
+      - $ref: '#/components/parameters/IfModifiedSince'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CharactersCharacterIdPlanetsPlanetIdGet'
+          description: OK
+          headers:
+            Cache-Control:
+              $ref: '#/components/headers/CacheControl'
+            ETag:
+              $ref: '#/components/headers/ETag'
+            Last-Modified:
+              $ref: '#/components/headers/LastModified'
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      security:
+      - OAuth2:
+        - esi-planets.manage_planets.v1
+      summary: Get colony layout
+      tags:
+      - Planetary Interaction
+      x-cache-age: 600
+      x-compatibility-date: '2020-01-01'
+      x-rate-limit:
+        group: char-industry
+        max-tokens: 600
+        window-size: 15m
+  /corporations/{corporation_id}/customs_offices:
+    get:
+      description: List customs offices owned by a corporation
+      operationId: GetCorporationsCorporationIdCustomsOffices
+      parameters:
+      - description: The ID of the corporation
+        in: path
+        name: corporation_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/CorporationID'
+      - in: query
+        name: page
+        schema:
+          description: Which page of results to return.
+          format: int32
+          minimum: 1
+          type: integer
+      - $ref: '#/components/parameters/AcceptLanguage'
+      - $ref: '#/components/parameters/IfNoneMatch'
+      - $ref: '#/components/parameters/CompatibilityDate'
+      - $ref: '#/components/parameters/Tenant'
+      - $ref: '#/components/parameters/IfModifiedSince'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CorporationsCorporationIdCustomsOfficesGet'
+          description: OK
+          headers:
+            Cache-Control:
+              $ref: '#/components/headers/CacheControl'
+            ETag:
+              $ref: '#/components/headers/ETag'
+            Last-Modified:
+              $ref: '#/components/headers/LastModified'
+            X-Pages:
+              description: The total number of pages in the result set.
+              schema:
+                format: int64
+                type: integer
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      security:
+      - OAuth2:
+        - esi-planets.read_customs_offices.v1
+      summary: List corporation customs offices
+      tags:
+      - Planetary Interaction
+      x-cache-age: 3600
+      x-compatibility-date: '2020-01-01'
+      x-rate-limit:
+        group: corp-industry
+        max-tokens: 600
+        window-size: 15m
+      x-required-roles:
+      - Director
+  /universe/schematics/{schematic_id}:
+    get:
+      description: Get information on a planetary factory schematic
+      operationId: GetUniverseSchematicsSchematicId
+      parameters:
+      - in: path
+        name: schematic_id
+        required: true
+        schema:
+          description: A PI schematic ID
+          format: int64
+          type: integer
+      - $ref: '#/components/parameters/AcceptLanguage'
+      - $ref: '#/components/parameters/IfNoneMatch'
+      - $ref: '#/components/parameters/CompatibilityDate'
+      - $ref: '#/components/parameters/Tenant'
+      - $ref: '#/components/parameters/IfModifiedSince'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UniverseSchematicsSchematicIdGet'
+          description: OK
+          headers:
+            Cache-Control:
+              $ref: '#/components/headers/CacheControl'
+            ETag:
+              $ref: '#/components/headers/ETag'
+            Last-Modified:
+              $ref: '#/components/headers/LastModified'
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Get schematic information
+      tags:
+      - Planetary Interaction
+      x-cache-age: 3600
+      x-compatibility-date: '2020-01-01'
+components:
+  parameters:
+    CompatibilityDate:
+      description: The compatibility date for the request.
+      in: header
+      name: X-Compatibility-Date
+      required: true
+      schema:
+        enum:
+        - '2020-01-01'
+        format: date
+        type: string
+    AcceptLanguage:
+      description: The language to use for the response.
+      in: header
+      name: Accept-Language
+      schema:
+        default: en
+        enum:
+        - en
+        - de
+        - fr
+        - ja
+        - ru
+        - zh
+        - ko
+        - es
+        type: string
+    Tenant:
+      description: The tenant ID for the request.
+      example: ''
+      in: header
+      name: X-Tenant
+      schema:
+        default: tranquility
+        type: string
+    IfNoneMatch:
+      description: The ETag of the previous request. A 304 will be returned if this matches the current ETag.
+      in: header
+      name: If-None-Match
+      schema:
+        type: string
+    IfModifiedSince:
+      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
+      in: header
+      name: If-Modified-Since
+      schema:
+        type: string
+  headers:
+    LastModified:
+      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
+      schema:
+        type: string
+    ETag:
+      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
+      schema:
+        type: string
+    CacheControl:
+      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
+      schema:
+        type: string
+  schemas:
+    ErrorDetail:
+      properties:
+        location:
+          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
+          type: string
+        message:
+          description: Error message text
+          type: string
+        value:
+          description: The value at the given location
+      type: object
+    CorporationsCorporationIdCustomsOfficesGet:
+      items:
+        properties:
+          alliance_tax_rate:
+            description: Only present if alliance access is allowed
+            format: double
+            type: number
+          allow_access_with_standings:
+            description: standing_level and any standing related tax rate only present when this is true
+            type: boolean
+          allow_alliance_access:
+            type: boolean
+          bad_standing_tax_rate:
+            format: double
+            type: number
+          corporation_tax_rate:
+            format: double
+            type: number
+          excellent_standing_tax_rate:
+            description: Tax rate for entities with excellent level of standing, only present if this level is allowed, same for all other standing related tax rates
+            format: double
+            type: number
+          good_standing_tax_rate:
+            format: double
+            type: number
+          neutral_standing_tax_rate:
+            format: double
+            type: number
+          office_id:
+            description: unique ID of this customs office
+            format: int64
+            type: integer
+          reinforce_exit_end:
+            format: int64
+            type: integer
+          reinforce_exit_start:
+            description: Together with reinforce_exit_end, marks a 2-hour or 6-hour (depending on the office type) period where this customs office could exit reinforcement mode during the day after initial attack
+            format: int64
+            type: integer
+          standing_level:
+            description: Access is allowed only for entities with this level of standing or better
+            enum:
+            - bad
+            - excellent
+            - good
+            - neutral
+            - terrible
+            type: string
+          system_id:
+            description: ID of the solar system this customs office is located in
+            format: int64
+            type: integer
+          terrible_standing_tax_rate:
+            format: double
+            type: number
+          type_id:
+            description: ID of the type of this customs office
+            format: int64
+            type: integer
+        required:
+        - office_id
+        - system_id
+        - reinforce_exit_start
+        - reinforce_exit_end
+        - allow_alliance_access
+        - allow_access_with_standings
+        type: object
+      type: array
+    UniverseSchematicsSchematicIdGet:
+      properties:
+        cycle_time:
+          description: Time in seconds to process a run
+          format: int64
+          type: integer
+        schematic_name:
+          type: string
+      required:
+      - schematic_name
+      - cycle_time
+      type: object
+    CharactersCharacterIdPlanetsPlanetIdGet:
+      properties:
+        links:
+          items:
+            description: link object
+            properties:
+              destination_pin_id:
+                format: int64
+                type: integer
+              link_level:
+                format: int64
+                type: integer
+              source_pin_id:
+                format: int64
+                type: integer
+            required:
+            - source_pin_id
+            - destination_pin_id
+            - link_level
+            type: object
+          type: array
+        pins:
+          items:
+            description: pin object
+            properties:
+              contents:
+                items:
+                  description: content object
+                  properties:
+                    amount:
+                      format: int64
+                      type: integer
+                    type_id:
+                      format: int64
+                      type: integer
+                  required:
+                  - type_id
+                  - amount
+                  type: object
+                type: array
+              expiry_time:
+                format: date-time
+                type: string
+              extractor_details:
+                properties:
+                  cycle_time:
+                    description: in seconds
+                    format: int64
+                    type: integer
+                  head_radius:
+                    format: double
+                    type: number
+                  heads:
+                    items:
+                      description: head object
+                      properties:
+                        head_id:
+                          format: int64
+                          type: integer
+                        latitude:
+                          format: double
+                          type: number
+                        longitude:
+                          format: double
+                          type: number
+                      required:
+                      - head_id
+                      - latitude
+                      - longitude
+                      type: object
+                    type: array
+                  product_type_id:
+                    format: int64
+                    type: integer
+                  qty_per_cycle:
+                    format: int64
+                    type: integer
+                required:
+                - heads
+                type: object
+              factory_details:
+                properties:
+                  schematic_id:
+                    format: int64
+                    type: integer
+                required:
+                - schematic_id
+                type: object
+              install_time:
+                format: date-time
+                type: string
+              last_cycle_start:
+                format: date-time
+                type: string
+              latitude:
+                format: double
+                type: number
+              longitude:
+                format: double
+                type: number
+              pin_id:
+                format: int64
+                type: integer
+              schematic_id:
+                format: int64
+                type: integer
+              type_id:
+                format: int64
+                type: integer
+            required:
+            - pin_id
+            - type_id
+            - latitude
+            - longitude
+            type: object
+          type: array
+        routes:
+          items:
+            description: route object
+            properties:
+              content_type_id:
+                format: int64
+                type: integer
+              destination_pin_id:
+                format: int64
+                type: integer
+              quantity:
+                format: double
+                type: number
+              route_id:
+                format: int64
+                type: integer
+              source_pin_id:
+                format: int64
+                type: integer
+              waypoints:
+                description: list of pin ID waypoints
+                items:
+                  description: waypoint integer
+                  format: int64
+                  type: integer
+                type: array
+            required:
+            - route_id
+            - source_pin_id
+            - destination_pin_id
+            - content_type_id
+            - quantity
+            type: object
+          type: array
+      required:
+      - links
+      - pins
+      - routes
+      type: object
+    CharactersCharacterIdPlanetsGet:
+      items:
+        properties:
+          last_update:
+            format: date-time
+            type: string
+          num_pins:
+            format: int64
+            type: integer
+          owner_id:
+            format: int64
+            type: integer
+          planet_id:
+            format: int64
+            type: integer
+          planet_type:
+            enum:
+            - temperate
+            - barren
+            - oceanic
+            - ice
+            - gas
+            - lava
+            - storm
+            - plasma
+            type: string
+          solar_system_id:
+            format: int64
+            type: integer
+          upgrade_level:
+            format: int64
+            type: integer
+        required:
+        - solar_system_id
+        - planet_id
+        - planet_type
+        - owner_id
+        - last_update
+        - upgrade_level
+        - num_pins
+        type: object
+      type: array
+    CorporationID:
+      examples:
+      - 98777771
+      format: int64
+      type: integer
+      x-common-model: 'true'
+    Error:
+      properties:
+        details:
+          description: List of individual error details.
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+          type: array
+        error:
+          description: Error message.
+          type: string
+      required:
+      - error
+      type: object
+    CharacterID:
+      examples:
+      - 90000001
+      format: int64
+      type: integer
+      x-common-model: 'true'
+  securitySchemes:
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.eveonline.com/v2/oauth/authorize
+          scopes:
+            esi-access.read_lists.v1: esi-access.read_lists.v1
+            esi-activities.read_character.v1: esi-activities.read_character.v1
+            esi-alliances.read_contacts.v1: esi-alliances.read_contacts.v1
+            esi-assets.read_assets.v1: esi-assets.read_assets.v1
+            esi-assets.read_corporation_assets.v1: esi-assets.read_corporation_assets.v1
+            esi-calendar.read_calendar_events.v1: esi-calendar.read_calendar_events.v1
+            esi-calendar.respond_calendar_events.v1: esi-calendar.respond_calendar_events.v1
+            esi-characters.read_agents_research.v1: esi-characters.read_agents_research.v1
+            esi-characters.read_blueprints.v1: esi-characters.read_blueprints.v1
+            esi-characters.read_contacts.v1: esi-characters.read_contacts.v1
+            esi-characters.read_corporation_roles.v1: esi-characters.read_corporation_roles.v1
+            esi-characters.read_fatigue.v1: esi-characters.read_fatigue.v1
+            esi-characters.read_freelance_jobs.v1: esi-characters.read_freelance_jobs.v1
+            esi-characters.read_fw_stats.v1: esi-characters.read_fw_stats.v1
+            esi-characters.read_loyalty.v1: esi-characters.read_loyalty.v1
+            esi-characters.read_medals.v1: esi-characters.read_medals.v1
+            esi-characters.read_notifications.v1: esi-characters.read_notifications.v1
+            esi-characters.read_standings.v1: esi-characters.read_standings.v1
+            esi-characters.read_titles.v1: esi-characters.read_titles.v1
+            esi-characters.write_contacts.v1: esi-characters.write_contacts.v1
+            esi-clones.read_clones.v1: esi-clones.read_clones.v1
+            esi-clones.read_implants.v1: esi-clones.read_implants.v1
+            esi-contracts.read_character_contracts.v1: esi-contracts.read_character_contracts.v1
+            esi-contracts.read_corporation_contracts.v1: esi-contracts.read_corporation_contracts.v1
+            esi-corporations.read_blueprints.v1: esi-corporations.read_blueprints.v1
+            esi-corporations.read_contacts.v1: esi-corporations.read_contacts.v1
+            esi-corporations.read_container_logs.v1: esi-corporations.read_container_logs.v1
+            esi-corporations.read_corporation_membership.v1: esi-corporations.read_corporation_membership.v1
+            esi-corporations.read_divisions.v1: esi-corporations.read_divisions.v1
+            esi-corporations.read_facilities.v1: esi-corporations.read_facilities.v1
+            esi-corporations.read_freelance_jobs.v1: esi-corporations.read_freelance_jobs.v1
+            esi-corporations.read_fw_stats.v1: esi-corporations.read_fw_stats.v1
+            esi-corporations.read_medals.v1: esi-corporations.read_medals.v1
+            esi-corporations.read_projects.v1: esi-corporations.read_projects.v1
+            esi-corporations.read_standings.v1: esi-corporations.read_standings.v1
+            esi-corporations.read_starbases.v1: esi-corporations.read_starbases.v1
+            esi-corporations.read_structures.v1: esi-corporations.read_structures.v1
+            esi-corporations.read_titles.v1: esi-corporations.read_titles.v1
+            esi-corporations.track_members.v1: esi-corporations.track_members.v1
+            esi-fittings.read_fittings.v1: esi-fittings.read_fittings.v1
+            esi-fittings.write_fittings.v1: esi-fittings.write_fittings.v1
+            esi-fleets.read_fleet.v1: esi-fleets.read_fleet.v1
+            esi-fleets.write_fleet.v1: esi-fleets.write_fleet.v1
+            esi-industry.read_character_jobs.v1: esi-industry.read_character_jobs.v1
+            esi-industry.read_character_mining.v1: esi-industry.read_character_mining.v1
+            esi-industry.read_corporation_jobs.v1: esi-industry.read_corporation_jobs.v1
+            esi-industry.read_corporation_mining.v1: esi-industry.read_corporation_mining.v1
+            esi-killmails.read_corporation_killmails.v1: esi-killmails.read_corporation_killmails.v1
+            esi-killmails.read_killmails.v1: esi-killmails.read_killmails.v1
+            esi-location.read_location.v1: esi-location.read_location.v1
+            esi-location.read_online.v1: esi-location.read_online.v1
+            esi-location.read_ship_type.v1: esi-location.read_ship_type.v1
+            esi-mail.organize_mail.v1: esi-mail.organize_mail.v1
+            esi-mail.read_mail.v1: esi-mail.read_mail.v1
+            esi-mail.send_mail.v1: esi-mail.send_mail.v1
+            esi-markets.read_character_orders.v1: esi-markets.read_character_orders.v1
+            esi-markets.read_corporation_orders.v1: esi-markets.read_corporation_orders.v1
+            esi-markets.structure_markets.v1: esi-markets.structure_markets.v1
+            esi-planets.manage_planets.v1: esi-planets.manage_planets.v1
+            esi-planets.read_customs_offices.v1: esi-planets.read_customs_offices.v1
+            esi-search.search_structures.v1: esi-search.search_structures.v1
+            esi-skills.read_skillqueue.v1: esi-skills.read_skillqueue.v1
+            esi-skills.read_skills.v1: esi-skills.read_skills.v1
+            esi-structures.read_character.v1: esi-structures.read_character.v1
+            esi-structures.read_corporation.v1: esi-structures.read_corporation.v1
+            esi-ui.open_window.v1: esi-ui.open_window.v1
+            esi-ui.write_waypoint.v1: esi-ui.write_waypoint.v1
+            esi-universe.read_structures.v1: esi-universe.read_structures.v1
+            esi-wallet.read_character_wallet.v1: esi-wallet.read_character_wallet.v1
+            esi-wallet.read_corporation_wallets.v1: esi-wallet.read_corporation_wallets.v1
+          tokenUrl: https://login.eveonline.com/v2/oauth/token
+      type: oauth2

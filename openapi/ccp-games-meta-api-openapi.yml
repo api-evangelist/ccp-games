@@ -1,0 +1,330 @@
+openapi: 3.1.0
+info:
+  contact:
+    name: ESI Support
+    url: https://developers.eveonline.com/docs/support/
+  license:
+    name: EVE Developer License
+    url: https://developers.eveonline.com/license-agreement
+  termsOfService: https://support.eveonline.com/hc/en-us/articles/8414770561948-EVE-Online-Terms-of-Service
+  title: EVE Swagger Incineration (ESI) - tranquility Alliance Meta API
+  version: '2020-01-01'
+servers:
+- url: https://esi.evetech.net
+tags:
+- name: Meta
+paths:
+  /meta/changelog:
+    get:
+      description: Get the changelog of this API.
+      operationId: GetMetaChangelog
+      parameters:
+      - $ref: '#/components/parameters/AcceptLanguage'
+      - $ref: '#/components/parameters/IfNoneMatch'
+      - $ref: '#/components/parameters/CompatibilityDate'
+      - $ref: '#/components/parameters/Tenant'
+      - $ref: '#/components/parameters/IfModifiedSince'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetaChangelog'
+          description: OK
+          headers:
+            Cache-Control:
+              $ref: '#/components/headers/CacheControl'
+            ETag:
+              $ref: '#/components/headers/ETag'
+            Last-Modified:
+              $ref: '#/components/headers/LastModified'
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Get changelog
+      tags:
+      - Meta
+      x-cache-age: 600
+      x-cache-mode: not-cached
+      x-compatibility-date: '2020-01-01'
+      x-rate-limit:
+        group: meta
+        max-tokens: 150
+        window-size: 15m
+  /meta/compatibility-dates:
+    get:
+      description: Get a list of compatibility dates.
+      operationId: GetMetaCompatibilityDates
+      parameters:
+      - $ref: '#/components/parameters/AcceptLanguage'
+      - $ref: '#/components/parameters/IfNoneMatch'
+      - $ref: '#/components/parameters/CompatibilityDate'
+      - $ref: '#/components/parameters/Tenant'
+      - $ref: '#/components/parameters/IfModifiedSince'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetaCompatibilityDates'
+          description: OK
+          headers:
+            Cache-Control:
+              $ref: '#/components/headers/CacheControl'
+            ETag:
+              $ref: '#/components/headers/ETag'
+            Last-Modified:
+              $ref: '#/components/headers/LastModified'
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      summary: Get compatibility dates
+      tags:
+      - Meta
+      x-cache-age: 600
+      x-cache-mode: not-cached
+      x-compatibility-date: '2020-01-01'
+      x-rate-limit:
+        group: meta
+        max-tokens: 150
+        window-size: 15m
+components:
+  schemas:
+    MetaChangelog:
+      properties:
+        changelog:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/MetaChangelogEntry'
+            type: array
+          description: Per date, list changes for that date
+          type: object
+      required:
+      - changelog
+      type: object
+    CompatibilityDate:
+      examples:
+      - '2025-08-26'
+      format: date
+      type: string
+      x-common-model: 'true'
+    Error:
+      properties:
+        details:
+          description: List of individual error details.
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+          type: array
+        error:
+          description: Error message.
+          type: string
+      required:
+      - error
+      type: object
+    ErrorDetail:
+      properties:
+        location:
+          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
+          type: string
+        message:
+          description: Error message text
+          type: string
+        value:
+          description: The value at the given location
+      type: object
+    MetaChangelogEntry:
+      properties:
+        compatibility_date:
+          $ref: '#/components/schemas/CompatibilityDate'
+          description: Compatibility date of the route
+        description:
+          description: Description
+          examples:
+          - Updated response schema.
+          type: string
+        is_breaking:
+          description: Whether this is a breaking change
+          examples:
+          - false
+          type: boolean
+        method:
+          description: HTTP method of the route
+          enum:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          examples:
+          - GET
+          type: string
+          x-enum-descriptions:
+          - ''
+          - ''
+          - ''
+          - ''
+        path:
+          description: Path of the route
+          examples:
+          - /meta/changelog
+          type: string
+      required:
+      - method
+      - path
+      - compatibility_date
+      - is_breaking
+      - description
+      type: object
+    MetaCompatibilityDates:
+      properties:
+        compatibility_dates:
+          description: List of compatibility dates.
+          items:
+            $ref: '#/components/schemas/CompatibilityDate'
+          type: array
+      required:
+      - compatibility_dates
+      type: object
+  parameters:
+    CompatibilityDate:
+      description: The compatibility date for the request.
+      in: header
+      name: X-Compatibility-Date
+      required: true
+      schema:
+        enum:
+        - '2020-01-01'
+        format: date
+        type: string
+    AcceptLanguage:
+      description: The language to use for the response.
+      in: header
+      name: Accept-Language
+      schema:
+        default: en
+        enum:
+        - en
+        - de
+        - fr
+        - ja
+        - ru
+        - zh
+        - ko
+        - es
+        type: string
+    Tenant:
+      description: The tenant ID for the request.
+      example: ''
+      in: header
+      name: X-Tenant
+      schema:
+        default: tranquility
+        type: string
+    IfNoneMatch:
+      description: The ETag of the previous request. A 304 will be returned if this matches the current ETag.
+      in: header
+      name: If-None-Match
+      schema:
+        type: string
+    IfModifiedSince:
+      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
+      in: header
+      name: If-Modified-Since
+      schema:
+        type: string
+  headers:
+    LastModified:
+      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
+      schema:
+        type: string
+    ETag:
+      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
+      schema:
+        type: string
+    CacheControl:
+      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
+      schema:
+        type: string
+  securitySchemes:
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.eveonline.com/v2/oauth/authorize
+          scopes:
+            esi-access.read_lists.v1: esi-access.read_lists.v1
+            esi-activities.read_character.v1: esi-activities.read_character.v1
+            esi-alliances.read_contacts.v1: esi-alliances.read_contacts.v1
+            esi-assets.read_assets.v1: esi-assets.read_assets.v1
+            esi-assets.read_corporation_assets.v1: esi-assets.read_corporation_assets.v1
+            esi-calendar.read_calendar_events.v1: esi-calendar.read_calendar_events.v1
+            esi-calendar.respond_calendar_events.v1: esi-calendar.respond_calendar_events.v1
+            esi-characters.read_agents_research.v1: esi-characters.read_agents_research.v1
+            esi-characters.read_blueprints.v1: esi-characters.read_blueprints.v1
+            esi-characters.read_contacts.v1: esi-characters.read_contacts.v1
+            esi-characters.read_corporation_roles.v1: esi-characters.read_corporation_roles.v1
+            esi-characters.read_fatigue.v1: esi-characters.read_fatigue.v1
+            esi-characters.read_freelance_jobs.v1: esi-characters.read_freelance_jobs.v1
+            esi-characters.read_fw_stats.v1: esi-characters.read_fw_stats.v1
+            esi-characters.read_loyalty.v1: esi-characters.read_loyalty.v1
+            esi-characters.read_medals.v1: esi-characters.read_medals.v1
+            esi-characters.read_notifications.v1: esi-characters.read_notifications.v1
+            esi-characters.read_standings.v1: esi-characters.read_standings.v1
+            esi-characters.read_titles.v1: esi-characters.read_titles.v1
+            esi-characters.write_contacts.v1: esi-characters.write_contacts.v1
+            esi-clones.read_clones.v1: esi-clones.read_clones.v1
+            esi-clones.read_implants.v1: esi-clones.read_implants.v1
+            esi-contracts.read_character_contracts.v1: esi-contracts.read_character_contracts.v1
+            esi-contracts.read_corporation_contracts.v1: esi-contracts.read_corporation_contracts.v1
+            esi-corporations.read_blueprints.v1: esi-corporations.read_blueprints.v1
+            esi-corporations.read_contacts.v1: esi-corporations.read_contacts.v1
+            esi-corporations.read_container_logs.v1: esi-corporations.read_container_logs.v1
+            esi-corporations.read_corporation_membership.v1: esi-corporations.read_corporation_membership.v1
+            esi-corporations.read_divisions.v1: esi-corporations.read_divisions.v1
+            esi-corporations.read_facilities.v1: esi-corporations.read_facilities.v1
+            esi-corporations.read_freelance_jobs.v1: esi-corporations.read_freelance_jobs.v1
+            esi-corporations.read_fw_stats.v1: esi-corporations.read_fw_stats.v1
+            esi-corporations.read_medals.v1: esi-corporations.read_medals.v1
+            esi-corporations.read_projects.v1: esi-corporations.read_projects.v1
+            esi-corporations.read_standings.v1: esi-corporations.read_standings.v1
+            esi-corporations.read_starbases.v1: esi-corporations.read_starbases.v1
+            esi-corporations.read_structures.v1: esi-corporations.read_structures.v1
+            esi-corporations.read_titles.v1: esi-corporations.read_titles.v1
+            esi-corporations.track_members.v1: esi-corporations.track_members.v1
+            esi-fittings.read_fittings.v1: esi-fittings.read_fittings.v1
+            esi-fittings.write_fittings.v1: esi-fittings.write_fittings.v1
+            esi-fleets.read_fleet.v1: esi-fleets.read_fleet.v1
+            esi-fleets.write_fleet.v1: esi-fleets.write_fleet.v1
+            esi-industry.read_character_jobs.v1: esi-industry.read_character_jobs.v1
+            esi-industry.read_character_mining.v1: esi-industry.read_character_mining.v1
+            esi-industry.read_corporation_jobs.v1: esi-industry.read_corporation_jobs.v1
+            esi-industry.read_corporation_mining.v1: esi-industry.read_corporation_mining.v1
+            esi-killmails.read_corporation_killmails.v1: esi-killmails.read_corporation_killmails.v1
+            esi-killmails.read_killmails.v1: esi-killmails.read_killmails.v1
+            esi-location.read_location.v1: esi-location.read_location.v1
+            esi-location.read_online.v1: esi-location.read_online.v1
+            esi-location.read_ship_type.v1: esi-location.read_ship_type.v1
+            esi-mail.organize_mail.v1: esi-mail.organize_mail.v1
+            esi-mail.read_mail.v1: esi-mail.read_mail.v1
+            esi-mail.send_mail.v1: esi-mail.send_mail.v1
+            esi-markets.read_character_orders.v1: esi-markets.read_character_orders.v1
+            esi-markets.read_corporation_orders.v1: esi-markets.read_corporation_orders.v1
+            esi-markets.structure_markets.v1: esi-markets.structure_markets.v1
+            esi-planets.manage_planets.v1: esi-planets.manage_planets.v1
+            esi-planets.read_customs_offices.v1: esi-planets.read_customs_offices.v1
+            esi-search.search_structures.v1: esi-search.search_structures.v1
+            esi-skills.read_skillqueue.v1: esi-skills.read_skillqueue.v1
+            esi-skills.read_skills.v1: esi-skills.read_skills.v1
+            esi-structures.read_character.v1: esi-structures.read_character.v1
+            esi-structures.read_corporation.v1: esi-structures.read_corporation.v1
+            esi-ui.open_window.v1: esi-ui.open_window.v1
+            esi-ui.write_waypoint.v1: esi-ui.write_waypoint.v1
+            esi-universe.read_structures.v1: esi-universe.read_structures.v1
+            esi-wallet.read_character_wallet.v1: esi-wallet.read_character_wallet.v1
+            esi-wallet.read_corporation_wallets.v1: esi-wallet.read_corporation_wallets.v1
+          tokenUrl: https://login.eveonline.com/v2/oauth/token
+      type: oauth2

@@ -1,0 +1,504 @@
+openapi: 3.1.0
+info:
+  contact:
+    name: ESI Support
+    url: https://developers.eveonline.com/docs/support/
+  license:
+    name: EVE Developer License
+    url: https://developers.eveonline.com/license-agreement
+  termsOfService: https://support.eveonline.com/hc/en-us/articles/8414770561948-EVE-Online-Terms-of-Service
+  title: EVE Swagger Incineration (ESI) - tranquility Alliance Calendar API
+  version: '2020-01-01'
+servers:
+- url: https://esi.evetech.net
+tags:
+- name: Calendar
+paths:
+  /characters/{character_id}/calendar:
+    get:
+      description: Get 50 event summaries from the calendar. If no from_event ID is given, the resource will return the next 50 chronological event summaries from now. If a from_event ID is specified, it will return the next 50 chronological event summaries from after that event
+      operationId: GetCharactersCharacterIdCalendar
+      parameters:
+      - description: The ID of the character
+        in: path
+        name: character_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/CharacterID'
+      - in: query
+        name: from_event
+        schema:
+          description: The event ID to retrieve events from
+          format: int64
+          type: integer
+      - $ref: '#/components/parameters/AcceptLanguage'
+      - $ref: '#/components/parameters/IfNoneMatch'
+      - $ref: '#/components/parameters/CompatibilityDate'
+      - $ref: '#/components/parameters/Tenant'
+      - $ref: '#/components/parameters/IfModifiedSince'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CharactersCharacterIdCalendarGet'
+          description: OK
+          headers:
+            Cache-Control:
+              $ref: '#/components/headers/CacheControl'
+            ETag:
+              $ref: '#/components/headers/ETag'
+            Last-Modified:
+              $ref: '#/components/headers/LastModified'
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      security:
+      - OAuth2:
+        - esi-calendar.read_calendar_events.v1
+      summary: List calendar event summaries
+      tags:
+      - Calendar
+      x-cache-age: 5
+      x-compatibility-date: '2020-01-01'
+      x-rate-limit:
+        group: char-social
+        max-tokens: 600
+        window-size: 15m
+  /characters/{character_id}/calendar/{event_id}:
+    get:
+      description: Get all the information for a specific event
+      operationId: GetCharactersCharacterIdCalendarEventId
+      parameters:
+      - description: The ID of the character
+        in: path
+        name: character_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/CharacterID'
+      - in: path
+        name: event_id
+        required: true
+        schema:
+          description: The id of the event requested
+          format: int64
+          type: integer
+      - $ref: '#/components/parameters/AcceptLanguage'
+      - $ref: '#/components/parameters/IfNoneMatch'
+      - $ref: '#/components/parameters/CompatibilityDate'
+      - $ref: '#/components/parameters/Tenant'
+      - $ref: '#/components/parameters/IfModifiedSince'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CharactersCharacterIdCalendarEventIdGet'
+          description: OK
+          headers:
+            Cache-Control:
+              $ref: '#/components/headers/CacheControl'
+            ETag:
+              $ref: '#/components/headers/ETag'
+            Last-Modified:
+              $ref: '#/components/headers/LastModified'
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      security:
+      - OAuth2:
+        - esi-calendar.read_calendar_events.v1
+      summary: Get an event
+      tags:
+      - Calendar
+      x-cache-age: 5
+      x-compatibility-date: '2020-01-01'
+      x-rate-limit:
+        group: char-social
+        max-tokens: 600
+        window-size: 15m
+    put:
+      description: Set your response status to an event
+      operationId: PutCharactersCharacterIdCalendarEventId
+      parameters:
+      - description: The ID of the character
+        in: path
+        name: character_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/CharacterID'
+      - in: path
+        name: event_id
+        required: true
+        schema:
+          description: The ID of the event requested
+          format: int64
+          type: integer
+      - $ref: '#/components/parameters/AcceptLanguage'
+      - $ref: '#/components/parameters/IfNoneMatch'
+      - $ref: '#/components/parameters/CompatibilityDate'
+      - $ref: '#/components/parameters/Tenant'
+      - $ref: '#/components/parameters/IfModifiedSince'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                response:
+                  enum:
+                  - accepted
+                  - declined
+                  - tentative
+                  type: string
+              required:
+              - response
+              type: object
+        required: true
+      responses:
+        '204':
+          description: Event updated
+          headers:
+            Cache-Control:
+              $ref: '#/components/headers/CacheControl'
+            ETag:
+              $ref: '#/components/headers/ETag'
+            Last-Modified:
+              $ref: '#/components/headers/LastModified'
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      security:
+      - OAuth2:
+        - esi-calendar.respond_calendar_events.v1
+      summary: Respond to an event
+      tags:
+      - Calendar
+      x-cache-age: 5
+      x-compatibility-date: '2020-01-01'
+      x-rate-limit:
+        group: char-social
+        max-tokens: 600
+        window-size: 15m
+  /characters/{character_id}/calendar/{event_id}/attendees:
+    get:
+      description: Get all invited attendees for a given event
+      operationId: GetCharactersCharacterIdCalendarEventIdAttendees
+      parameters:
+      - description: The ID of the character
+        in: path
+        name: character_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/CharacterID'
+      - in: path
+        name: event_id
+        required: true
+        schema:
+          description: The id of the event requested
+          format: int64
+          type: integer
+      - $ref: '#/components/parameters/AcceptLanguage'
+      - $ref: '#/components/parameters/IfNoneMatch'
+      - $ref: '#/components/parameters/CompatibilityDate'
+      - $ref: '#/components/parameters/Tenant'
+      - $ref: '#/components/parameters/IfModifiedSince'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CharactersCharacterIdCalendarEventIdAttendeesGet'
+          description: OK
+          headers:
+            Cache-Control:
+              $ref: '#/components/headers/CacheControl'
+            ETag:
+              $ref: '#/components/headers/ETag'
+            Last-Modified:
+              $ref: '#/components/headers/LastModified'
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error
+      security:
+      - OAuth2:
+        - esi-calendar.read_calendar_events.v1
+      summary: Get attendees
+      tags:
+      - Calendar
+      x-cache-age: 600
+      x-compatibility-date: '2020-01-01'
+      x-rate-limit:
+        group: char-social
+        max-tokens: 600
+        window-size: 15m
+components:
+  parameters:
+    CompatibilityDate:
+      description: The compatibility date for the request.
+      in: header
+      name: X-Compatibility-Date
+      required: true
+      schema:
+        enum:
+        - '2020-01-01'
+        format: date
+        type: string
+    AcceptLanguage:
+      description: The language to use for the response.
+      in: header
+      name: Accept-Language
+      schema:
+        default: en
+        enum:
+        - en
+        - de
+        - fr
+        - ja
+        - ru
+        - zh
+        - ko
+        - es
+        type: string
+    Tenant:
+      description: The tenant ID for the request.
+      example: ''
+      in: header
+      name: X-Tenant
+      schema:
+        default: tranquility
+        type: string
+    IfNoneMatch:
+      description: The ETag of the previous request. A 304 will be returned if this matches the current ETag.
+      in: header
+      name: If-None-Match
+      schema:
+        type: string
+    IfModifiedSince:
+      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
+      in: header
+      name: If-Modified-Since
+      schema:
+        type: string
+  headers:
+    LastModified:
+      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
+      schema:
+        type: string
+    ETag:
+      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
+      schema:
+        type: string
+    CacheControl:
+      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
+      schema:
+        type: string
+  schemas:
+    CharactersCharacterIdCalendarEventIdAttendeesGet:
+      description: List of attendees for a given event
+      items:
+        description: character_id and response of an attendee
+        properties:
+          character_id:
+            format: int64
+            type: integer
+          event_response:
+            enum:
+            - declined
+            - not_responded
+            - accepted
+            - tentative
+            type: string
+        type: object
+      type: array
+    ErrorDetail:
+      properties:
+        location:
+          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
+          type: string
+        message:
+          description: Error message text
+          type: string
+        value:
+          description: The value at the given location
+      type: object
+    CharactersCharacterIdCalendarEventIdGet:
+      description: Full details of a specific event
+      properties:
+        date:
+          format: date-time
+          type: string
+        duration:
+          description: Length in minutes
+          format: int64
+          type: integer
+        event_id:
+          format: int64
+          type: integer
+        importance:
+          format: int64
+          type: integer
+        owner_id:
+          format: int64
+          type: integer
+        owner_name:
+          type: string
+        owner_type:
+          enum:
+          - eve_server
+          - corporation
+          - faction
+          - character
+          - alliance
+          type: string
+        response:
+          type: string
+        text:
+          type: string
+        title:
+          type: string
+      required:
+      - event_id
+      - owner_id
+      - owner_name
+      - date
+      - title
+      - duration
+      - importance
+      - response
+      - text
+      - owner_type
+      type: object
+    CharactersCharacterIdCalendarGet:
+      description: Up to 50 events from now or the event you requested
+      items:
+        description: event
+        properties:
+          event_date:
+            format: date-time
+            type: string
+          event_id:
+            format: int64
+            type: integer
+          event_response:
+            enum:
+            - declined
+            - not_responded
+            - accepted
+            - tentative
+            type: string
+          importance:
+            format: int64
+            type: integer
+          title:
+            type: string
+        type: object
+      type: array
+    Error:
+      properties:
+        details:
+          description: List of individual error details.
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+          type: array
+        error:
+          description: Error message.
+          type: string
+      required:
+      - error
+      type: object
+    CharacterID:
+      examples:
+      - 90000001
+      format: int64
+      type: integer
+      x-common-model: 'true'
+  securitySchemes:
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://login.eveonline.com/v2/oauth/authorize
+          scopes:
+            esi-access.read_lists.v1: esi-access.read_lists.v1
+            esi-activities.read_character.v1: esi-activities.read_character.v1
+            esi-alliances.read_contacts.v1: esi-alliances.read_contacts.v1
+            esi-assets.read_assets.v1: esi-assets.read_assets.v1
+            esi-assets.read_corporation_assets.v1: esi-assets.read_corporation_assets.v1
+            esi-calendar.read_calendar_events.v1: esi-calendar.read_calendar_events.v1
+            esi-calendar.respond_calendar_events.v1: esi-calendar.respond_calendar_events.v1
+            esi-characters.read_agents_research.v1: esi-characters.read_agents_research.v1
+            esi-characters.read_blueprints.v1: esi-characters.read_blueprints.v1
+            esi-characters.read_contacts.v1: esi-characters.read_contacts.v1
+            esi-characters.read_corporation_roles.v1: esi-characters.read_corporation_roles.v1
+            esi-characters.read_fatigue.v1: esi-characters.read_fatigue.v1
+            esi-characters.read_freelance_jobs.v1: esi-characters.read_freelance_jobs.v1
+            esi-characters.read_fw_stats.v1: esi-characters.read_fw_stats.v1
+            esi-characters.read_loyalty.v1: esi-characters.read_loyalty.v1
+            esi-characters.read_medals.v1: esi-characters.read_medals.v1
+            esi-characters.read_notifications.v1: esi-characters.read_notifications.v1
+            esi-characters.read_standings.v1: esi-characters.read_standings.v1
+            esi-characters.read_titles.v1: esi-characters.read_titles.v1
+            esi-characters.write_contacts.v1: esi-characters.write_contacts.v1
+            esi-clones.read_clones.v1: esi-clones.read_clones.v1
+            esi-clones.read_implants.v1: esi-clones.read_implants.v1
+            esi-contracts.read_character_contracts.v1: esi-contracts.read_character_contracts.v1
+            esi-contracts.read_corporation_contracts.v1: esi-contracts.read_corporation_contracts.v1
+            esi-corporations.read_blueprints.v1: esi-corporations.read_blueprints.v1
+            esi-corporations.read_contacts.v1: esi-corporations.read_contacts.v1
+            esi-corporations.read_container_logs.v1: esi-corporations.read_container_logs.v1
+            esi-corporations.read_corporation_membership.v1: esi-corporations.read_corporation_membership.v1
+            esi-corporations.read_divisions.v1: esi-corporations.read_divisions.v1
+            esi-corporations.read_facilities.v1: esi-corporations.read_facilities.v1
+            esi-corporations.read_freelance_jobs.v1: esi-corporations.read_freelance_jobs.v1
+            esi-corporations.read_fw_stats.v1: esi-corporations.read_fw_stats.v1
+            esi-corporations.read_medals.v1: esi-corporations.read_medals.v1
+            esi-corporations.read_projects.v1: esi-corporations.read_projects.v1
+            esi-corporations.read_standings.v1: esi-corporations.read_standings.v1
+            esi-corporations.read_starbases.v1: esi-corporations.read_starbases.v1
+            esi-corporations.read_structures.v1: esi-corporations.read_structures.v1
+            esi-corporations.read_titles.v1: esi-corporations.read_titles.v1
+            esi-corporations.track_members.v1: esi-corporations.track_members.v1
+            esi-fittings.read_fittings.v1: esi-fittings.read_fittings.v1
+            esi-fittings.write_fittings.v1: esi-fittings.write_fittings.v1
+            esi-fleets.read_fleet.v1: esi-fleets.read_fleet.v1
+            esi-fleets.write_fleet.v1: esi-fleets.write_fleet.v1
+            esi-industry.read_character_jobs.v1: esi-industry.read_character_jobs.v1
+            esi-industry.read_character_mining.v1: esi-industry.read_character_mining.v1
+            esi-industry.read_corporation_jobs.v1: esi-industry.read_corporation_jobs.v1
+            esi-industry.read_corporation_mining.v1: esi-industry.read_corporation_mining.v1
+            esi-killmails.read_corporation_killmails.v1: esi-killmails.read_corporation_killmails.v1
+            esi-killmails.read_killmails.v1: esi-killmails.read_killmails.v1
+            esi-location.read_location.v1: esi-location.read_location.v1
+            esi-location.read_online.v1: esi-location.read_online.v1
+            esi-location.read_ship_type.v1: esi-location.read_ship_type.v1
+            esi-mail.organize_mail.v1: esi-mail.organize_mail.v1
+            esi-mail.read_mail.v1: esi-mail.read_mail.v1
+            esi-mail.send_mail.v1: esi-mail.send_mail.v1
+            esi-markets.read_character_orders.v1: esi-markets.read_character_orders.v1
+            esi-markets.read_corporation_orders.v1: esi-markets.read_corporation_orders.v1
+            esi-markets.structure_markets.v1: esi-markets.structure_markets.v1
+            esi-planets.manage_planets.v1: esi-planets.manage_planets.v1
+            esi-planets.read_customs_offices.v1: esi-planets.read_customs_offices.v1
+            esi-search.search_structures.v1: esi-search.search_structures.v1
+            esi-skills.read_skillqueue.v1: esi-skills.read_skillqueue.v1
+            esi-skills.read_skills.v1: esi-skills.read_skills.v1
+            esi-structures.read_character.v1: esi-structures.read_character.v1
+            esi-structures.read_corporation.v1: esi-structures.read_corporation.v1
+            esi-ui.open_window.v1: esi-ui.open_window.v1
+            esi-ui.write_waypoint.v1: esi-ui.write_waypoint.v1
+            esi-universe.read_structures.v1: esi-universe.read_structures.v1
+            esi-wallet.read_character_wallet.v1: esi-wallet.read_character_wallet.v1
+            esi-wallet.read_corporation_wallets.v1: esi-wallet.read_corporation_wallets.v1
+          tokenUrl: https://login.eveonline.com/v2/oauth/token
+      type: oauth2
