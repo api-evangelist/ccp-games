@@ -1,0 +1,46 @@
+generated: '2026-07-18'
+method: searched
+source: https://developers.eveonline.com/blog
+note: >-
+  ESI changes are announced on the EVE Online developer blog. Recent window only;
+  the live blog is the source of truth.
+scheme: date-based announcements (YYYY-MM-DD) plus per-route compatibility dates
+current_spec: https://esi.evetech.net/meta/openapi.json
+entries:
+- date: '2026-07-14'
+  title: 'Goodbye Swagger: removing the last remnants'
+  breaking: false
+  highlights: Completed the migration from Swagger 2.0 to OpenAPI 3.1; legacy Swagger surface retired.
+  url: https://developers.eveonline.com/blog/goodbye-swagger-removing-the-last-remnants
+- date: '2026-06-09'
+  title: 'Cradle of War on ESI: character titles and achievements'
+  breaking: false
+  additions: true
+  highlights: New endpoints for character titles and achievement scores in the latest expansion.
+  url: https://developers.eveonline.com/blog/cradle-of-war-on-esi-character-titles-and-achievements
+- date: '2026-05-19'
+  title: 'Equinox on ESI: structures, sovereignty, and access lists'
+  breaking: false
+  additions: true
+  highlights: New routes for Upwell deployables and a read API for Access Lists after nullsec updates.
+  url: https://developers.eveonline.com/blog/equinox-on-esi-structures-sovereignty-and-access-lists
+- date: '2026-04-02'
+  title: 'Thinking too hard: rollback of the AI-powered fit recommendations'
+  breaking: true
+  highlights: Fleet fit-recommendation endpoint removed as of the 2025-04-02 compatibility date.
+  url: https://developers.eveonline.com/blog/thinking-too-hard-rollback-of-the-ai-powered-fit-recommendations
+- date: '2026-02-24'
+  title: 'Spring Cleaning: legacy routes removed 24 March 2026'
+  breaking: true
+  highlights: Batch deprecation and removal of legacy ESI routes scheduled for 24 March 2026.
+  url: https://developers.eveonline.com/blog/spring-cleaning-legacy-routes-removed-24-march-2026
+- date: '2026-02-19'
+  title: 'Market Orders: rate limit rolls out on February 24, 2026'
+  breaking: false
+  highlights: Rate limiting extended to the market-order endpoint group.
+  url: https://developers.eveonline.com/blog/market-orders-rate-limit-rolls-out-on-february-24-2026
+- date: '2026-01-27'
+  title: 'Smarter caching: when events drive invalidation'
+  breaking: false
+  highlights: Event-based cache invalidation introduced to complement time-based Expires.
+  url: https://developers.eveonline.com/blog/smarter-caching-when-events-drive-invalidation

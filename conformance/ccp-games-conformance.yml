@@ -1,0 +1,32 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/ccp-games-esi-openapi-original.json
+note: >-
+  Cross-cutting standards conformance derived from the ESI OpenAPI 3.1 description
+  and the EVE SSO discovery documents. These are technical-standard assertions, not
+  a published compliance program, so no Compliance pointer is emitted.
+standards:
+- id: openapi-3.1
+  conforms: true
+  evidence: openapi field is 3.1.0
+- id: oauth2
+  conforms: true
+  evidence: components.securitySchemes.OAuth2 type oauth2 authorizationCode flow
+- id: oidc
+  conforms: true
+  evidence: login.eveonline.com serves /.well-known/openid-configuration (issuer, jwks_uri, userinfo)
+- id: pkce
+  conforms: true
+  evidence: authorization server advertises code_challenge_methods_supported [S256]
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: 'error bodies use a custom {"error": string} envelope, not application/problem+json'
+- id: http-conditional-requests
+  conforms: true
+  evidence: ETag / If-None-Match / 304 and Expires supported (see conventions)
+- id: pagination
+  conforms: true
+  evidence: page query parameter with X-Pages response header on list endpoints
+- id: rfc8594-deprecation-sunset
+  conforms: partial
+  evidence: deprecations announced via blog and warning headers; no formal Deprecation/Sunset header contract documented

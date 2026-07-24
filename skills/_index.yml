@@ -1,0 +1,34 @@
+generated: '2026-07-18'
+method: generated
+source: openapi/ccp-games-esi-openapi-original.json
+note: >-
+  Packaged Agent Skills for the EVE Swagger Interface (ESI). Every operationId is
+  verified against the harvested OpenAPI. No provider-published AGENTS.md/skills
+  were found; these are generated from the spec plus captured conventions/errors.
+skills:
+- file: ccp-games-lookup-character.md
+  name: Look up an EVE Online character and their org
+  api: openapi/ccp-games-esi-openapi-original.json
+  operations:
+  - PostCharactersAffiliation
+  - GetCharactersCharacterId
+  - GetCorporationsCorporationId
+  - GetAlliancesAllianceId
+  - PostUniverseNames
+- file: ccp-games-read-character-wallet-and-assets.md
+  name: Read a character's wallet, assets, and skills
+  api: openapi/ccp-games-esi-openapi-original.json
+  operations:
+  - GetCharactersCharacterIdWallet
+  - GetCharactersCharacterIdWalletJournal
+  - GetCharactersCharacterIdAssets
+  - GetCharactersCharacterIdSkills
+  - GetCharactersCharacterIdLocation
+- file: ccp-games-market-data.md
+  name: Pull EVE Online market data
+  api: openapi/ccp-games-esi-openapi-original.json
+  operations:
+  - GetMarketsRegionIdOrders
+  - GetMarketsPrices
+  - GetUniverseTypesTypeId
+  - PostUniverseNames

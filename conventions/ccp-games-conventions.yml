@@ -1,0 +1,54 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.esi.evetech.net/
+note: >-
+  Cross-cutting request/response semantics for the EVE Swagger Interface (ESI),
+  captured from docs.esi.evetech.net and the ESI OpenAPI. ESI is a read-heavy,
+  poll-based data API over the live Tranquility server. It does NOT document an
+  idempotency-key mechanism (writes are direct game actions), so no Idempotency
+  pointer is emitted.
+authentication:
+  style: OAuth 2.0 bearer (EVE SSO / OpenID Connect on login.eveonline.com)
+  header: 'Authorization: Bearer <access_token>'
+  scopes: per-endpoint esi-*.v1 scopes; public endpoints need no token
+  docs: https://docs.esi.evetech.net/docs/sso/
+idempotency:
+  supported: false
+  note: ESI does not document an Idempotency-Key header; write operations act directly on game state.
+pagination:
+  style: page-number
+  request_param: page (query, integer, 1-based)
+  response_headers:
+  - X-Pages (total number of pages available)
+  note: Not all list endpoints paginate; those that do advertise X-Pages and accept ?page=N.
+caching:
+  model: HTTP caching is first-class in ESI
+  response_headers:
+  - Expires (when the cached representation becomes stale)
+  - Last-Modified
+  - ETag (opaque validator)
+  request_headers:
+  - If-None-Match (conditional GET; returns 304 Not Modified when unchanged)
+  note: Clients should honor Expires and avoid re-requesting before a resource expires.
+error_limiting:
+  model: rolling error budget per client (distinct from a request rate limit)
+  response_headers:
+  - X-ESI-Error-Limit-Remain (errors remaining in the current window)
+  - X-ESI-Error-Limit-Reset (seconds until the window resets)
+  exhausted_status: 420
+  guidance: Stop issuing requests when the remaining budget is low; back off until reset. See errors/ccp-games-problem-types.yml.
+versioning:
+  style: route version sets (latest / legacy / dev) plus dated numbered versions per route
+  datasource_param: datasource (query) selects the game server; tranquility is the live server
+  docs: https://docs.esi.evetech.net/docs/guidelines.html
+user_agent:
+  required: strongly recommended
+  note: ESI asks every client to send a descriptive User-Agent (and/or X-User-Agent) identifying the app and a contact, so CCP can reach abusive callers before rate-limiting them.
+error_envelope:
+  shape: JSON object with an "error" string field
+  see: errors/ccp-games-problem-types.yml
+cross_links:
+  errors: errors/ccp-games-problem-types.yml
+  authentication: authentication/ccp-games-authentication.yml
+  scopes: scopes/ccp-games-scopes.yml
+  lifecycle: lifecycle/ccp-games-lifecycle.yml

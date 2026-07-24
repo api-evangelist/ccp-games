@@ -1,0 +1,110 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/ccp-games-esi-openapi-original.json
+note: Entity-relationship graph derived from ESI path structure and id-reference fields
+  (EVE Online player-data domain).
+entities:
+- name: character
+  id_param: character_id
+  domain: Character
+  operations_sample:
+  - GetCharactersCharacterId
+  - GetCharactersCharacterIdAssets
+  - GetCharactersCharacterIdWallet
+  - GetCharactersCharacterIdSkills
+- name: corporation
+  id_param: corporation_id
+  domain: Corporation
+  operations_sample:
+  - GetCorporationsCorporationId
+  - GetCorporationsCorporationIdAssets
+  - GetCorporationsCorporationIdWallets
+- name: alliance
+  id_param: alliance_id
+  domain: Alliance
+  operations_sample:
+  - GetAlliancesAllianceId
+  - GetAlliancesAllianceIdCorporations
+- name: fleet
+  id_param: fleet_id
+  domain: Fleets
+  operations_sample:
+  - GetFleetsFleetId
+  - GetFleetsFleetIdMembers
+- name: contract
+  id_param: contract_id
+  domain: Contracts
+  operations_sample:
+  - GetCharactersCharacterIdContracts
+  - GetContractsPublicBidsContractId
+- name: market_order
+  id_param: order_id
+  domain: Market
+  operations_sample:
+  - GetCharactersCharacterIdOrders
+  - GetCorporationsCorporationIdOrders
+- name: type
+  id_param: type_id
+  domain: Universe
+  operations_sample:
+  - GetUniverseTypesTypeId
+- name: system
+  id_param: system_id
+  domain: Universe
+  operations_sample:
+  - GetUniverseSystemsSystemId
+- name: region
+  id_param: region_id
+  domain: Market/Universe
+  operations_sample:
+  - GetUniverseRegionsRegionId
+- name: structure
+  id_param: structure_id
+  domain: Universe
+  operations_sample:
+  - GetUniverseStructuresStructureId
+relationships:
+- from: character
+  type: belongs_to
+  to: corporation
+  via: corporation_id
+- from: corporation
+  type: belongs_to
+  to: alliance
+  via: alliance_id
+- from: alliance
+  type: has_many
+  to: corporation
+  via: alliance_id
+- from: corporation
+  type: has_many
+  to: character
+  via: corporation_id
+- from: character
+  type: has_many
+  to: market_order
+  via: character_id
+- from: character
+  type: has_many
+  to: contract
+  via: character_id
+- from: fleet
+  type: has_many
+  to: character
+  via: fleet member
+- from: market_order
+  type: belongs_to
+  to: type
+  via: type_id
+- from: market_order
+  type: belongs_to
+  to: region
+  via: region_id
+- from: system
+  type: belongs_to
+  to: region
+  via: region_id
+- from: structure
+  type: belongs_to
+  to: system
+  via: solar_system_id

@@ -1,0 +1,58 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/ccp-games-esi-openapi-original.json
+format: custom-json
+note: ESI error responses use a JSON body with an "error" string (and sometimes "sso_status"/"timeout").
+  Not RFC 9457. Codes are the ESI error model documented across the ESI OpenAPI/Swagger
+  specs and docs.esi.evetech.net.
+envelope:
+  field: error
+  example:
+    error: string describing the error
+problems:
+- status: 400
+  name: bad_request
+  title: Bad request
+  remediation: Malformed request or invalid parameter; check path/query parameter
+    types and required fields.
+- status: 401
+  name: unauthorized
+  title: Unauthorized
+  remediation: Missing/expired/invalid EVE SSO bearer token; refresh the token or
+    re-authorize.
+- status: 403
+  name: forbidden
+  title: Forbidden
+  remediation: Token lacks the required esi-*.v1 scope, or the character is not authorized
+    for the requested resource.
+- status: 404
+  name: not_found
+  title: Not found
+  remediation: The requested entity (character/corporation/type/structure) does not
+    exist or is not visible.
+- status: 420
+  name: error_limited
+  title: Error limit reached
+  remediation: Rolling error budget exhausted. Stop, read X-ESI-Error-Limit-Reset,
+    back off until the window resets.
+- status: 422
+  name: unprocessable_entity
+  title: Unprocessable entity
+  remediation: Request understood but semantically invalid (e.g. bad enum/value combination).
+- status: 500
+  name: internal_server_error
+  title: Internal server error
+  remediation: Transient ESI/backend failure; retry with backoff.
+- status: 503
+  name: service_unavailable
+  title: Service unavailable
+  remediation: ESI or an upstream service is down/overloaded (e.g. Tranquility offline);
+    retry later.
+- status: 504
+  name: gateway_timeout
+  title: Gateway timeout
+  remediation: Upstream game server timed out; retry with backoff.
+- status: 520
+  name: internal_server_error_520
+  title: Internal server error (520)
+  remediation: Upstream returned an unexpected condition; retry with backoff.

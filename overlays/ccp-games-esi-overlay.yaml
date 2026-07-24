@@ -1,0 +1,22 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for EVE Swagger Interface (ESI)
+  version: 1.0.0
+extends: openapi/ccp-games-esi-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: CCP Games
+    x-apievangelist-product: EVE Online
+    x-apievangelist-auth: EVE SSO (OAuth 2.0 / OpenID Connect, login.eveonline.com)
+    x-apievangelist-error-limit: rolling error budget; 420 on exhaustion (X-ESI-Error-Limit-Remain/-Reset)
+    x-apievangelist-caching: HTTP conditional requests (ETag / If-None-Match / 304 / Expires)
+    x-apievangelist-pagination: page query param + X-Pages response header
+    x-apievangelist-rating-notes: >-
+      Read-heavy poll-based data API; no idempotency-key contract; no RFC 9457
+      problem+json; deprecations announced via developer blog and warning headers.
+- target: $.info
+  update:
+    contact:
+      name: EVE Online Third-Party Developers
+      url: https://developers.eveonline.com/

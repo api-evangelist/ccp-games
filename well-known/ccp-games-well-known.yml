@@ -1,0 +1,34 @@
+generated: '2026-07-18'
+method: searched
+note: >-
+  /.well-known probe across the EVE developer, API, and SSO hosts. The ESI OAuth
+  surface lives on login.eveonline.com (EVE SSO), which serves OIDC/OAuth discovery.
+  security.txt is published at the www.eveonline.com apex.
+hosts:
+- host: https://login.eveonline.com
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: ccp-games-oauth-authorization-server.json
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: ccp-games-openid-configuration.json
+- host: https://www.eveonline.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: ccp-games-security.txt
+- host: https://esi.evetech.net
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+- host: https://developers.eveonline.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404

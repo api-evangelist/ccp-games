@@ -1,0 +1,73 @@
+generated: '2026-07-18'
+method: derived
+status: candidate
+source: openapi/ccp-games-esi-openapi-original.json
+note: No official CCP-hosted MCP server found. Candidate tool list derived from public
+  and marquee ESI operations; source_operation ids verified against the OpenAPI where
+  resolved:true.
+server:
+  name: ccp-games-esi
+  transport: http
+tools:
+- name: GetStatus
+  description: 'Get EVE Online server (Tranquility) status: players online, server
+    version, start time.'
+  source_operation: openapi/ccp-games-esi-openapi-original.json#GetStatus
+  resolved: true
+- name: GetCharactersCharacterId
+  description: Get public information about a character by ID.
+  source_operation: openapi/ccp-games-esi-openapi-original.json#GetCharactersCharacterId
+  resolved: true
+- name: PostCharactersAffiliation
+  description: Resolve character IDs to current corporation/alliance/faction affiliations.
+  source_operation: openapi/ccp-games-esi-openapi-original.json#PostCharactersAffiliation
+  resolved: true
+- name: GetCorporationsCorporationId
+  description: Get public information about a corporation by ID.
+  source_operation: openapi/ccp-games-esi-openapi-original.json#GetCorporationsCorporationId
+  resolved: true
+- name: GetAlliancesAllianceId
+  description: Get public information about an alliance by ID.
+  source_operation: openapi/ccp-games-esi-openapi-original.json#GetAlliancesAllianceId
+  resolved: true
+- name: GetAlliances
+  description: List all active player alliance IDs.
+  source_operation: openapi/ccp-games-esi-openapi-original.json#GetAlliances
+  resolved: true
+- name: GetUniverseTypesTypeId
+  description: Get information about an EVE type (item/ship/module) by type_id.
+  source_operation: openapi/ccp-games-esi-openapi-original.json#GetUniverseTypesTypeId
+  resolved: true
+- name: GetUniverseSystemsSystemId
+  description: Get information about a solar system by system_id.
+  source_operation: openapi/ccp-games-esi-openapi-original.json#GetUniverseSystemsSystemId
+  resolved: true
+- name: GetMarketsRegionIdOrders
+  description: List market orders in a region (optionally filtered by type).
+  source_operation: openapi/ccp-games-esi-openapi-original.json#GetMarketsRegionIdOrders
+  resolved: true
+- name: GetMarketsPrices
+  description: List average and adjusted market prices for all types.
+  source_operation: openapi/ccp-games-esi-openapi-original.json#GetMarketsPrices
+  resolved: true
+- name: GetCharactersCharacterIdAssets
+  description: List a character assets (requires esi-assets.read_assets.v1).
+  source_operation: openapi/ccp-games-esi-openapi-original.json#GetCharactersCharacterIdAssets
+  resolved: true
+- name: GetCharactersCharacterIdWallet
+  description: Get a character wallet balance (requires esi-wallet.read_character_wallet.v1).
+  source_operation: openapi/ccp-games-esi-openapi-original.json#GetCharactersCharacterIdWallet
+  resolved: true
+- name: GetCharactersCharacterIdSkills
+  description: List a character trained skills (requires esi-skills.read_skills.v1).
+  source_operation: openapi/ccp-games-esi-openapi-original.json#GetCharactersCharacterIdSkills
+  resolved: true
+- name: GetCharactersCharacterIdLocation
+  description: Get a character current solar-system location (requires esi-location.read_location.v1).
+  source_operation: openapi/ccp-games-esi-openapi-original.json#GetCharactersCharacterIdLocation
+  resolved: true
+- name: PostUniverseNames
+  description: Resolve a set of IDs (characters, corporations, types, systems) to
+    names.
+  source_operation: openapi/ccp-games-esi-openapi-original.json#PostUniverseNames
+  resolved: true

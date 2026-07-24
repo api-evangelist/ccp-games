@@ -1,0 +1,33 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.esi.evetech.net/
+note: >-
+  ESI lifecycle posture from docs.esi.evetech.net and the ESI developer blog.
+  ESI versions each route independently and communicates deprecations through the
+  changelog/blog and in-band HTTP warning headers rather than a hosted status page.
+versioning:
+  scheme: per-route version sets (latest / legacy / dev) plus dated numbered versions
+  current: latest
+  meta_spec: https://esi.evetech.net/meta/openapi.json
+  docs: https://docs.esi.evetech.net/docs/guidelines.html
+deprecation:
+  policy_url: https://docs.esi.evetech.net/docs/guidelines.html
+  mechanism: >-
+    Deprecated and soon-to-be-removed routes are announced on the ESI developer
+    blog (e.g. the "Spring Cleaning" legacy-route removals) and surfaced in-band
+    via HTTP warning headers on responses. CCP also completed the "Goodbye Swagger"
+    migration to OpenAPI.
+  warning_header: true
+  announcements: https://developers.eveonline.com/blog
+sla:
+  published: false
+  note: The Developer License Agreement grants free access with no uptime SLA; CCP may throttle abusive clients.
+status:
+  status_page: false
+  server_status_endpoint: https://esi.evetech.net/latest/status/
+  note: >-
+    No hosted status.io-style page was found. Live Tranquility server health
+    (players online, server version, VIP/offline state) is exposed as the
+    GetStatus operation; there is no separate uptime dashboard to point a
+    StatusPage check at.
+deprecated_operations: []

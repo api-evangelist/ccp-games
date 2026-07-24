@@ -1,22 +1,550 @@
 aid: ccp-games
 name: CCP Games
-description: CCP Games is a company surfaced as a portfolio company of a16z and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  CCP Games is the Reykjavik-based studio behind EVE Online, the long-running
+  single-shard massively multiplayer space sandbox. CCP operates one of the most
+  mature third-party developer programs in gaming through the EVE Swagger Interface
+  (ESI) - a public, versioned REST API that exposes character, corporation, alliance,
+  market, industry, universe, and fleet data from the live Tranquility server. ESI
+  is secured with EVE SSO (OAuth 2.0 / OpenID Connect on login.eveonline.com) using
+  fine-grained per-scope consent, and is governed by a free third-party Developer
+  License Agreement. This profile enriches the CCP Games entry with the real ESI API
+  surface: its OpenAPI 3.1 description, authentication and OAuth scope model, error
+  and error-limit conventions, lifecycle/deprecation posture, and agent-readiness
+  artifacts.
 url: https://raw.githubusercontent.com/api-evangelist/ccp-games/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - a16z
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: enriched
+x-tier-reason: real-esi-api-surface
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
+image: https://developers.eveonline.com/favicon.ico
 tags:
 - Company
-apis: []
+- Gaming
+- Games
+- MMO
+- EVE Online
+- Developer Platform
+- OAuth
+- OpenID Connect
+- Player Data
+- Virtual Economy
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: ccp-games:ccp-games-alliance-api
+  name: CCP Games Alliance API
+  description: The Alliance API from CCP Games — 4 operation(s) for alliance.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Alliance
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-alliance-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-assets-api
+  name: CCP Games Assets API
+  description: The Assets API from CCP Games — 6 operation(s) for assets.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Assets
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-assets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-calendar-api
+  name: CCP Games Calendar API
+  description: The Calendar API from CCP Games — 3 operation(s) for calendar.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Calendar
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-calendar-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-character-api
+  name: CCP Games Character API
+  description: The Character API from CCP Games — 14 operation(s) for character.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Character
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-character-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-clones-api
+  name: CCP Games Clones API
+  description: The Clones API from CCP Games — 2 operation(s) for clones.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Clones
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-clones-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-contacts-api
+  name: CCP Games Contacts API
+  description: The Contacts API from CCP Games — 6 operation(s) for contacts.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Contacts
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-contacts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-contracts-api
+  name: CCP Games Contracts API
+  description: The Contracts API from CCP Games — 9 operation(s) for contracts.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Contracts
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-contracts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-corporation-api
+  name: CCP Games Corporation API
+  description: The Corporation API from CCP Games — 22 operation(s) for corporation.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Corporation
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-corporation-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-dogma-api
+  name: CCP Games Dogma API
+  description: The Dogma API from CCP Games — 5 operation(s) for dogma.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Dogma
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-dogma-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-faction-warfare-api
+  name: CCP Games Faction Warfare API
+  description: The Faction Warfare API from CCP Games — 8 operation(s) for faction warfare.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Faction Warfare
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-faction-warfare-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-fittings-api
+  name: CCP Games Fittings API
+  description: The Fittings API from CCP Games — 2 operation(s) for fittings.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Fittings
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-fittings-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-fleets-api
+  name: CCP Games Fleets API
+  description: The Fleets API from CCP Games — 8 operation(s) for fleets.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Fleets
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-fleets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-incursions-api
+  name: CCP Games Incursions API
+  description: The Incursions API from CCP Games — 1 operation(s) for incursions.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Incursions
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-incursions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-industry-api
+  name: CCP Games Industry API
+  description: The Industry API from CCP Games — 8 operation(s) for industry.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Industry
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-industry-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-insurance-api
+  name: CCP Games Insurance API
+  description: The Insurance API from CCP Games — 1 operation(s) for insurance.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Insurance
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-insurance-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-killmails-api
+  name: CCP Games Killmails API
+  description: The Killmails API from CCP Games — 3 operation(s) for killmails.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Killmails
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-killmails-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-location-api
+  name: CCP Games Location API
+  description: The Location API from CCP Games — 3 operation(s) for location.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Location
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-location-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-loyalty-api
+  name: CCP Games Loyalty API
+  description: The Loyalty API from CCP Games — 2 operation(s) for loyalty.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Loyalty
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-loyalty-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-mail-api
+  name: CCP Games Mail API
+  description: The Mail API from CCP Games — 5 operation(s) for mail.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Mail
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-mail-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-market-api
+  name: CCP Games Market API
+  description: The Market API from CCP Games — 11 operation(s) for market.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Market
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-market-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-meta-api
+  name: CCP Games Meta API
+  description: The Meta API from CCP Games — 2 operation(s) for meta.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Meta
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-meta-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-planetary-interaction-api
+  name: CCP Games Planetary Interaction API
+  description: The Planetary Interaction API from CCP Games — 4 operation(s) for planetary interaction.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Planetary Interaction
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-planetary-interaction-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-routes-api
+  name: CCP Games Routes API
+  description: The Routes API from CCP Games — 1 operation(s) for routes.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Routes
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-routes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-search-api
+  name: CCP Games Search API
+  description: The Search API from CCP Games — 1 operation(s) for search.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-search-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-skills-api
+  name: CCP Games Skills API
+  description: The Skills API from CCP Games — 3 operation(s) for skills.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Skills
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-skills-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-sovereignty-api
+  name: CCP Games Sovereignty API
+  description: The Sovereignty API from CCP Games — 3 operation(s) for sovereignty.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Sovereignty
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-sovereignty-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-status-api
+  name: CCP Games Status API
+  description: The Status API from CCP Games — 1 operation(s) for status.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Status
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-status-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-universe-api
+  name: CCP Games Universe API
+  description: The Universe API from CCP Games — 30 operation(s) for universe.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Universe
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-universe-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-user-interface-api
+  name: CCP Games User Interface API
+  description: The User Interface API from CCP Games — 5 operation(s) for user interface.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - User Interface
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-user-interface-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-wallet-api
+  name: CCP Games Wallet API
+  description: The Wallet API from CCP Games — 6 operation(s) for wallet.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Wallet
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-wallet-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+- aid: ccp-games:ccp-games-wars-api
+  name: CCP Games Wars API
+  description: The Wars API from CCP Games — 3 operation(s) for wars.
+  humanURL: https://developers.eveonline.com/
+  baseURL: https://esi.evetech.net
+  tags:
+  - Wars
+  properties:
+  - type: OpenAPI
+    url: openapi/ccp-games-wars-api-openapi.yml
+  - type: Documentation
+    url: https://docs.esi.evetech.net/
+  - type: APIReference
+    url: https://esi.evetech.net/ui/
+common:
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Overlay
+  url: overlays/ccp-games-esi-overlay.yaml
+- type: LLMsTxt
+  url: llms/ccp-games-llms.txt
+- type: MCPServer
+  url: mcp/ccp-games-mcp.yml
+- type: DataModel
+  url: data-model/ccp-games-data-model.yml
+- type: Conformance
+  url: conformance/ccp-games-conformance.yml
+- type: ChangeLog
+  url: changelog/ccp-games-changelog.yml
+- type: Deprecation
+  url: https://docs.esi.evetech.net/docs/guidelines.html
+- type: Lifecycle
+  url: lifecycle/ccp-games-lifecycle.yml
+- type: Conventions
+  url: conventions/ccp-games-conventions.yml
+- type: ErrorCatalog
+  url: errors/ccp-games-problem-types.yml
+- type: Security
+  url: https://www.eveonline.com/article/responsible-disclosure-reporting-security-issues
+- type: SecurityTxt
+  url: well-known/ccp-games-security.txt
+- type: WellKnown
+  url: well-known/ccp-games-well-known.yml
+- type: VulnerabilityDisclosure
+  url: security/ccp-games-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/ccp-games-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/ccp-games-agentic-access.yml
+- type: OAuthScopes
+  url: scopes/ccp-games-scopes.yml
+- type: Authentication
+  url: authentication/ccp-games-authentication.yml
+- type: DeveloperPortal
+  url: https://developers.eveonline.com/
+- type: Documentation
+  url: https://docs.esi.evetech.net/
+- type: APIReference
+  url: https://esi.evetech.net/ui/
+- type: GettingStarted
+  url: https://docs.esi.evetech.net/docs/esi_introduction.html
+- type: Support
+  url: https://support.eveonline.com/
+- type: Blog
+  url: https://developers.eveonline.com/blog
+- type: GitHubOrganization
+  url: https://github.com/esi
+- type: SignUp
+  url: https://www.eveonline.com/signup
+- type: TermsOfService
+  url: https://developers.eveonline.com/license-agreement
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
