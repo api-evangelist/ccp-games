@@ -1,0 +1,245 @@
+{
+  "item": [
+    {
+      "id": "c66874ba-68d8-4621-af5e-3d5a4417ee77",
+      "name": "Status",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7fe60f54-375e-4140-bc41-6867573d932e",
+          "name": "Retrieve the uptime and player counts",
+          "request": {
+            "name": "Retrieve the uptime and player counts",
+            "description": {
+              "content": "EVE Server status",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The language to use for the response.",
+                "key": "Accept-Language",
+                "value": "en"
+              },
+              {
+                "disabled": false,
+                "description": "The ETag of the previous request. A 304 will be returned if this matches the current ETag.",
+                "key": "If-None-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The compatibility date for the request.",
+                "key": "X-Compatibility-Date",
+                "value": "<date>"
+              },
+              {
+                "disabled": false,
+                "description": "The tenant ID for the request.",
+                "key": "X-Tenant",
+                "value": "tranquility"
+              },
+              {
+                "disabled": false,
+                "description": "The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.",
+                "key": "If-Modified-Since",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "31b8a0f3-8940-467f-bb17-be24eab0d29b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The language to use for the response.",
+                    "key": "Accept-Language",
+                    "value": "en"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ETag of the previous request. A 304 will be returned if this matches the current ETag.",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The compatibility date for the request.",
+                    "key": "X-Compatibility-Date",
+                    "value": "<date>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The tenant ID for the request.",
+                    "key": "X-Tenant",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.",
+                    "key": "If-Modified-Since",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.",
+                  "key": "Cache-Control",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.",
+                  "key": "Last-Modified",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"start_time\": \"2004-01-29T05:05:37.808Z\",\n  \"players\": 3099,\n  \"server_version\": \"string\",\n  \"vip\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63c02e73-4cc5-4ad1-8da3-94c7b4005ece",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The language to use for the response.",
+                    "key": "Accept-Language",
+                    "value": "en"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ETag of the previous request. A 304 will be returned if this matches the current ETag.",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The compatibility date for the request.",
+                    "key": "X-Compatibility-Date",
+                    "value": "<date>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The tenant ID for the request.",
+                    "key": "X-Tenant",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.",
+                    "key": "If-Modified-Since",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"details\": [\n    {\n      \"location\": \"string\",\n      \"message\": \"string\",\n      \"value\": {}\n    },\n    {\n      \"location\": \"string\",\n      \"message\": \"string\",\n      \"value\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://esi.evetech.net",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9d84056b-493f-4068-884e-c1de36511d9a",
+    "name": "EVE Swagger Incineration (ESI) - tranquility Alliance Status API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: ESI Support",
+      "type": "text/plain"
+    }
+  }
+}

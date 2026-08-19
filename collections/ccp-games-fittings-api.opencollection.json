@@ -1,0 +1,180 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EVE Swagger Incineration (ESI) - tranquility Alliance Fittings API",
+    "version": "2020-01-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Fittings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get fittings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/characters/:character_id/fittings",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "character_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the character"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.eveonline.com/v2/oauth/authorize",
+              "accessTokenUrl": "https://login.eveonline.com/v2/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Return fittings of a character"
+        },
+        {
+          "info": {
+            "name": "Create fitting",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://esi.evetech.net/characters/:character_id/fittings",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "character_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the character"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.eveonline.com/v2/oauth/authorize",
+              "accessTokenUrl": "https://login.eveonline.com/v2/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Save a new fitting for a character"
+        },
+        {
+          "info": {
+            "name": "Delete fitting",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://esi.evetech.net/characters/:character_id/fittings/:fitting_id",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "character_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the character"
+              },
+              {
+                "name": "fitting_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.eveonline.com/v2/oauth/authorize",
+              "accessTokenUrl": "https://login.eveonline.com/v2/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Delete a fitting from a character"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

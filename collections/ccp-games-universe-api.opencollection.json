@@ -1,0 +1,1145 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EVE Swagger Incineration (ESI) - tranquility Alliance Universe API",
+    "version": "2020-01-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Universe",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get ancestries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/ancestries",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Get all character ancestries\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "Get asteroid belt information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/asteroid_belts/:asteroid_belt_id",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "asteroid_belt_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get information on an asteroid belt\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "Get bloodlines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/bloodlines",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Get a list of bloodlines\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "Get item categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/categories",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Get a list of item categories\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "Get item category information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/categories/:category_id",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "category_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get information of an item category\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "Get constellations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/constellations",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Get a list of constellations\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "Get constellation information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/constellations/:constellation_id",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "constellation_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get information on a constellation\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "Get factions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/factions",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Get a list of factions\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "Get graphics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/graphics",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Get a list of graphics\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "Get graphic information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/graphics/:graphic_id",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "graphic_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get information on a graphic\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "Get item groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/groups",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a list of item groups\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "Get item group information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/groups/:group_id",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get information on an item group\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "Bulk names to IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://esi.evetech.net/universe/ids",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Resolve a set of names to IDs in the following categories: agents, alliances, characters, constellations, corporations factions, inventory_types, regions, stations, and systems. Only exact matches will be returned. All names searched for are cached for 12 hours"
+        },
+        {
+          "info": {
+            "name": "Get moon information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/moons/:moon_id",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "moon_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get information on a moon\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "Get names and categories for a set of IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://esi.evetech.net/universe/names",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Resolve a set of IDs to names and categories. Supported ID's for resolving are: Characters, Corporations, Alliances, Stations, Solar Systems, Constellations, Regions, Types, Factions"
+        },
+        {
+          "info": {
+            "name": "Get planet information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/planets/:planet_id",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "planet_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get information on a planet\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "Get character races",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/races",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Get a list of character races\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "Get regions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/regions",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Get a list of regions\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "Get region information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/regions/:region_id",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "region_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get information on a region\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "Get stargate information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/stargates/:stargate_id",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "stargate_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get information on a stargate\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "Get star information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/stars/:star_id",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "star_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get information on a star\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "Get station information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/stations/:station_id",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "station_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get information on a station\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "List all public structures",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/structures",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List all public structures"
+        },
+        {
+          "info": {
+            "name": "Get structure information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/structures/:structure_id",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "structure_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.eveonline.com/v2/oauth/authorize",
+              "accessTokenUrl": "https://login.eveonline.com/v2/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Returns information on requested structure if you are on the ACL. Otherwise, returns \"Forbidden\" for all inputs."
+        },
+        {
+          "info": {
+            "name": "Get system jumps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/system_jumps",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Get the number of jumps in solar systems within the last hour ending at the timestamp of the Last-Modified header, excluding wormhole space. Only systems with jumps will be listed"
+        },
+        {
+          "info": {
+            "name": "Get system kills",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/system_kills",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Get the number of ship, pod and NPC kills per solar system within the last hour ending at the timestamp of the Last-Modified header, excluding wormhole space. Only systems with kills will be listed"
+        },
+        {
+          "info": {
+            "name": "Get solar systems",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/systems",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Get a list of solar systems\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "Get solar system information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/systems/:system_id",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "system_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get information on a solar system.\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "Get types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/types",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a list of type ids\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "Get type information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/universe/types/:type_id",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "type_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get information on a type\n\nThis route expires daily at 11:05"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

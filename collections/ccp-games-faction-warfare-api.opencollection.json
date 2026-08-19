@@ -1,0 +1,318 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EVE Swagger Incineration (ESI) - tranquility Alliance Faction Warfare API",
+    "version": "2020-01-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Faction Warfare",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Overview of a character involved in faction warfare",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/characters/:character_id/fw/stats",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "character_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the character"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.eveonline.com/v2/oauth/authorize",
+              "accessTokenUrl": "https://login.eveonline.com/v2/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Statistical overview of a character involved in faction warfare\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "Overview of a corporation involved in faction warfare",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/corporations/:corporation_id/fw/stats",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "corporation_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the corporation"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://login.eveonline.com/v2/oauth/authorize",
+              "accessTokenUrl": "https://login.eveonline.com/v2/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Statistics about a corporation involved in faction warfare\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "List of the top factions in faction warfare",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/fw/leaderboards",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Top 4 leaderboard of factions for kills and victory points separated by total, last week and yesterday\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "List of the top pilots in faction warfare",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/fw/leaderboards/characters",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Top 100 leaderboard of pilots for kills and victory points separated by total, last week and yesterday\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "List of the top corporations in faction warfare",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/fw/leaderboards/corporations",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Top 10 leaderboard of corporations for kills and victory points separated by total, last week and yesterday\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "An overview of statistics about factions involved in faction warfare",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/fw/stats",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Statistical overviews of factions involved in faction warfare\n\nThis route expires daily at 11:05"
+        },
+        {
+          "info": {
+            "name": "Ownership of faction warfare systems",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/fw/systems",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "An overview of the current ownership of faction warfare solar systems"
+        },
+        {
+          "info": {
+            "name": "Data about which NPC factions are at war",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://esi.evetech.net/fw/wars",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              },
+              {
+                "name": "If-None-Match",
+                "value": ""
+              },
+              {
+                "name": "X-Compatibility-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Tenant",
+                "value": ""
+              },
+              {
+                "name": "If-Modified-Since",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Data about which NPC factions are at war\n\nThis route expires daily at 11:05"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

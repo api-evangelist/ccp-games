@@ -1,0 +1,254 @@
+{
+  "item": [
+    {
+      "id": "be892a2d-ed93-4e22-88e7-b14325ec74ce",
+      "name": "Insurance",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "703b570d-85f1-4397-907e-316bbf08940a",
+          "name": "List insurance levels",
+          "request": {
+            "name": "List insurance levels",
+            "description": {
+              "content": "Return available insurance levels for all ship types",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "insurance",
+                "prices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The language to use for the response.",
+                "key": "Accept-Language",
+                "value": "en"
+              },
+              {
+                "disabled": false,
+                "description": "The ETag of the previous request. A 304 will be returned if this matches the current ETag.",
+                "key": "If-None-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The compatibility date for the request.",
+                "key": "X-Compatibility-Date",
+                "value": "<date>"
+              },
+              {
+                "disabled": false,
+                "description": "The tenant ID for the request.",
+                "key": "X-Tenant",
+                "value": "tranquility"
+              },
+              {
+                "disabled": false,
+                "description": "The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.",
+                "key": "If-Modified-Since",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "194a4d62-2350-4b03-80bc-bf8a2cdfd1f2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insurance",
+                    "prices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The language to use for the response.",
+                    "key": "Accept-Language",
+                    "value": "en"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ETag of the previous request. A 304 will be returned if this matches the current ETag.",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The compatibility date for the request.",
+                    "key": "X-Compatibility-Date",
+                    "value": "<date>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The tenant ID for the request.",
+                    "key": "X-Tenant",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.",
+                    "key": "If-Modified-Since",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.",
+                  "key": "Cache-Control",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The language used in the response.",
+                  "key": "Content-Language",
+                  "value": "zh"
+                },
+                {
+                  "disabled": false,
+                  "description": "The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.",
+                  "key": "Last-Modified",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type_id\": 609,\n    \"levels\": [\n      {\n        \"cost\": 8438.842843780001,\n        \"payout\": 6440.284512255782,\n        \"name\": \"string\"\n      },\n      {\n        \"cost\": 6537.673389249617,\n        \"payout\": 9252.154380016353,\n        \"name\": \"string\"\n      }\n    ]\n  },\n  {\n    \"type_id\": 4633,\n    \"levels\": [\n      {\n        \"cost\": 4595.659044359696,\n        \"payout\": 7282.936520674704,\n        \"name\": \"string\"\n      },\n      {\n        \"cost\": 8249.518498606036,\n        \"payout\": 5052.033343332882,\n        \"name\": \"string\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "55b3db54-22e5-43ab-8a8f-268c5460196f",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insurance",
+                    "prices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The language to use for the response.",
+                    "key": "Accept-Language",
+                    "value": "en"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ETag of the previous request. A 304 will be returned if this matches the current ETag.",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The compatibility date for the request.",
+                    "key": "X-Compatibility-Date",
+                    "value": "<date>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The tenant ID for the request.",
+                    "key": "X-Tenant",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.",
+                    "key": "If-Modified-Since",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"details\": [\n    {\n      \"location\": \"string\",\n      \"message\": \"string\",\n      \"value\": {}\n    },\n    {\n      \"location\": \"string\",\n      \"message\": \"string\",\n      \"value\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://esi.evetech.net",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8dec32d0-7b4c-43ba-91ce-fc29657036a5",
+    "name": "EVE Swagger Incineration (ESI) - tranquility Alliance Insurance API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: ESI Support",
+      "type": "text/plain"
+    }
+  }
+}

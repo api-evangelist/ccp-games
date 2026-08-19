@@ -1,0 +1,1878 @@
+{
+  "item": [
+    {
+      "id": "baaa8df3-c814-43f8-a37b-7bc041f9ee2a",
+      "name": "Assets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ab0a562f-712d-4fa4-96e9-b912680d40e1",
+          "name": "Get character assets",
+          "request": {
+            "name": "Get character assets",
+            "description": {
+              "content": "Return a list of the characters assets",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "characters",
+                ":character_id",
+                "assets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "character_id",
+                  "description": "(Required) The ID of the character"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The language to use for the response.",
+                "key": "Accept-Language",
+                "value": "en"
+              },
+              {
+                "disabled": false,
+                "description": "The ETag of the previous request. A 304 will be returned if this matches the current ETag.",
+                "key": "If-None-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The compatibility date for the request.",
+                "key": "X-Compatibility-Date",
+                "value": "<date>"
+              },
+              {
+                "disabled": false,
+                "description": "The tenant ID for the request.",
+                "key": "X-Tenant",
+                "value": "tranquility"
+              },
+              {
+                "disabled": false,
+                "description": "The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.",
+                "key": "If-Modified-Since",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "esi-access.read_lists.v1 esi-activities.read_character.v1 esi-alliances.read_contacts.v1 esi-assets.read_assets.v1 esi-assets.read_corporation_assets.v1 esi-calendar.read_calendar_events.v1 esi-calendar.respond_calendar_events.v1 esi-characters.read_agents_research.v1 esi-characters.read_blueprints.v1 esi-characters.read_contacts.v1 esi-characters.read_corporation_roles.v1 esi-characters.read_fatigue.v1 esi-characters.read_freelance_jobs.v1 esi-characters.read_fw_stats.v1 esi-characters.read_loyalty.v1 esi-characters.read_medals.v1 esi-characters.read_notifications.v1 esi-characters.read_standings.v1 esi-characters.read_titles.v1 esi-characters.write_contacts.v1 esi-clones.read_clones.v1 esi-clones.read_implants.v1 esi-contracts.read_character_contracts.v1 esi-contracts.read_corporation_contracts.v1 esi-corporations.read_blueprints.v1 esi-corporations.read_contacts.v1 esi-corporations.read_container_logs.v1 esi-corporations.read_corporation_membership.v1 esi-corporations.read_divisions.v1 esi-corporations.read_facilities.v1 esi-corporations.read_freelance_jobs.v1 esi-corporations.read_fw_stats.v1 esi-corporations.read_medals.v1 esi-corporations.read_projects.v1 esi-corporations.read_standings.v1 esi-corporations.read_starbases.v1 esi-corporations.read_structures.v1 esi-corporations.read_titles.v1 esi-corporations.track_members.v1 esi-fittings.read_fittings.v1 esi-fittings.write_fittings.v1 esi-fleets.read_fleet.v1 esi-fleets.write_fleet.v1 esi-industry.read_character_jobs.v1 esi-industry.read_character_mining.v1 esi-industry.read_corporation_jobs.v1 esi-industry.read_corporation_mining.v1 esi-killmails.read_corporation_killmails.v1 esi-killmails.read_killmails.v1 esi-location.read_location.v1 esi-location.read_online.v1 esi-location.read_ship_type.v1 esi-mail.organize_mail.v1 esi-mail.read_mail.v1 esi-mail.send_mail.v1 esi-markets.read_character_orders.v1 esi-markets.read_corporation_orders.v1 esi-markets.structure_markets.v1 esi-planets.manage_planets.v1 esi-planets.read_customs_offices.v1 esi-search.search_structures.v1 esi-skills.read_skillqueue.v1 esi-skills.read_skills.v1 esi-structures.read_character.v1 esi-structures.read_corporation.v1 esi-ui.open_window.v1 esi-ui.write_waypoint.v1 esi-universe.read_structures.v1 esi-wallet.read_character_wallet.v1 esi-wallet.read_corporation_wallets.v1"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://login.eveonline.com/v2/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.eveonline.com/v2/oauth/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9aa3c4c4-0d6e-43db-b42c-6d07a9e8a6eb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters",
+                    ":character_id",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "character_id",
+                      "description": "(Required) The ID of the character"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The language to use for the response.",
+                    "key": "Accept-Language",
+                    "value": "en"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ETag of the previous request. A 304 will be returned if this matches the current ETag.",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The compatibility date for the request.",
+                    "key": "X-Compatibility-Date",
+                    "value": "<date>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The tenant ID for the request.",
+                    "key": "X-Tenant",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.",
+                    "key": "If-Modified-Since",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.",
+                  "key": "Cache-Control",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.",
+                  "key": "Last-Modified",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The total number of pages in the result set.",
+                  "key": "X-Pages",
+                  "value": "3638"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type_id\": 7137,\n    \"quantity\": 4523,\n    \"location_id\": 7325,\n    \"location_type\": \"item\",\n    \"item_id\": 1726,\n    \"location_flag\": \"SpecializedCommandCenterHold\",\n    \"is_singleton\": false,\n    \"is_blueprint_copy\": false\n  },\n  {\n    \"type_id\": 2690,\n    \"quantity\": 5958,\n    \"location_id\": 6645,\n    \"location_type\": \"station\",\n    \"item_id\": 8213,\n    \"location_flag\": \"FrigateEscapeBay\",\n    \"is_singleton\": false,\n    \"is_blueprint_copy\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81e84d0b-c2ba-48b4-9595-6ff211c1fdff",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters",
+                    ":character_id",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "character_id",
+                      "description": "(Required) The ID of the character"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The language to use for the response.",
+                    "key": "Accept-Language",
+                    "value": "en"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ETag of the previous request. A 304 will be returned if this matches the current ETag.",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The compatibility date for the request.",
+                    "key": "X-Compatibility-Date",
+                    "value": "<date>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The tenant ID for the request.",
+                    "key": "X-Tenant",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.",
+                    "key": "If-Modified-Since",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"details\": [\n    {\n      \"location\": \"string\",\n      \"message\": \"string\",\n      \"value\": {}\n    },\n    {\n      \"location\": \"string\",\n      \"message\": \"string\",\n      \"value\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dfba3f3e-9fdd-4a70-bc07-d4b0c7a5f12c",
+          "name": "Get character asset locations",
+          "request": {
+            "name": "Get character asset locations",
+            "description": {
+              "content": "Return locations for a set of item ids, which you can get from character assets endpoint. Coordinates for items in hangars or stations are set to (0,0,0)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "characters",
+                ":character_id",
+                "assets",
+                "locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "character_id",
+                  "description": "(Required) The ID of the character"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The language to use for the response.",
+                "key": "Accept-Language",
+                "value": "en"
+              },
+              {
+                "disabled": false,
+                "description": "The ETag of the previous request. A 304 will be returned if this matches the current ETag.",
+                "key": "If-None-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The compatibility date for the request.",
+                "key": "X-Compatibility-Date",
+                "value": "<date>"
+              },
+              {
+                "disabled": false,
+                "description": "The tenant ID for the request.",
+                "key": "X-Tenant",
+                "value": "tranquility"
+              },
+              {
+                "disabled": false,
+                "description": "The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.",
+                "key": "If-Modified-Since",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "esi-access.read_lists.v1 esi-activities.read_character.v1 esi-alliances.read_contacts.v1 esi-assets.read_assets.v1 esi-assets.read_corporation_assets.v1 esi-calendar.read_calendar_events.v1 esi-calendar.respond_calendar_events.v1 esi-characters.read_agents_research.v1 esi-characters.read_blueprints.v1 esi-characters.read_contacts.v1 esi-characters.read_corporation_roles.v1 esi-characters.read_fatigue.v1 esi-characters.read_freelance_jobs.v1 esi-characters.read_fw_stats.v1 esi-characters.read_loyalty.v1 esi-characters.read_medals.v1 esi-characters.read_notifications.v1 esi-characters.read_standings.v1 esi-characters.read_titles.v1 esi-characters.write_contacts.v1 esi-clones.read_clones.v1 esi-clones.read_implants.v1 esi-contracts.read_character_contracts.v1 esi-contracts.read_corporation_contracts.v1 esi-corporations.read_blueprints.v1 esi-corporations.read_contacts.v1 esi-corporations.read_container_logs.v1 esi-corporations.read_corporation_membership.v1 esi-corporations.read_divisions.v1 esi-corporations.read_facilities.v1 esi-corporations.read_freelance_jobs.v1 esi-corporations.read_fw_stats.v1 esi-corporations.read_medals.v1 esi-corporations.read_projects.v1 esi-corporations.read_standings.v1 esi-corporations.read_starbases.v1 esi-corporations.read_structures.v1 esi-corporations.read_titles.v1 esi-corporations.track_members.v1 esi-fittings.read_fittings.v1 esi-fittings.write_fittings.v1 esi-fleets.read_fleet.v1 esi-fleets.write_fleet.v1 esi-industry.read_character_jobs.v1 esi-industry.read_character_mining.v1 esi-industry.read_corporation_jobs.v1 esi-industry.read_corporation_mining.v1 esi-killmails.read_corporation_killmails.v1 esi-killmails.read_killmails.v1 esi-location.read_location.v1 esi-location.read_online.v1 esi-location.read_ship_type.v1 esi-mail.organize_mail.v1 esi-mail.read_mail.v1 esi-mail.send_mail.v1 esi-markets.read_character_orders.v1 esi-markets.read_corporation_orders.v1 esi-markets.structure_markets.v1 esi-planets.manage_planets.v1 esi-planets.read_customs_offices.v1 esi-search.search_structures.v1 esi-skills.read_skillqueue.v1 esi-skills.read_skills.v1 esi-structures.read_character.v1 esi-structures.read_corporation.v1 esi-ui.open_window.v1 esi-ui.write_waypoint.v1 esi-universe.read_structures.v1 esi-wallet.read_character_wallet.v1 esi-wallet.read_corporation_wallets.v1"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://login.eveonline.com/v2/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.eveonline.com/v2/oauth/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<long>\"\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bc2d689b-3e78-43a8-b460-9575aafa5c70",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters",
+                    ":character_id",
+                    "assets",
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "character_id",
+                      "description": "(Required) The ID of the character"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The language to use for the response.",
+                    "key": "Accept-Language",
+                    "value": "en"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ETag of the previous request. A 304 will be returned if this matches the current ETag.",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The compatibility date for the request.",
+                    "key": "X-Compatibility-Date",
+                    "value": "<date>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The tenant ID for the request.",
+                    "key": "X-Tenant",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.",
+                    "key": "If-Modified-Since",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<long>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.",
+                  "key": "Cache-Control",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.",
+                  "key": "Last-Modified",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"item_id\": 5920,\n    \"position\": {\n      \"x\": 1948.2770743755618,\n      \"y\": 6581.012833157665,\n      \"z\": 3037.4170862313053\n    }\n  },\n  {\n    \"item_id\": 8926,\n    \"position\": {\n      \"x\": 7309.816680964569,\n      \"y\": 8757.875964476038,\n      \"z\": 2288.505719629299\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "888a49b9-c3bd-4dc3-a128-c91d081b3efa",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters",
+                    ":character_id",
+                    "assets",
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "character_id",
+                      "description": "(Required) The ID of the character"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The language to use for the response.",
+                    "key": "Accept-Language",
+                    "value": "en"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ETag of the previous request. A 304 will be returned if this matches the current ETag.",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The compatibility date for the request.",
+                    "key": "X-Compatibility-Date",
+                    "value": "<date>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The tenant ID for the request.",
+                    "key": "X-Tenant",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.",
+                    "key": "If-Modified-Since",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<long>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"details\": [\n    {\n      \"location\": \"string\",\n      \"message\": \"string\",\n      \"value\": {}\n    },\n    {\n      \"location\": \"string\",\n      \"message\": \"string\",\n      \"value\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4daa46db-a890-40b9-924a-199ae572dcec",
+          "name": "Get character asset names",
+          "request": {
+            "name": "Get character asset names",
+            "description": {
+              "content": "Return names for a set of item ids, which you can get from character assets endpoint. Typically used for items that can customize names, like containers or ships.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "characters",
+                ":character_id",
+                "assets",
+                "names"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "character_id",
+                  "description": "(Required) The ID of the character"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The language to use for the response.",
+                "key": "Accept-Language",
+                "value": "en"
+              },
+              {
+                "disabled": false,
+                "description": "The ETag of the previous request. A 304 will be returned if this matches the current ETag.",
+                "key": "If-None-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The compatibility date for the request.",
+                "key": "X-Compatibility-Date",
+                "value": "<date>"
+              },
+              {
+                "disabled": false,
+                "description": "The tenant ID for the request.",
+                "key": "X-Tenant",
+                "value": "tranquility"
+              },
+              {
+                "disabled": false,
+                "description": "The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.",
+                "key": "If-Modified-Since",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "esi-access.read_lists.v1 esi-activities.read_character.v1 esi-alliances.read_contacts.v1 esi-assets.read_assets.v1 esi-assets.read_corporation_assets.v1 esi-calendar.read_calendar_events.v1 esi-calendar.respond_calendar_events.v1 esi-characters.read_agents_research.v1 esi-characters.read_blueprints.v1 esi-characters.read_contacts.v1 esi-characters.read_corporation_roles.v1 esi-characters.read_fatigue.v1 esi-characters.read_freelance_jobs.v1 esi-characters.read_fw_stats.v1 esi-characters.read_loyalty.v1 esi-characters.read_medals.v1 esi-characters.read_notifications.v1 esi-characters.read_standings.v1 esi-characters.read_titles.v1 esi-characters.write_contacts.v1 esi-clones.read_clones.v1 esi-clones.read_implants.v1 esi-contracts.read_character_contracts.v1 esi-contracts.read_corporation_contracts.v1 esi-corporations.read_blueprints.v1 esi-corporations.read_contacts.v1 esi-corporations.read_container_logs.v1 esi-corporations.read_corporation_membership.v1 esi-corporations.read_divisions.v1 esi-corporations.read_facilities.v1 esi-corporations.read_freelance_jobs.v1 esi-corporations.read_fw_stats.v1 esi-corporations.read_medals.v1 esi-corporations.read_projects.v1 esi-corporations.read_standings.v1 esi-corporations.read_starbases.v1 esi-corporations.read_structures.v1 esi-corporations.read_titles.v1 esi-corporations.track_members.v1 esi-fittings.read_fittings.v1 esi-fittings.write_fittings.v1 esi-fleets.read_fleet.v1 esi-fleets.write_fleet.v1 esi-industry.read_character_jobs.v1 esi-industry.read_character_mining.v1 esi-industry.read_corporation_jobs.v1 esi-industry.read_corporation_mining.v1 esi-killmails.read_corporation_killmails.v1 esi-killmails.read_killmails.v1 esi-location.read_location.v1 esi-location.read_online.v1 esi-location.read_ship_type.v1 esi-mail.organize_mail.v1 esi-mail.read_mail.v1 esi-mail.send_mail.v1 esi-markets.read_character_orders.v1 esi-markets.read_corporation_orders.v1 esi-markets.structure_markets.v1 esi-planets.manage_planets.v1 esi-planets.read_customs_offices.v1 esi-search.search_structures.v1 esi-skills.read_skillqueue.v1 esi-skills.read_skills.v1 esi-structures.read_character.v1 esi-structures.read_corporation.v1 esi-ui.open_window.v1 esi-ui.write_waypoint.v1 esi-universe.read_structures.v1 esi-wallet.read_character_wallet.v1 esi-wallet.read_corporation_wallets.v1"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://login.eveonline.com/v2/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.eveonline.com/v2/oauth/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<long>\"\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b70d35e0-fa87-4a6e-b96d-d10686311f34",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters",
+                    ":character_id",
+                    "assets",
+                    "names"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "character_id",
+                      "description": "(Required) The ID of the character"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The language to use for the response.",
+                    "key": "Accept-Language",
+                    "value": "en"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ETag of the previous request. A 304 will be returned if this matches the current ETag.",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The compatibility date for the request.",
+                    "key": "X-Compatibility-Date",
+                    "value": "<date>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The tenant ID for the request.",
+                    "key": "X-Tenant",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.",
+                    "key": "If-Modified-Since",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<long>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.",
+                  "key": "Cache-Control",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.",
+                  "key": "Last-Modified",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"item_id\": 2527,\n    \"name\": \"string\"\n  },\n  {\n    \"item_id\": 8146,\n    \"name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f2f667b-cb5f-4e2b-a6ca-f24a811cadfa",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters",
+                    ":character_id",
+                    "assets",
+                    "names"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "character_id",
+                      "description": "(Required) The ID of the character"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The language to use for the response.",
+                    "key": "Accept-Language",
+                    "value": "en"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ETag of the previous request. A 304 will be returned if this matches the current ETag.",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The compatibility date for the request.",
+                    "key": "X-Compatibility-Date",
+                    "value": "<date>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The tenant ID for the request.",
+                    "key": "X-Tenant",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.",
+                    "key": "If-Modified-Since",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<long>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"details\": [\n    {\n      \"location\": \"string\",\n      \"message\": \"string\",\n      \"value\": {}\n    },\n    {\n      \"location\": \"string\",\n      \"message\": \"string\",\n      \"value\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f32e7eed-ae3d-4c07-94fe-b6a70191a1de",
+          "name": "Get corporation assets",
+          "request": {
+            "name": "Get corporation assets",
+            "description": {
+              "content": "Return a list of the corporation assets",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "corporations",
+                ":corporation_id",
+                "assets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "corporation_id",
+                  "description": "(Required) The ID of the corporation"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The language to use for the response.",
+                "key": "Accept-Language",
+                "value": "en"
+              },
+              {
+                "disabled": false,
+                "description": "The ETag of the previous request. A 304 will be returned if this matches the current ETag.",
+                "key": "If-None-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The compatibility date for the request.",
+                "key": "X-Compatibility-Date",
+                "value": "<date>"
+              },
+              {
+                "disabled": false,
+                "description": "The tenant ID for the request.",
+                "key": "X-Tenant",
+                "value": "tranquility"
+              },
+              {
+                "disabled": false,
+                "description": "The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.",
+                "key": "If-Modified-Since",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "esi-access.read_lists.v1 esi-activities.read_character.v1 esi-alliances.read_contacts.v1 esi-assets.read_assets.v1 esi-assets.read_corporation_assets.v1 esi-calendar.read_calendar_events.v1 esi-calendar.respond_calendar_events.v1 esi-characters.read_agents_research.v1 esi-characters.read_blueprints.v1 esi-characters.read_contacts.v1 esi-characters.read_corporation_roles.v1 esi-characters.read_fatigue.v1 esi-characters.read_freelance_jobs.v1 esi-characters.read_fw_stats.v1 esi-characters.read_loyalty.v1 esi-characters.read_medals.v1 esi-characters.read_notifications.v1 esi-characters.read_standings.v1 esi-characters.read_titles.v1 esi-characters.write_contacts.v1 esi-clones.read_clones.v1 esi-clones.read_implants.v1 esi-contracts.read_character_contracts.v1 esi-contracts.read_corporation_contracts.v1 esi-corporations.read_blueprints.v1 esi-corporations.read_contacts.v1 esi-corporations.read_container_logs.v1 esi-corporations.read_corporation_membership.v1 esi-corporations.read_divisions.v1 esi-corporations.read_facilities.v1 esi-corporations.read_freelance_jobs.v1 esi-corporations.read_fw_stats.v1 esi-corporations.read_medals.v1 esi-corporations.read_projects.v1 esi-corporations.read_standings.v1 esi-corporations.read_starbases.v1 esi-corporations.read_structures.v1 esi-corporations.read_titles.v1 esi-corporations.track_members.v1 esi-fittings.read_fittings.v1 esi-fittings.write_fittings.v1 esi-fleets.read_fleet.v1 esi-fleets.write_fleet.v1 esi-industry.read_character_jobs.v1 esi-industry.read_character_mining.v1 esi-industry.read_corporation_jobs.v1 esi-industry.read_corporation_mining.v1 esi-killmails.read_corporation_killmails.v1 esi-killmails.read_killmails.v1 esi-location.read_location.v1 esi-location.read_online.v1 esi-location.read_ship_type.v1 esi-mail.organize_mail.v1 esi-mail.read_mail.v1 esi-mail.send_mail.v1 esi-markets.read_character_orders.v1 esi-markets.read_corporation_orders.v1 esi-markets.structure_markets.v1 esi-planets.manage_planets.v1 esi-planets.read_customs_offices.v1 esi-search.search_structures.v1 esi-skills.read_skillqueue.v1 esi-skills.read_skills.v1 esi-structures.read_character.v1 esi-structures.read_corporation.v1 esi-ui.open_window.v1 esi-ui.write_waypoint.v1 esi-universe.read_structures.v1 esi-wallet.read_character_wallet.v1 esi-wallet.read_corporation_wallets.v1"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://login.eveonline.com/v2/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.eveonline.com/v2/oauth/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1b86e1a2-a31a-4027-af43-08eded3ddfeb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "corporations",
+                    ":corporation_id",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "corporation_id",
+                      "description": "(Required) The ID of the corporation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The language to use for the response.",
+                    "key": "Accept-Language",
+                    "value": "en"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ETag of the previous request. A 304 will be returned if this matches the current ETag.",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The compatibility date for the request.",
+                    "key": "X-Compatibility-Date",
+                    "value": "<date>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The tenant ID for the request.",
+                    "key": "X-Tenant",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.",
+                    "key": "If-Modified-Since",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.",
+                  "key": "Cache-Control",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.",
+                  "key": "Last-Modified",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The total number of pages in the result set.",
+                  "key": "X-Pages",
+                  "value": "3638"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type_id\": 3237,\n    \"quantity\": 554,\n    \"location_id\": 6294,\n    \"location_type\": \"item\",\n    \"item_id\": 5328,\n    \"location_flag\": \"StructureOffline\",\n    \"is_singleton\": false,\n    \"is_blueprint_copy\": true\n  },\n  {\n    \"type_id\": 6214,\n    \"quantity\": 307,\n    \"location_id\": 8561,\n    \"location_type\": \"other\",\n    \"item_id\": 7171,\n    \"location_flag\": \"RigSlot5\",\n    \"is_singleton\": false,\n    \"is_blueprint_copy\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d677a5ae-0e8f-4a9e-94a0-c2e5fd47bb57",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "corporations",
+                    ":corporation_id",
+                    "assets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "corporation_id",
+                      "description": "(Required) The ID of the corporation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The language to use for the response.",
+                    "key": "Accept-Language",
+                    "value": "en"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ETag of the previous request. A 304 will be returned if this matches the current ETag.",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The compatibility date for the request.",
+                    "key": "X-Compatibility-Date",
+                    "value": "<date>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The tenant ID for the request.",
+                    "key": "X-Tenant",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.",
+                    "key": "If-Modified-Since",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"details\": [\n    {\n      \"location\": \"string\",\n      \"message\": \"string\",\n      \"value\": {}\n    },\n    {\n      \"location\": \"string\",\n      \"message\": \"string\",\n      \"value\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f91fdc8d-40d6-4c96-8843-36fb3c4818d8",
+          "name": "Get corporation asset locations",
+          "request": {
+            "name": "Get corporation asset locations",
+            "description": {
+              "content": "Return locations for a set of item ids, which you can get from corporation assets endpoint. Coordinates for items in hangars or stations are set to (0,0,0)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "corporations",
+                ":corporation_id",
+                "assets",
+                "locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "corporation_id",
+                  "description": "(Required) The ID of the corporation"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The language to use for the response.",
+                "key": "Accept-Language",
+                "value": "en"
+              },
+              {
+                "disabled": false,
+                "description": "The ETag of the previous request. A 304 will be returned if this matches the current ETag.",
+                "key": "If-None-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The compatibility date for the request.",
+                "key": "X-Compatibility-Date",
+                "value": "<date>"
+              },
+              {
+                "disabled": false,
+                "description": "The tenant ID for the request.",
+                "key": "X-Tenant",
+                "value": "tranquility"
+              },
+              {
+                "disabled": false,
+                "description": "The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.",
+                "key": "If-Modified-Since",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "esi-access.read_lists.v1 esi-activities.read_character.v1 esi-alliances.read_contacts.v1 esi-assets.read_assets.v1 esi-assets.read_corporation_assets.v1 esi-calendar.read_calendar_events.v1 esi-calendar.respond_calendar_events.v1 esi-characters.read_agents_research.v1 esi-characters.read_blueprints.v1 esi-characters.read_contacts.v1 esi-characters.read_corporation_roles.v1 esi-characters.read_fatigue.v1 esi-characters.read_freelance_jobs.v1 esi-characters.read_fw_stats.v1 esi-characters.read_loyalty.v1 esi-characters.read_medals.v1 esi-characters.read_notifications.v1 esi-characters.read_standings.v1 esi-characters.read_titles.v1 esi-characters.write_contacts.v1 esi-clones.read_clones.v1 esi-clones.read_implants.v1 esi-contracts.read_character_contracts.v1 esi-contracts.read_corporation_contracts.v1 esi-corporations.read_blueprints.v1 esi-corporations.read_contacts.v1 esi-corporations.read_container_logs.v1 esi-corporations.read_corporation_membership.v1 esi-corporations.read_divisions.v1 esi-corporations.read_facilities.v1 esi-corporations.read_freelance_jobs.v1 esi-corporations.read_fw_stats.v1 esi-corporations.read_medals.v1 esi-corporations.read_projects.v1 esi-corporations.read_standings.v1 esi-corporations.read_starbases.v1 esi-corporations.read_structures.v1 esi-corporations.read_titles.v1 esi-corporations.track_members.v1 esi-fittings.read_fittings.v1 esi-fittings.write_fittings.v1 esi-fleets.read_fleet.v1 esi-fleets.write_fleet.v1 esi-industry.read_character_jobs.v1 esi-industry.read_character_mining.v1 esi-industry.read_corporation_jobs.v1 esi-industry.read_corporation_mining.v1 esi-killmails.read_corporation_killmails.v1 esi-killmails.read_killmails.v1 esi-location.read_location.v1 esi-location.read_online.v1 esi-location.read_ship_type.v1 esi-mail.organize_mail.v1 esi-mail.read_mail.v1 esi-mail.send_mail.v1 esi-markets.read_character_orders.v1 esi-markets.read_corporation_orders.v1 esi-markets.structure_markets.v1 esi-planets.manage_planets.v1 esi-planets.read_customs_offices.v1 esi-search.search_structures.v1 esi-skills.read_skillqueue.v1 esi-skills.read_skills.v1 esi-structures.read_character.v1 esi-structures.read_corporation.v1 esi-ui.open_window.v1 esi-ui.write_waypoint.v1 esi-universe.read_structures.v1 esi-wallet.read_character_wallet.v1 esi-wallet.read_corporation_wallets.v1"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://login.eveonline.com/v2/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.eveonline.com/v2/oauth/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<long>\"\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "235b0e54-8c03-4169-9226-7c8a1b3feead",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "corporations",
+                    ":corporation_id",
+                    "assets",
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "corporation_id",
+                      "description": "(Required) The ID of the corporation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The language to use for the response.",
+                    "key": "Accept-Language",
+                    "value": "en"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ETag of the previous request. A 304 will be returned if this matches the current ETag.",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The compatibility date for the request.",
+                    "key": "X-Compatibility-Date",
+                    "value": "<date>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The tenant ID for the request.",
+                    "key": "X-Tenant",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.",
+                    "key": "If-Modified-Since",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<long>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.",
+                  "key": "Cache-Control",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.",
+                  "key": "Last-Modified",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"item_id\": 5920,\n    \"position\": {\n      \"x\": 1948.2770743755618,\n      \"y\": 6581.012833157665,\n      \"z\": 3037.4170862313053\n    }\n  },\n  {\n    \"item_id\": 8926,\n    \"position\": {\n      \"x\": 7309.816680964569,\n      \"y\": 8757.875964476038,\n      \"z\": 2288.505719629299\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0474da95-607a-45ef-825f-6a60974afe11",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "corporations",
+                    ":corporation_id",
+                    "assets",
+                    "locations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "corporation_id",
+                      "description": "(Required) The ID of the corporation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The language to use for the response.",
+                    "key": "Accept-Language",
+                    "value": "en"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ETag of the previous request. A 304 will be returned if this matches the current ETag.",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The compatibility date for the request.",
+                    "key": "X-Compatibility-Date",
+                    "value": "<date>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The tenant ID for the request.",
+                    "key": "X-Tenant",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.",
+                    "key": "If-Modified-Since",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<long>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"details\": [\n    {\n      \"location\": \"string\",\n      \"message\": \"string\",\n      \"value\": {}\n    },\n    {\n      \"location\": \"string\",\n      \"message\": \"string\",\n      \"value\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1bc1d5d8-db67-4c9b-a994-43ff9086e288",
+          "name": "Get corporation asset names",
+          "request": {
+            "name": "Get corporation asset names",
+            "description": {
+              "content": "Return names for a set of item ids, which you can get from corporation assets endpoint. Only valid for items that can customize names, like containers or ships",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "corporations",
+                ":corporation_id",
+                "assets",
+                "names"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "corporation_id",
+                  "description": "(Required) The ID of the corporation"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The language to use for the response.",
+                "key": "Accept-Language",
+                "value": "en"
+              },
+              {
+                "disabled": false,
+                "description": "The ETag of the previous request. A 304 will be returned if this matches the current ETag.",
+                "key": "If-None-Match",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) The compatibility date for the request.",
+                "key": "X-Compatibility-Date",
+                "value": "<date>"
+              },
+              {
+                "disabled": false,
+                "description": "The tenant ID for the request.",
+                "key": "X-Tenant",
+                "value": "tranquility"
+              },
+              {
+                "disabled": false,
+                "description": "The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.",
+                "key": "If-Modified-Since",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "esi-access.read_lists.v1 esi-activities.read_character.v1 esi-alliances.read_contacts.v1 esi-assets.read_assets.v1 esi-assets.read_corporation_assets.v1 esi-calendar.read_calendar_events.v1 esi-calendar.respond_calendar_events.v1 esi-characters.read_agents_research.v1 esi-characters.read_blueprints.v1 esi-characters.read_contacts.v1 esi-characters.read_corporation_roles.v1 esi-characters.read_fatigue.v1 esi-characters.read_freelance_jobs.v1 esi-characters.read_fw_stats.v1 esi-characters.read_loyalty.v1 esi-characters.read_medals.v1 esi-characters.read_notifications.v1 esi-characters.read_standings.v1 esi-characters.read_titles.v1 esi-characters.write_contacts.v1 esi-clones.read_clones.v1 esi-clones.read_implants.v1 esi-contracts.read_character_contracts.v1 esi-contracts.read_corporation_contracts.v1 esi-corporations.read_blueprints.v1 esi-corporations.read_contacts.v1 esi-corporations.read_container_logs.v1 esi-corporations.read_corporation_membership.v1 esi-corporations.read_divisions.v1 esi-corporations.read_facilities.v1 esi-corporations.read_freelance_jobs.v1 esi-corporations.read_fw_stats.v1 esi-corporations.read_medals.v1 esi-corporations.read_projects.v1 esi-corporations.read_standings.v1 esi-corporations.read_starbases.v1 esi-corporations.read_structures.v1 esi-corporations.read_titles.v1 esi-corporations.track_members.v1 esi-fittings.read_fittings.v1 esi-fittings.write_fittings.v1 esi-fleets.read_fleet.v1 esi-fleets.write_fleet.v1 esi-industry.read_character_jobs.v1 esi-industry.read_character_mining.v1 esi-industry.read_corporation_jobs.v1 esi-industry.read_corporation_mining.v1 esi-killmails.read_corporation_killmails.v1 esi-killmails.read_killmails.v1 esi-location.read_location.v1 esi-location.read_online.v1 esi-location.read_ship_type.v1 esi-mail.organize_mail.v1 esi-mail.read_mail.v1 esi-mail.send_mail.v1 esi-markets.read_character_orders.v1 esi-markets.read_corporation_orders.v1 esi-markets.structure_markets.v1 esi-planets.manage_planets.v1 esi-planets.read_customs_offices.v1 esi-search.search_structures.v1 esi-skills.read_skillqueue.v1 esi-skills.read_skills.v1 esi-structures.read_character.v1 esi-structures.read_corporation.v1 esi-ui.open_window.v1 esi-ui.write_waypoint.v1 esi-universe.read_structures.v1 esi-wallet.read_character_wallet.v1 esi-wallet.read_corporation_wallets.v1"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://login.eveonline.com/v2/oauth/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.eveonline.com/v2/oauth/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<long>\"\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b1d7f610-1e65-4276-8afb-cf21641d178f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "corporations",
+                    ":corporation_id",
+                    "assets",
+                    "names"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "corporation_id",
+                      "description": "(Required) The ID of the corporation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The language to use for the response.",
+                    "key": "Accept-Language",
+                    "value": "en"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ETag of the previous request. A 304 will be returned if this matches the current ETag.",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The compatibility date for the request.",
+                    "key": "X-Compatibility-Date",
+                    "value": "<date>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The tenant ID for the request.",
+                    "key": "X-Tenant",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.",
+                    "key": "If-Modified-Since",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<long>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.",
+                  "key": "Cache-Control",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.",
+                  "key": "ETag",
+                  "value": "string"
+                },
+                {
+                  "disabled": false,
+                  "description": "The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.",
+                  "key": "Last-Modified",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"item_id\": 2527,\n    \"name\": \"string\"\n  },\n  {\n    \"item_id\": 8146,\n    \"name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b993f53a-28d3-44e7-9905-732fe10f2ed3",
+              "name": "Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "corporations",
+                    ":corporation_id",
+                    "assets",
+                    "names"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "corporation_id",
+                      "description": "(Required) The ID of the corporation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The language to use for the response.",
+                    "key": "Accept-Language",
+                    "value": "en"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The ETag of the previous request. A 304 will be returned if this matches the current ETag.",
+                    "key": "If-None-Match",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) The compatibility date for the request.",
+                    "key": "X-Compatibility-Date",
+                    "value": "<date>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The tenant ID for the request.",
+                    "key": "X-Tenant",
+                    "value": ""
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.",
+                    "key": "If-Modified-Since",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<long>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"details\": [\n    {\n      \"location\": \"string\",\n      \"message\": \"string\",\n      \"value\": {}\n    },\n    {\n      \"location\": \"string\",\n      \"message\": \"string\",\n      \"value\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://esi.evetech.net",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "118848a4-a6c5-4835-96c8-6f4dfd5c5b8e",
+    "name": "EVE Swagger Incineration (ESI) - tranquility Alliance Assets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: ESI Support",
+      "type": "text/plain"
+    }
+  }
+}

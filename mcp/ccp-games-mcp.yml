@@ -2,16 +2,14 @@ generated: '2026-07-18'
 method: derived
 status: candidate
 source: openapi/ccp-games-esi-openapi-original.json
-note: No official CCP-hosted MCP server found. Candidate tool list derived from public
-  and marquee ESI operations; source_operation ids verified against the OpenAPI where
-  resolved:true.
+note: No official CCP-hosted MCP server found. Candidate tool list derived from public and marquee ESI
+  operations; source_operation ids verified against the OpenAPI where resolved:true.
 server:
   name: ccp-games-esi
   transport: http
 tools:
 - name: GetStatus
-  description: 'Get EVE Online server (Tranquility) status: players online, server
-    version, start time.'
+  description: 'Get EVE Online server (Tranquility) status: players online, server version, start time.'
   source_operation: openapi/ccp-games-esi-openapi-original.json#GetStatus
   resolved: true
 - name: GetCharactersCharacterId
@@ -67,7 +65,12 @@ tools:
   source_operation: openapi/ccp-games-esi-openapi-original.json#GetCharactersCharacterIdLocation
   resolved: true
 - name: PostUniverseNames
-  description: Resolve a set of IDs (characters, corporations, types, systems) to
-    names.
+  description: Resolve a set of IDs (characters, corporations, types, systems) to names.
   source_operation: openapi/ccp-games-esi-openapi-original.json#PostUniverseNames
   resolved: true
+deployment:
+  mode: none
+  verified: derived
+  tools: 15
+  checked: '2026-08-12'
+  source: catalog MCP census
