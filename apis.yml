@@ -42,6 +42,17 @@ tags:
 - MMO
 - EVE Online
 - Developer Platform
+- Authentication
+- OpenID Connect
+- Player Data
+- Virtual Economy
+tags_raw:
+- Company
+- Gaming
+- Games
+- MMO
+- EVE Online
+- Developer Platform
 - OAuth
 - OpenID Connect
 - Player Data
@@ -464,6 +475,8 @@ apis:
   humanURL: https://developers.eveonline.com/
   baseURL: https://esi.evetech.net
   tags:
+  - Wallets
+  tags_raw:
   - Wallet
   properties:
   - type: OpenAPI
