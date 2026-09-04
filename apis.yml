@@ -512,14 +512,18 @@ apis:
   - type: APIReference
     url: https://esi.evetech.net/ui/
 common:
+- type: CapabilityMap
+  url: capabilities/ccp-games-capability-edges.yml
+  name: CCP Games Business Capability Map
 - type: AgentSkill
   url: skills/_index.yml
 - type: Overlay
   url: overlays/ccp-games-esi-overlay.yaml
 - type: LLMsTxt
   url: llms/ccp-games-llms.txt
-- type: MCPServer
+- type: X-MCPServerCandidate
   url: mcp/ccp-games-mcp.yml
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
 - type: DataModel
   url: data-model/ccp-games-data-model.yml
 - type: Conformance
