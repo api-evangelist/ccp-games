@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   contact:
     name: ESI Support
@@ -7,7 +7,7 @@ info:
     name: EVE Developer License
     url: https://developers.eveonline.com/license-agreement
   termsOfService: https://support.eveonline.com/hc/en-us/articles/8414770561948-EVE-Online-Terms-of-Service
-  title: EVE Swagger Incineration (ESI) - tranquility Alliance Location API
+  title: EVE Swagger Incineration (ESI) - tranquility Location API
   version: '2020-01-01'
 servers:
 - url: https://esi.evetech.net
@@ -159,23 +159,67 @@ paths:
         max-tokens: 1200
         window-size: 15m
 components:
+  headers:
+    CacheControl:
+      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
+      schema:
+        type: string
+    ETag:
+      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
+      schema:
+        type: string
+    LastModified:
+      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
+      schema:
+        type: string
+  parameters:
+    IfNoneMatch:
+      description: The ETag of the previous request. A 304 will be returned if this matches the current ETag.
+      in: header
+      name: If-None-Match
+      schema:
+        type: string
+    CompatibilityDate:
+      description: The compatibility date for the request.
+      in: header
+      name: X-Compatibility-Date
+      required: true
+      schema:
+        enum:
+        - '2020-01-01'
+        format: date
+        type: string
+    IfModifiedSince:
+      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
+      in: header
+      name: If-Modified-Since
+      schema:
+        type: string
+    AcceptLanguage:
+      description: The language to use for the response.
+      in: header
+      name: Accept-Language
+      schema:
+        default: en
+        enum:
+        - en
+        - de
+        - fr
+        - ja
+        - ru
+        - zh
+        - ko
+        - es
+        type: string
+    Tenant:
+      description: The tenant ID for the request.
+      example: ''
+      in: header
+      name: X-Tenant
+      schema:
+        default: tranquility
+        type: string
   schemas:
-    CharactersCharacterIdShipGet:
-      properties:
-        ship_item_id:
-          description: Item id's are unique to a ship and persist until it is repackaged. This value can be used to track repeated uses of a ship, or detect when a pilot changes into a different instance of the same ship type.
-          format: int64
-          type: integer
-        ship_name:
-          type: string
-        ship_type_id:
-          format: int64
-          type: integer
-      required:
-      - ship_type_id
-      - ship_item_id
-      - ship_name
-      type: object
     CharactersCharacterIdOnlineGet:
       properties:
         last_login:
@@ -207,6 +251,28 @@ components:
         value:
           description: The value at the given location
       type: object
+    CharacterID:
+      examples:
+      - 90000001
+      format: int64
+      type: integer
+      x-common-model: 'true'
+    CharactersCharacterIdShipGet:
+      properties:
+        ship_item_id:
+          description: Item id's are unique to a ship and persist until it is repackaged. This value can be used to track repeated uses of a ship, or detect when a pilot changes into a different instance of the same ship type.
+          format: int64
+          type: integer
+        ship_name:
+          type: string
+        ship_type_id:
+          format: int64
+          type: integer
+      required:
+      - ship_type_id
+      - ship_item_id
+      - ship_name
+      type: object
     CharactersCharacterIdLocationGet:
       properties:
         solar_system_id:
@@ -234,72 +300,6 @@ components:
       required:
       - error
       type: object
-    CharacterID:
-      examples:
-      - 90000001
-      format: int64
-      type: integer
-      x-common-model: 'true'
-  parameters:
-    CompatibilityDate:
-      description: The compatibility date for the request.
-      in: header
-      name: X-Compatibility-Date
-      required: true
-      schema:
-        enum:
-        - '2020-01-01'
-        format: date
-        type: string
-    AcceptLanguage:
-      description: The language to use for the response.
-      in: header
-      name: Accept-Language
-      schema:
-        default: en
-        enum:
-        - en
-        - de
-        - fr
-        - ja
-        - ru
-        - zh
-        - ko
-        - es
-        type: string
-    Tenant:
-      description: The tenant ID for the request.
-      example: ''
-      in: header
-      name: X-Tenant
-      schema:
-        default: tranquility
-        type: string
-    IfNoneMatch:
-      description: The ETag of the previous request. A 304 will be returned if this matches the current ETag.
-      in: header
-      name: If-None-Match
-      schema:
-        type: string
-    IfModifiedSince:
-      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
-      in: header
-      name: If-Modified-Since
-      schema:
-        type: string
-  headers:
-    LastModified:
-      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
-      schema:
-        type: string
-    ETag:
-      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
-      schema:
-        type: string
-    CacheControl:
-      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
-      schema:
-        type: string
   securitySchemes:
     OAuth2:
       flows:

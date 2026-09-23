@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   contact:
     name: ESI Support
@@ -7,7 +7,7 @@ info:
     name: EVE Developer License
     url: https://developers.eveonline.com/license-agreement
   termsOfService: https://support.eveonline.com/hc/en-us/articles/8414770561948-EVE-Online-Terms-of-Service
-  title: EVE Swagger Incineration (ESI) - tranquility Alliance Status API
+  title: EVE Swagger Incineration (ESI) - tranquility Status API
   version: '2020-01-01'
 servers:
 - url: https://esi.evetech.net
@@ -54,7 +54,26 @@ paths:
         max-tokens: 600
         window-size: 15m
 components:
+  headers:
+    CacheControl:
+      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
+      schema:
+        type: string
+    ETag:
+      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
+      schema:
+        type: string
+    LastModified:
+      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
+      schema:
+        type: string
   parameters:
+    IfNoneMatch:
+      description: The ETag of the previous request. A 304 will be returned if this matches the current ETag.
+      in: header
+      name: If-None-Match
+      schema:
+        type: string
     CompatibilityDate:
       description: The compatibility date for the request.
       in: header
@@ -81,6 +100,12 @@ components:
         - ko
         - es
         type: string
+    IfModifiedSince:
+      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
+      in: header
+      name: If-Modified-Since
+      schema:
+        type: string
     Tenant:
       description: The tenant ID for the request.
       example: ''
@@ -89,56 +114,7 @@ components:
       schema:
         default: tranquility
         type: string
-    IfNoneMatch:
-      description: The ETag of the previous request. A 304 will be returned if this matches the current ETag.
-      in: header
-      name: If-None-Match
-      schema:
-        type: string
-    IfModifiedSince:
-      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
-      in: header
-      name: If-Modified-Since
-      schema:
-        type: string
-  headers:
-    LastModified:
-      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
-      schema:
-        type: string
-    ETag:
-      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
-      schema:
-        type: string
-    CacheControl:
-      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
-      schema:
-        type: string
   schemas:
-    Error:
-      properties:
-        details:
-          description: List of individual error details.
-          items:
-            $ref: '#/components/schemas/ErrorDetail'
-          type: array
-        error:
-          description: Error message.
-          type: string
-      required:
-      - error
-      type: object
-    ErrorDetail:
-      properties:
-        location:
-          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
-          type: string
-        message:
-          description: Error message text
-          type: string
-        value:
-          description: The value at the given location
-      type: object
     StatusGet:
       properties:
         players:
@@ -158,6 +134,30 @@ components:
       - start_time
       - players
       - server_version
+      type: object
+    ErrorDetail:
+      properties:
+        location:
+          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
+          type: string
+        message:
+          description: Error message text
+          type: string
+        value:
+          description: The value at the given location
+      type: object
+    Error:
+      properties:
+        details:
+          description: List of individual error details.
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+          type: array
+        error:
+          description: Error message.
+          type: string
+      required:
+      - error
       type: object
   securitySchemes:
     OAuth2:
