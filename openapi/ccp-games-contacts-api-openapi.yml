@@ -548,27 +548,55 @@ paths:
         max-tokens: 300
         window-size: 15m
 components:
+  parameters:
+    IfNoneMatch:
+      description: The ETag of the previous request. A 304 will be returned if this matches the current ETag.
+      in: header
+      name: If-None-Match
+      schema:
+        type: string
+    Tenant:
+      description: The tenant ID for the request.
+      example: ''
+      in: header
+      name: X-Tenant
+      schema:
+        default: tranquility
+        type: string
+    CompatibilityDate:
+      description: The compatibility date for the request.
+      in: header
+      name: X-Compatibility-Date
+      required: true
+      schema:
+        enum:
+        - '2020-01-01'
+        format: date
+        type: string
+    IfModifiedSince:
+      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
+      in: header
+      name: If-Modified-Since
+      schema:
+        type: string
+    AcceptLanguage:
+      description: The language to use for the response.
+      in: header
+      name: Accept-Language
+      schema:
+        default: en
+        enum:
+        - en
+        - de
+        - fr
+        - ja
+        - ru
+        - zh
+        - ko
+        - es
+        type: string
   schemas:
-    AllianceID:
-      examples:
-      - 99000001
-      format: int64
-      type: integer
-      x-common-model: 'true'
-    CharactersCharacterIdContactsPost:
-      description: 201 created array
-      items:
-        description: 201 created integer
-        format: int64
-        type: integer
-      type: array
-    CorporationID:
-      examples:
-      - 98777771
-      format: int64
-      type: integer
-      x-common-model: 'true'
-    CorporationsCorporationIdContactsLabelsGet:
+    AlliancesAllianceIdContactsLabelsGet:
       items:
         properties:
           label_id:
@@ -581,6 +609,85 @@ components:
         - label_name
         type: object
       type: array
+    CorporationID:
+      examples:
+      - 98777771
+      format: int64
+      type: integer
+      x-common-model: 'true'
+    CharactersCharacterIdContactsLabelsGet:
+      items:
+        properties:
+          label_id:
+            format: int64
+            type: integer
+          label_name:
+            type: string
+        required:
+        - label_id
+        - label_name
+        type: object
+      type: array
+    ErrorDetail:
+      properties:
+        location:
+          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
+          type: string
+        message:
+          description: Error message text
+          type: string
+        value:
+          description: The value at the given location
+      type: object
+    AlliancesAllianceIdContactsGet:
+      items:
+        properties:
+          contact_id:
+            format: int64
+            type: integer
+          contact_type:
+            enum:
+            - character
+            - corporation
+            - alliance
+            - faction
+            type: string
+          label_ids:
+            items:
+              description: Label IDs applied to the contact
+              format: int64
+              type: integer
+            type: array
+          standing:
+            description: Standing of the contact
+            format: double
+            type: number
+        required:
+        - standing
+        - contact_type
+        - contact_id
+        type: object
+      type: array
+    CharactersCharacterIdContactsPost:
+      description: 201 created array
+      items:
+        description: 201 created integer
+        format: int64
+        type: integer
+      type: array
+    Error:
+      properties:
+        details:
+          description: List of individual error details.
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+          type: array
+        error:
+          description: Error message.
+          type: string
+      required:
+      - error
+      type: object
     CharactersCharacterIdContactsGet:
       items:
         properties:
@@ -616,36 +723,7 @@ components:
         - contact_id
         type: object
       type: array
-    AlliancesAllianceIdContactsGet:
-      items:
-        properties:
-          contact_id:
-            format: int64
-            type: integer
-          contact_type:
-            enum:
-            - character
-            - corporation
-            - alliance
-            - faction
-            type: string
-          label_ids:
-            items:
-              description: Label IDs applied to the contact
-              format: int64
-              type: integer
-            type: array
-          standing:
-            description: Standing of the contact
-            format: double
-            type: number
-        required:
-        - standing
-        - contact_type
-        - contact_id
-        type: object
-      type: array
-    AlliancesAllianceIdContactsLabelsGet:
+    CorporationsCorporationIdContactsLabelsGet:
       items:
         properties:
           label_id:
@@ -658,49 +736,12 @@ components:
         - label_name
         type: object
       type: array
-    ErrorDetail:
-      properties:
-        location:
-          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
-          type: string
-        message:
-          description: Error message text
-          type: string
-        value:
-          description: The value at the given location
-      type: object
-    CharacterID:
+    AllianceID:
       examples:
-      - 90000001
+      - 99000001
       format: int64
       type: integer
       x-common-model: 'true'
-    Error:
-      properties:
-        details:
-          description: List of individual error details.
-          items:
-            $ref: '#/components/schemas/ErrorDetail'
-          type: array
-        error:
-          description: Error message.
-          type: string
-      required:
-      - error
-      type: object
-    CharactersCharacterIdContactsLabelsGet:
-      items:
-        properties:
-          label_id:
-            format: int64
-            type: integer
-          label_name:
-            type: string
-        required:
-        - label_id
-        - label_name
-        type: object
-      type: array
     CorporationsCorporationIdContactsGet:
       items:
         properties:
@@ -733,64 +774,23 @@ components:
         - contact_id
         type: object
       type: array
-  parameters:
-    IfModifiedSince:
-      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
-      in: header
-      name: If-Modified-Since
-      schema:
-        type: string
-    IfNoneMatch:
-      description: The ETag of the previous request. A 304 will be returned if this matches the current ETag.
-      in: header
-      name: If-None-Match
-      schema:
-        type: string
-    AcceptLanguage:
-      description: The language to use for the response.
-      in: header
-      name: Accept-Language
-      schema:
-        default: en
-        enum:
-        - en
-        - de
-        - fr
-        - ja
-        - ru
-        - zh
-        - ko
-        - es
-        type: string
-    CompatibilityDate:
-      description: The compatibility date for the request.
-      in: header
-      name: X-Compatibility-Date
-      required: true
-      schema:
-        enum:
-        - '2020-01-01'
-        format: date
-        type: string
-    Tenant:
-      description: The tenant ID for the request.
-      example: ''
-      in: header
-      name: X-Tenant
-      schema:
-        default: tranquility
-        type: string
+    CharacterID:
+      examples:
+      - 90000001
+      format: int64
+      type: integer
+      x-common-model: 'true'
   headers:
-    CacheControl:
-      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
+    LastModified:
+      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
       schema:
         type: string
     ETag:
       description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
       schema:
         type: string
-    LastModified:
-      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
+    CacheControl:
+      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
       schema:
         type: string
   securitySchemes:
