@@ -159,7 +159,36 @@ paths:
         max-tokens: 1200
         window-size: 15m
 components:
+  headers:
+    ETag:
+      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
+      schema:
+        type: string
+    CacheControl:
+      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
+      schema:
+        type: string
+    LastModified:
+      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
+      schema:
+        type: string
   schemas:
+    CharactersCharacterIdShipGet:
+      properties:
+        ship_item_id:
+          description: Item id's are unique to a ship and persist until it is repackaged. This value can be used to track repeated uses of a ship, or detect when a pilot changes into a different instance of the same ship type.
+          format: int64
+          type: integer
+        ship_name:
+          type: string
+        ship_type_id:
+          format: int64
+          type: integer
+      required:
+      - ship_type_id
+      - ship_item_id
+      - ship_name
+      type: object
     CharactersCharacterIdOnlineGet:
       properties:
         last_login:
@@ -180,28 +209,23 @@ components:
       required:
       - online
       type: object
-    CharactersCharacterIdShipGet:
-      properties:
-        ship_item_id:
-          description: Item id's are unique to a ship and persist until it is repackaged. This value can be used to track repeated uses of a ship, or detect when a pilot changes into a different instance of the same ship type.
-          format: int64
-          type: integer
-        ship_name:
-          type: string
-        ship_type_id:
-          format: int64
-          type: integer
-      required:
-      - ship_type_id
-      - ship_item_id
-      - ship_name
-      type: object
     CharacterID:
       examples:
       - 90000001
       format: int64
       type: integer
       x-common-model: 'true'
+    ErrorDetail:
+      properties:
+        location:
+          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
+          type: string
+        message:
+          description: Error message text
+          type: string
+        value:
+          description: The value at the given location
+      type: object
     CharactersCharacterIdLocationGet:
       properties:
         solar_system_id:
@@ -215,17 +239,6 @@ components:
           type: integer
       required:
       - solar_system_id
-      type: object
-    ErrorDetail:
-      properties:
-        location:
-          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
-          type: string
-        message:
-          description: Error message text
-          type: string
-        value:
-          description: The value at the given location
       type: object
     Error:
       properties:
@@ -241,30 +254,6 @@ components:
       - error
       type: object
   parameters:
-    CompatibilityDate:
-      description: The compatibility date for the request.
-      in: header
-      name: X-Compatibility-Date
-      required: true
-      schema:
-        enum:
-        - '2020-01-01'
-        format: date
-        type: string
-    IfNoneMatch:
-      description: The ETag of the previous request. A 304 will be returned if this matches the current ETag.
-      in: header
-      name: If-None-Match
-      schema:
-        type: string
-    Tenant:
-      description: The tenant ID for the request.
-      example: ''
-      in: header
-      name: X-Tenant
-      schema:
-        default: tranquility
-        type: string
     AcceptLanguage:
       description: The language to use for the response.
       in: header
@@ -281,23 +270,34 @@ components:
         - ko
         - es
         type: string
+    CompatibilityDate:
+      description: The compatibility date for the request.
+      in: header
+      name: X-Compatibility-Date
+      required: true
+      schema:
+        enum:
+        - '2020-01-01'
+        format: date
+        type: string
+    Tenant:
+      description: The tenant ID for the request.
+      example: ''
+      in: header
+      name: X-Tenant
+      schema:
+        default: tranquility
+        type: string
+    IfNoneMatch:
+      description: The ETag of the previous request. A 304 will be returned if this matches the current ETag.
+      in: header
+      name: If-None-Match
+      schema:
+        type: string
     IfModifiedSince:
       description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
       in: header
       name: If-Modified-Since
-      schema:
-        type: string
-  headers:
-    LastModified:
-      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
-      schema:
-        type: string
-    ETag:
-      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
-      schema:
-        type: string
-    CacheControl:
-      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
       schema:
         type: string
   securitySchemes:

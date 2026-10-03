@@ -244,64 +244,17 @@ paths:
         max-tokens: 600
         window-size: 15m
 components:
-  parameters:
-    IfNoneMatch:
-      description: The ETag of the previous request. A 304 will be returned if this matches the current ETag.
-      in: header
-      name: If-None-Match
-      schema:
-        type: string
-    CompatibilityDate:
-      description: The compatibility date for the request.
-      in: header
-      name: X-Compatibility-Date
-      required: true
-      schema:
-        enum:
-        - '2020-01-01'
-        format: date
-        type: string
-    Tenant:
-      description: The tenant ID for the request.
-      example: ''
-      in: header
-      name: X-Tenant
-      schema:
-        default: tranquility
-        type: string
-    AcceptLanguage:
-      description: The language to use for the response.
-      in: header
-      name: Accept-Language
-      schema:
-        default: en
-        enum:
-        - en
-        - de
-        - fr
-        - ja
-        - ru
-        - zh
-        - ko
-        - es
-        type: string
-    IfModifiedSince:
-      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
-      in: header
-      name: If-Modified-Since
-      schema:
-        type: string
   headers:
-    LastModified:
-      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
-      schema:
-        type: string
     ETag:
       description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
       schema:
         type: string
     CacheControl:
       description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
+      schema:
+        type: string
+    LastModified:
+      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
       schema:
         type: string
   schemas:
@@ -311,6 +264,55 @@ components:
       format: int64
       type: integer
       x-common-model: 'true'
+    CharactersCharacterIdCalendarGet:
+      description: Up to 50 events from now or the event you requested
+      items:
+        description: event
+        properties:
+          event_date:
+            format: date-time
+            type: string
+          event_id:
+            format: int64
+            type: integer
+          event_response:
+            enum:
+            - declined
+            - not_responded
+            - accepted
+            - tentative
+            type: string
+          importance:
+            format: int64
+            type: integer
+          title:
+            type: string
+        type: object
+      type: array
+    ErrorDetail:
+      properties:
+        location:
+          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
+          type: string
+        message:
+          description: Error message text
+          type: string
+        value:
+          description: The value at the given location
+      type: object
+    Error:
+      properties:
+        details:
+          description: List of individual error details.
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+          type: array
+        error:
+          description: Error message.
+          type: string
+      required:
+      - error
+      type: object
     CharactersCharacterIdCalendarEventIdGet:
       description: Full details of a specific event
       properties:
@@ -358,31 +360,6 @@ components:
       - text
       - owner_type
       type: object
-    CharactersCharacterIdCalendarGet:
-      description: Up to 50 events from now or the event you requested
-      items:
-        description: event
-        properties:
-          event_date:
-            format: date-time
-            type: string
-          event_id:
-            format: int64
-            type: integer
-          event_response:
-            enum:
-            - declined
-            - not_responded
-            - accepted
-            - tentative
-            type: string
-          importance:
-            format: int64
-            type: integer
-          title:
-            type: string
-        type: object
-      type: array
     CharactersCharacterIdCalendarEventIdAttendeesGet:
       description: List of attendees for a given event
       items:
@@ -400,30 +377,53 @@ components:
             type: string
         type: object
       type: array
-    ErrorDetail:
-      properties:
-        location:
-          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
-          type: string
-        message:
-          description: Error message text
-          type: string
-        value:
-          description: The value at the given location
-      type: object
-    Error:
-      properties:
-        details:
-          description: List of individual error details.
-          items:
-            $ref: '#/components/schemas/ErrorDetail'
-          type: array
-        error:
-          description: Error message.
-          type: string
-      required:
-      - error
-      type: object
+  parameters:
+    AcceptLanguage:
+      description: The language to use for the response.
+      in: header
+      name: Accept-Language
+      schema:
+        default: en
+        enum:
+        - en
+        - de
+        - fr
+        - ja
+        - ru
+        - zh
+        - ko
+        - es
+        type: string
+    CompatibilityDate:
+      description: The compatibility date for the request.
+      in: header
+      name: X-Compatibility-Date
+      required: true
+      schema:
+        enum:
+        - '2020-01-01'
+        format: date
+        type: string
+    Tenant:
+      description: The tenant ID for the request.
+      example: ''
+      in: header
+      name: X-Tenant
+      schema:
+        default: tranquility
+        type: string
+    IfNoneMatch:
+      description: The ETag of the previous request. A 304 will be returned if this matches the current ETag.
+      in: header
+      name: If-None-Match
+      schema:
+        type: string
+    IfModifiedSince:
+      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
+      in: header
+      name: If-Modified-Since
+      schema:
+        type: string
   securitySchemes:
     OAuth2:
       flows:
