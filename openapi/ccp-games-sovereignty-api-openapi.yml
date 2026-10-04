@@ -146,25 +146,19 @@ components:
       schema:
         type: string
   schemas:
-    SovereigntyMapGet:
-      items:
-        properties:
-          alliance_id:
-            format: int64
-            type: integer
-          corporation_id:
-            format: int64
-            type: integer
-          faction_id:
-            format: int64
-            type: integer
-          system_id:
-            format: int64
-            type: integer
-        required:
-        - system_id
-        type: object
-      type: array
+    Error:
+      properties:
+        details:
+          description: List of individual error details.
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+          type: array
+        error:
+          description: Error message.
+          type: string
+      required:
+      - error
+      type: object
     SovereigntyCampaignsGet:
       items:
         properties:
@@ -312,36 +306,26 @@ components:
         - structure_type_id
         type: object
       type: array
-    Error:
-      properties:
-        details:
-          description: List of individual error details.
-          items:
-            $ref: '#/components/schemas/ErrorDetail'
-          type: array
-        error:
-          description: Error message.
-          type: string
-      required:
-      - error
-      type: object
+    SovereigntyMapGet:
+      items:
+        properties:
+          alliance_id:
+            format: int64
+            type: integer
+          corporation_id:
+            format: int64
+            type: integer
+          faction_id:
+            format: int64
+            type: integer
+          system_id:
+            format: int64
+            type: integer
+        required:
+        - system_id
+        type: object
+      type: array
   parameters:
-    AcceptLanguage:
-      description: The language to use for the response.
-      in: header
-      name: Accept-Language
-      schema:
-        default: en
-        enum:
-        - en
-        - de
-        - fr
-        - ja
-        - ru
-        - zh
-        - ko
-        - es
-        type: string
     CompatibilityDate:
       description: The compatibility date for the request.
       in: header
@@ -371,6 +355,22 @@ components:
       in: header
       name: If-Modified-Since
       schema:
+        type: string
+    AcceptLanguage:
+      description: The language to use for the response.
+      in: header
+      name: Accept-Language
+      schema:
+        default: en
+        enum:
+        - en
+        - de
+        - fr
+        - ja
+        - ru
+        - zh
+        - ko
+        - es
         type: string
   securitySchemes:
     OAuth2:

@@ -109,6 +109,52 @@ components:
       schema:
         type: string
   schemas:
+    Error:
+      properties:
+        details:
+          description: List of individual error details.
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+          type: array
+        error:
+          description: Error message.
+          type: string
+      required:
+      - error
+      type: object
+    MetaCompatibilityDates:
+      properties:
+        compatibility_dates:
+          description: List of compatibility dates.
+          items:
+            $ref: '#/components/schemas/CompatibilityDate'
+          type: array
+      required:
+      - compatibility_dates
+      type: object
+    ErrorDetail:
+      properties:
+        location:
+          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
+          type: string
+        message:
+          description: Error message text
+          type: string
+        value:
+          description: The value at the given location
+      type: object
+    MetaChangelog:
+      properties:
+        changelog:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/MetaChangelogEntry'
+            type: array
+          description: Per date, list changes for that date
+          type: object
+      required:
+      - changelog
+      type: object
     MetaChangelogEntry:
       properties:
         compatibility_date:
@@ -151,75 +197,13 @@ components:
       - is_breaking
       - description
       type: object
-    MetaChangelog:
-      properties:
-        changelog:
-          additionalProperties:
-            items:
-              $ref: '#/components/schemas/MetaChangelogEntry'
-            type: array
-          description: Per date, list changes for that date
-          type: object
-      required:
-      - changelog
-      type: object
     CompatibilityDate:
       examples:
       - '2025-08-26'
       format: date
       type: string
       x-common-model: 'true'
-    MetaCompatibilityDates:
-      properties:
-        compatibility_dates:
-          description: List of compatibility dates.
-          items:
-            $ref: '#/components/schemas/CompatibilityDate'
-          type: array
-      required:
-      - compatibility_dates
-      type: object
-    ErrorDetail:
-      properties:
-        location:
-          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
-          type: string
-        message:
-          description: Error message text
-          type: string
-        value:
-          description: The value at the given location
-      type: object
-    Error:
-      properties:
-        details:
-          description: List of individual error details.
-          items:
-            $ref: '#/components/schemas/ErrorDetail'
-          type: array
-        error:
-          description: Error message.
-          type: string
-      required:
-      - error
-      type: object
   parameters:
-    AcceptLanguage:
-      description: The language to use for the response.
-      in: header
-      name: Accept-Language
-      schema:
-        default: en
-        enum:
-        - en
-        - de
-        - fr
-        - ja
-        - ru
-        - zh
-        - ko
-        - es
-        type: string
     CompatibilityDate:
       description: The compatibility date for the request.
       in: header
@@ -249,6 +233,22 @@ components:
       in: header
       name: If-Modified-Since
       schema:
+        type: string
+    AcceptLanguage:
+      description: The language to use for the response.
+      in: header
+      name: Accept-Language
+      schema:
+        default: en
+        enum:
+        - en
+        - de
+        - fr
+        - ja
+        - ru
+        - zh
+        - ko
+        - es
         type: string
   securitySchemes:
     OAuth2:

@@ -578,12 +578,6 @@ components:
       schema:
         type: string
   schemas:
-    CharacterID:
-      examples:
-      - 90000001
-      format: int64
-      type: integer
-      x-common-model: 'true'
     CharactersCharacterIdMailListsGet:
       items:
         properties:
@@ -598,6 +592,19 @@ components:
         - name
         type: object
       type: array
+    Error:
+      properties:
+        details:
+          description: List of individual error details.
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+          type: array
+        error:
+          description: Error message.
+          type: string
+      required:
+      - error
+      type: object
     CharactersCharacterIdMailLabelsGet:
       properties:
         labels:
@@ -640,55 +647,6 @@ components:
           format: int64
           type: integer
       type: object
-    CharactersCharacterIdMailGet:
-      items:
-        properties:
-          from:
-            description: From whom the mail was sent
-            format: int64
-            type: integer
-          is_read:
-            type: boolean
-          labels:
-            items:
-              description: label integer
-              format: int64
-              type: integer
-            type: array
-            uniqueItems: true
-          mail_id:
-            format: int64
-            type: integer
-          recipients:
-            description: Recipients of the mail
-            items:
-              description: recipient object
-              properties:
-                recipient_id:
-                  format: int64
-                  type: integer
-                recipient_type:
-                  enum:
-                  - alliance
-                  - character
-                  - corporation
-                  - mailing_list
-                  type: string
-              required:
-              - recipient_type
-              - recipient_id
-              type: object
-            type: array
-            uniqueItems: true
-          subject:
-            description: Mail subject
-            type: string
-          timestamp:
-            description: When the mail was sent
-            format: date-time
-            type: string
-        type: object
-      type: array
     ErrorDetail:
       properties:
         location:
@@ -699,27 +657,6 @@ components:
           type: string
         value:
           description: The value at the given location
-      type: object
-    CharactersCharacterIdMailLabelsPost:
-      description: Label ID
-      format: int64
-      type: integer
-    CharactersCharacterIdMailPost:
-      description: Mail ID
-      format: int64
-      type: integer
-    Error:
-      properties:
-        details:
-          description: List of individual error details.
-          items:
-            $ref: '#/components/schemas/ErrorDetail'
-          type: array
-        error:
-          description: Error message.
-          type: string
-      required:
-      - error
       type: object
     CharactersCharacterIdMailMailIdGet:
       properties:
@@ -770,7 +707,100 @@ components:
           format: date-time
           type: string
       type: object
+    CharactersCharacterIdMailGet:
+      items:
+        properties:
+          from:
+            description: From whom the mail was sent
+            format: int64
+            type: integer
+          is_read:
+            type: boolean
+          labels:
+            items:
+              description: label integer
+              format: int64
+              type: integer
+            type: array
+            uniqueItems: true
+          mail_id:
+            format: int64
+            type: integer
+          recipients:
+            description: Recipients of the mail
+            items:
+              description: recipient object
+              properties:
+                recipient_id:
+                  format: int64
+                  type: integer
+                recipient_type:
+                  enum:
+                  - alliance
+                  - character
+                  - corporation
+                  - mailing_list
+                  type: string
+              required:
+              - recipient_type
+              - recipient_id
+              type: object
+            type: array
+            uniqueItems: true
+          subject:
+            description: Mail subject
+            type: string
+          timestamp:
+            description: When the mail was sent
+            format: date-time
+            type: string
+        type: object
+      type: array
+    CharacterID:
+      examples:
+      - 90000001
+      format: int64
+      type: integer
+      x-common-model: 'true'
+    CharactersCharacterIdMailLabelsPost:
+      description: Label ID
+      format: int64
+      type: integer
+    CharactersCharacterIdMailPost:
+      description: Mail ID
+      format: int64
+      type: integer
   parameters:
+    Tenant:
+      description: The tenant ID for the request.
+      example: ''
+      in: header
+      name: X-Tenant
+      schema:
+        default: tranquility
+        type: string
+    CompatibilityDate:
+      description: The compatibility date for the request.
+      in: header
+      name: X-Compatibility-Date
+      required: true
+      schema:
+        enum:
+        - '2020-01-01'
+        format: date
+        type: string
+    IfNoneMatch:
+      description: The ETag of the previous request. A 304 will be returned if this matches the current ETag.
+      in: header
+      name: If-None-Match
+      schema:
+        type: string
+    IfModifiedSince:
+      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
+      in: header
+      name: If-Modified-Since
+      schema:
+        type: string
     AcceptLanguage:
       description: The language to use for the response.
       in: header
@@ -786,36 +816,6 @@ components:
         - zh
         - ko
         - es
-        type: string
-    CompatibilityDate:
-      description: The compatibility date for the request.
-      in: header
-      name: X-Compatibility-Date
-      required: true
-      schema:
-        enum:
-        - '2020-01-01'
-        format: date
-        type: string
-    Tenant:
-      description: The tenant ID for the request.
-      example: ''
-      in: header
-      name: X-Tenant
-      schema:
-        default: tranquility
-        type: string
-    IfNoneMatch:
-      description: The ETag of the previous request. A 304 will be returned if this matches the current ETag.
-      in: header
-      name: If-None-Match
-      schema:
-        type: string
-    IfModifiedSince:
-      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
-      in: header
-      name: If-Modified-Since
-      schema:
         type: string
   securitySchemes:
     OAuth2:

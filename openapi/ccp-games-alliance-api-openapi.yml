@@ -191,13 +191,31 @@ components:
       schema:
         type: string
   schemas:
-    AlliancesAllianceIdIconsGet:
+    CorporationID:
+      examples:
+      - 98777771
+      format: int64
+      type: integer
+      x-common-model: 'true'
+    Error:
       properties:
-        px128x128:
+        details:
+          description: List of individual error details.
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+          type: array
+        error:
+          description: Error message.
           type: string
-        px64x64:
-          type: string
+      required:
+      - error
       type: object
+    FactionID:
+      examples:
+      - 500002
+      format: int64
+      type: integer
+      x-common-model: 'true'
     AllianceDetail:
       properties:
         creator_corporation_id:
@@ -229,24 +247,6 @@ components:
       - name
       - ticker
       type: object
-    CharacterID:
-      examples:
-      - 90000001
-      format: int64
-      type: integer
-      x-common-model: 'true'
-    FactionID:
-      examples:
-      - 500002
-      format: int64
-      type: integer
-      x-common-model: 'true'
-    AlliancesAllianceIdCorporationsGet:
-      items:
-        format: int64
-        type: integer
-      type: array
-      uniqueItems: true
     ErrorDetail:
       properties:
         location:
@@ -258,54 +258,38 @@ components:
         value:
           description: The value at the given location
       type: object
-    AllianceID:
-      examples:
-      - 99000001
-      format: int64
-      type: integer
-      x-common-model: 'true'
-    Error:
-      properties:
-        details:
-          description: List of individual error details.
-          items:
-            $ref: '#/components/schemas/ErrorDetail'
-          type: array
-        error:
-          description: Error message.
-          type: string
-      required:
-      - error
-      type: object
     AlliancesGet:
       items:
         format: int64
         type: integer
       type: array
       uniqueItems: true
-    CorporationID:
+    CharacterID:
       examples:
-      - 98777771
+      - 90000001
       format: int64
       type: integer
       x-common-model: 'true'
+    AllianceID:
+      examples:
+      - 99000001
+      format: int64
+      type: integer
+      x-common-model: 'true'
+    AlliancesAllianceIdCorporationsGet:
+      items:
+        format: int64
+        type: integer
+      type: array
+      uniqueItems: true
+    AlliancesAllianceIdIconsGet:
+      properties:
+        px128x128:
+          type: string
+        px64x64:
+          type: string
+      type: object
   parameters:
-    AcceptLanguage:
-      description: The language to use for the response.
-      in: header
-      name: Accept-Language
-      schema:
-        default: en
-        enum:
-        - en
-        - de
-        - fr
-        - ja
-        - ru
-        - zh
-        - ko
-        - es
-        type: string
     CompatibilityDate:
       description: The compatibility date for the request.
       in: header
@@ -335,6 +319,22 @@ components:
       in: header
       name: If-Modified-Since
       schema:
+        type: string
+    AcceptLanguage:
+      description: The language to use for the response.
+      in: header
+      name: Accept-Language
+      schema:
+        default: en
+        enum:
+        - en
+        - de
+        - fr
+        - ja
+        - ru
+        - zh
+        - ko
+        - es
         type: string
   securitySchemes:
     OAuth2:

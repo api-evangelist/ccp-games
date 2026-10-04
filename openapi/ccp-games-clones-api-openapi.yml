@@ -125,23 +125,6 @@ components:
       schema:
         type: string
   schemas:
-    CharacterID:
-      examples:
-      - 90000001
-      format: int64
-      type: integer
-      x-common-model: 'true'
-    ErrorDetail:
-      properties:
-        location:
-          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
-          type: string
-        message:
-          description: Error message text
-          type: string
-        value:
-          description: The value at the given location
-      type: object
     Error:
       properties:
         details:
@@ -155,6 +138,28 @@ components:
       required:
       - error
       type: object
+    CharactersCharacterIdImplantsGet:
+      items:
+        format: int64
+        type: integer
+      type: array
+    ErrorDetail:
+      properties:
+        location:
+          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
+          type: string
+        message:
+          description: Error message text
+          type: string
+        value:
+          description: The value at the given location
+      type: object
+    CharacterID:
+      examples:
+      - 90000001
+      format: int64
+      type: integer
+      x-common-model: 'true'
     CharactersCharacterIdClonesGet:
       properties:
         home_location:
@@ -207,12 +212,37 @@ components:
       required:
       - jump_clones
       type: object
-    CharactersCharacterIdImplantsGet:
-      items:
-        format: int64
-        type: integer
-      type: array
   parameters:
+    Tenant:
+      description: The tenant ID for the request.
+      example: ''
+      in: header
+      name: X-Tenant
+      schema:
+        default: tranquility
+        type: string
+    CompatibilityDate:
+      description: The compatibility date for the request.
+      in: header
+      name: X-Compatibility-Date
+      required: true
+      schema:
+        enum:
+        - '2020-01-01'
+        format: date
+        type: string
+    IfNoneMatch:
+      description: The ETag of the previous request. A 304 will be returned if this matches the current ETag.
+      in: header
+      name: If-None-Match
+      schema:
+        type: string
+    IfModifiedSince:
+      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
+      in: header
+      name: If-Modified-Since
+      schema:
+        type: string
     AcceptLanguage:
       description: The language to use for the response.
       in: header
@@ -228,36 +258,6 @@ components:
         - zh
         - ko
         - es
-        type: string
-    CompatibilityDate:
-      description: The compatibility date for the request.
-      in: header
-      name: X-Compatibility-Date
-      required: true
-      schema:
-        enum:
-        - '2020-01-01'
-        format: date
-        type: string
-    Tenant:
-      description: The tenant ID for the request.
-      example: ''
-      in: header
-      name: X-Tenant
-      schema:
-        default: tranquility
-        type: string
-    IfNoneMatch:
-      description: The ETag of the previous request. A 304 will be returned if this matches the current ETag.
-      in: header
-      name: If-None-Match
-      schema:
-        type: string
-    IfModifiedSince:
-      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
-      in: header
-      name: If-Modified-Since
-      schema:
         type: string
   securitySchemes:
     OAuth2:
