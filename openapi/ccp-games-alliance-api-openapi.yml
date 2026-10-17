@@ -177,26 +177,13 @@ paths:
       - Alliance
       x-compatibility-date: '2020-01-01'
 components:
-  headers:
-    ETag:
-      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
-      schema:
-        type: string
-    CacheControl:
-      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
-      schema:
-        type: string
-    LastModified:
-      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
-      schema:
-        type: string
   schemas:
-    CorporationID:
-      examples:
-      - 98777771
-      format: int64
-      type: integer
-      x-common-model: 'true'
+    AlliancesGet:
+      items:
+        format: int64
+        type: integer
+      type: array
+      uniqueItems: true
     Error:
       properties:
         details:
@@ -210,6 +197,23 @@ components:
       required:
       - error
       type: object
+    ErrorDetail:
+      properties:
+        location:
+          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
+          type: string
+        message:
+          description: Error message text
+          type: string
+        value:
+          description: The value at the given location
+      type: object
+    AllianceID:
+      examples:
+      - 99000001
+      format: int64
+      type: integer
+      x-common-model: 'true'
     FactionID:
       examples:
       - 500002
@@ -247,32 +251,9 @@ components:
       - name
       - ticker
       type: object
-    ErrorDetail:
-      properties:
-        location:
-          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
-          type: string
-        message:
-          description: Error message text
-          type: string
-        value:
-          description: The value at the given location
-      type: object
-    AlliancesGet:
-      items:
-        format: int64
-        type: integer
-      type: array
-      uniqueItems: true
     CharacterID:
       examples:
       - 90000001
-      format: int64
-      type: integer
-      x-common-model: 'true'
-    AllianceID:
-      examples:
-      - 99000001
       format: int64
       type: integer
       x-common-model: 'true'
@@ -289,7 +270,34 @@ components:
         px64x64:
           type: string
       type: object
+    CorporationID:
+      examples:
+      - 98777771
+      format: int64
+      type: integer
+      x-common-model: 'true'
+  headers:
+    LastModified:
+      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
+      schema:
+        type: string
+    CacheControl:
+      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
+      schema:
+        type: string
+    ETag:
+      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
+      schema:
+        type: string
   parameters:
+    Tenant:
+      description: The tenant ID for the request.
+      example: ''
+      in: header
+      name: X-Tenant
+      schema:
+        default: tranquility
+        type: string
     CompatibilityDate:
       description: The compatibility date for the request.
       in: header
@@ -300,24 +308,10 @@ components:
         - '2020-01-01'
         format: date
         type: string
-    Tenant:
-      description: The tenant ID for the request.
-      example: ''
-      in: header
-      name: X-Tenant
-      schema:
-        default: tranquility
-        type: string
     IfNoneMatch:
       description: The ETag of the previous request. A 304 will be returned if this matches the current ETag.
       in: header
       name: If-None-Match
-      schema:
-        type: string
-    IfModifiedSince:
-      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
-      in: header
-      name: If-Modified-Since
       schema:
         type: string
     AcceptLanguage:
@@ -335,6 +329,12 @@ components:
         - zh
         - ko
         - es
+        type: string
+    IfModifiedSince:
+      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
+      in: header
+      name: If-Modified-Since
+      schema:
         type: string
   securitySchemes:
     OAuth2:

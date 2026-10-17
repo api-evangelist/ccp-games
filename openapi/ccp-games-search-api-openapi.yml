@@ -97,63 +97,7 @@ paths:
       x-cache-age: 3600
       x-compatibility-date: '2020-01-01'
 components:
-  headers:
-    ETag:
-      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
-      schema:
-        type: string
-    CacheControl:
-      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
-      schema:
-        type: string
-    ContentLanguage:
-      description: The language used in the response.
-      schema:
-        enum:
-        - en
-        - de
-        - fr
-        - ja
-        - ru
-        - zh
-        - ko
-        - es
-        type: string
-    LastModified:
-      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
-      schema:
-        type: string
   schemas:
-    Error:
-      properties:
-        details:
-          description: List of individual error details.
-          items:
-            $ref: '#/components/schemas/ErrorDetail'
-          type: array
-        error:
-          description: Error message.
-          type: string
-      required:
-      - error
-      type: object
-    ErrorDetail:
-      properties:
-        location:
-          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
-          type: string
-        message:
-          description: Error message text
-          type: string
-        value:
-          description: The value at the given location
-      type: object
-    CharacterID:
-      examples:
-      - 90000001
-      format: int64
-      type: integer
-      x-common-model: 'true'
     CharactersCharacterIdSearchGet:
       properties:
         agent:
@@ -223,6 +167,62 @@ components:
             type: integer
           type: array
       type: object
+    Error:
+      properties:
+        details:
+          description: List of individual error details.
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+          type: array
+        error:
+          description: Error message.
+          type: string
+      required:
+      - error
+      type: object
+    ErrorDetail:
+      properties:
+        location:
+          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
+          type: string
+        message:
+          description: Error message text
+          type: string
+        value:
+          description: The value at the given location
+      type: object
+    CharacterID:
+      examples:
+      - 90000001
+      format: int64
+      type: integer
+      x-common-model: 'true'
+  headers:
+    LastModified:
+      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
+      schema:
+        type: string
+    CacheControl:
+      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
+      schema:
+        type: string
+    ETag:
+      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
+      schema:
+        type: string
+    ContentLanguage:
+      description: The language used in the response.
+      schema:
+        enum:
+        - en
+        - de
+        - fr
+        - ja
+        - ru
+        - zh
+        - ko
+        - es
+        type: string
   parameters:
     Tenant:
       description: The tenant ID for the request.
@@ -248,12 +248,6 @@ components:
       name: If-None-Match
       schema:
         type: string
-    IfModifiedSince:
-      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
-      in: header
-      name: If-Modified-Since
-      schema:
-        type: string
     AcceptLanguage:
       description: The language to use for the response.
       in: header
@@ -269,6 +263,12 @@ components:
         - zh
         - ko
         - es
+        type: string
+    IfModifiedSince:
+      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
+      in: header
+      name: If-Modified-Since
+      schema:
         type: string
   securitySchemes:
     OAuth2:

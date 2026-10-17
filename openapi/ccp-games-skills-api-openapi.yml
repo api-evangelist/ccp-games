@@ -210,6 +210,23 @@ components:
       required:
       - error
       type: object
+    ErrorDetail:
+      properties:
+        location:
+          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
+          type: string
+        message:
+          description: Error message text
+          type: string
+        value:
+          description: The value at the given location
+      type: object
+    TypeID:
+      examples:
+      - 587
+      format: int64
+      type: integer
+      x-common-model: 'true'
     CharactersCharacterIdAttributesGet:
       properties:
         accrued_remap_cooldown_date:
@@ -246,17 +263,6 @@ components:
       - perception
       - willpower
       type: object
-    ErrorDetail:
-      properties:
-        location:
-          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
-          type: string
-        message:
-          description: Error message text
-          type: string
-        value:
-          description: The value at the given location
-      type: object
     CharactersSkillsSkill:
       properties:
         active_skill_level:
@@ -281,18 +287,6 @@ components:
       - active_skill_level
       - skillpoints_in_skill
       type: object
-    TypeID:
-      examples:
-      - 587
-      format: int64
-      type: integer
-      x-common-model: 'true'
-    CharacterID:
-      examples:
-      - 90000001
-      format: int64
-      type: integer
-      x-common-model: 'true'
     CharactersSkillqueueSkill:
       properties:
         finish_date:
@@ -331,17 +325,23 @@ components:
       - skill_id
       - finished_level
       type: object
+    CharacterID:
+      examples:
+      - 90000001
+      format: int64
+      type: integer
+      x-common-model: 'true'
   headers:
-    ETag:
-      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
+    LastModified:
+      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
       schema:
         type: string
     CacheControl:
       description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
       schema:
         type: string
-    LastModified:
-      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
+    ETag:
+      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
       schema:
         type: string
   parameters:
@@ -369,12 +369,6 @@ components:
       name: If-None-Match
       schema:
         type: string
-    IfModifiedSince:
-      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
-      in: header
-      name: If-Modified-Since
-      schema:
-        type: string
     AcceptLanguage:
       description: The language to use for the response.
       in: header
@@ -390,6 +384,12 @@ components:
         - zh
         - ko
         - es
+        type: string
+    IfModifiedSince:
+      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
+      in: header
+      name: If-Modified-Since
+      schema:
         type: string
   securitySchemes:
     OAuth2:

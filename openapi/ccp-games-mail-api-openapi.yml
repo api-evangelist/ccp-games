@@ -564,20 +564,69 @@ paths:
         max-tokens: 600
         window-size: 15m
 components:
-  headers:
-    ETag:
-      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
-      schema:
-        type: string
-    CacheControl:
-      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
-      schema:
-        type: string
-    LastModified:
-      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
-      schema:
-        type: string
   schemas:
+    Error:
+      properties:
+        details:
+          description: List of individual error details.
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+          type: array
+        error:
+          description: Error message.
+          type: string
+      required:
+      - error
+      type: object
+    CharactersCharacterIdMailGet:
+      items:
+        properties:
+          from:
+            description: From whom the mail was sent
+            format: int64
+            type: integer
+          is_read:
+            type: boolean
+          labels:
+            items:
+              description: label integer
+              format: int64
+              type: integer
+            type: array
+            uniqueItems: true
+          mail_id:
+            format: int64
+            type: integer
+          recipients:
+            description: Recipients of the mail
+            items:
+              description: recipient object
+              properties:
+                recipient_id:
+                  format: int64
+                  type: integer
+                recipient_type:
+                  enum:
+                  - alliance
+                  - character
+                  - corporation
+                  - mailing_list
+                  type: string
+              required:
+              - recipient_type
+              - recipient_id
+              type: object
+            type: array
+            uniqueItems: true
+          subject:
+            description: Mail subject
+            type: string
+          timestamp:
+            description: When the mail was sent
+            format: date-time
+            type: string
+        type: object
+      type: array
     CharactersCharacterIdMailListsGet:
       items:
         properties:
@@ -592,19 +641,6 @@ components:
         - name
         type: object
       type: array
-    Error:
-      properties:
-        details:
-          description: List of individual error details.
-          items:
-            $ref: '#/components/schemas/ErrorDetail'
-          type: array
-        error:
-          description: Error message.
-          type: string
-      required:
-      - error
-      type: object
     CharactersCharacterIdMailLabelsGet:
       properties:
         labels:
@@ -647,6 +683,10 @@ components:
           format: int64
           type: integer
       type: object
+    CharactersCharacterIdMailLabelsPost:
+      description: Label ID
+      format: int64
+      type: integer
     ErrorDetail:
       properties:
         location:
@@ -707,69 +747,29 @@ components:
           format: date-time
           type: string
       type: object
-    CharactersCharacterIdMailGet:
-      items:
-        properties:
-          from:
-            description: From whom the mail was sent
-            format: int64
-            type: integer
-          is_read:
-            type: boolean
-          labels:
-            items:
-              description: label integer
-              format: int64
-              type: integer
-            type: array
-            uniqueItems: true
-          mail_id:
-            format: int64
-            type: integer
-          recipients:
-            description: Recipients of the mail
-            items:
-              description: recipient object
-              properties:
-                recipient_id:
-                  format: int64
-                  type: integer
-                recipient_type:
-                  enum:
-                  - alliance
-                  - character
-                  - corporation
-                  - mailing_list
-                  type: string
-              required:
-              - recipient_type
-              - recipient_id
-              type: object
-            type: array
-            uniqueItems: true
-          subject:
-            description: Mail subject
-            type: string
-          timestamp:
-            description: When the mail was sent
-            format: date-time
-            type: string
-        type: object
-      type: array
     CharacterID:
       examples:
       - 90000001
       format: int64
       type: integer
       x-common-model: 'true'
-    CharactersCharacterIdMailLabelsPost:
-      description: Label ID
-      format: int64
-      type: integer
     CharactersCharacterIdMailPost:
       description: Mail ID
       format: int64
       type: integer
+  headers:
+    LastModified:
+      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
+      schema:
+        type: string
+    CacheControl:
+      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
+      schema:
+        type: string
+    ETag:
+      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
+      schema:
+        type: string
   parameters:
     Tenant:
       description: The tenant ID for the request.
@@ -795,12 +795,6 @@ components:
       name: If-None-Match
       schema:
         type: string
-    IfModifiedSince:
-      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
-      in: header
-      name: If-Modified-Since
-      schema:
-        type: string
     AcceptLanguage:
       description: The language to use for the response.
       in: header
@@ -816,6 +810,12 @@ components:
         - zh
         - ko
         - es
+        type: string
+    IfModifiedSince:
+      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
+      in: header
+      name: If-Modified-Since
+      schema:
         type: string
   securitySchemes:
     OAuth2:

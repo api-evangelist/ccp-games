@@ -699,338 +699,6 @@ paths:
         window-size: 15m
 components:
   schemas:
-    CharactersCharacterIdCorporationhistoryGet:
-      items:
-        properties:
-          corporation_id:
-            format: int64
-            type: integer
-          is_deleted:
-            description: True if the corporation has been deleted
-            type: boolean
-          record_id:
-            description: An incrementing ID that can be used to canonically establish order of records in cases where dates may be ambiguous
-            format: int64
-            type: integer
-          start_date:
-            format: date-time
-            type: string
-        required:
-        - start_date
-        - corporation_id
-        - record_id
-        type: object
-      type: array
-    Error:
-      properties:
-        details:
-          description: List of individual error details.
-          items:
-            $ref: '#/components/schemas/ErrorDetail'
-          type: array
-        error:
-          description: Error message.
-          type: string
-      required:
-      - error
-      type: object
-    CharactersCharacterIdRolesGet:
-      properties:
-        roles:
-          items:
-            description: role string
-            enum:
-            - Account_Take_1
-            - Account_Take_2
-            - Account_Take_3
-            - Account_Take_4
-            - Account_Take_5
-            - Account_Take_6
-            - Account_Take_7
-            - Accountant
-            - Auditor
-            - Brand_Manager
-            - Communications_Officer
-            - Config_Equipment
-            - Config_Starbase_Equipment
-            - Container_Take_1
-            - Container_Take_2
-            - Container_Take_3
-            - Container_Take_4
-            - Container_Take_5
-            - Container_Take_6
-            - Container_Take_7
-            - Contract_Manager
-            - Deliveries_Container_Take
-            - Deliveries_Query
-            - Deliveries_Take
-            - Diplomat
-            - Director
-            - Factory_Manager
-            - Fitting_Manager
-            - Hangar_Query_1
-            - Hangar_Query_2
-            - Hangar_Query_3
-            - Hangar_Query_4
-            - Hangar_Query_5
-            - Hangar_Query_6
-            - Hangar_Query_7
-            - Hangar_Take_1
-            - Hangar_Take_2
-            - Hangar_Take_3
-            - Hangar_Take_4
-            - Hangar_Take_5
-            - Hangar_Take_6
-            - Hangar_Take_7
-            - Junior_Accountant
-            - Personnel_Manager
-            - Project_Manager
-            - Rent_Factory_Facility
-            - Rent_Office
-            - Rent_Research_Facility
-            - Security_Officer
-            - Skill_Plan_Manager
-            - Starbase_Defense_Operator
-            - Starbase_Fuel_Technician
-            - Station_Manager
-            - Trader
-            type: string
-          type: array
-          uniqueItems: true
-        roles_at_base:
-          items:
-            description: roles_at_base string
-            enum:
-            - Account_Take_1
-            - Account_Take_2
-            - Account_Take_3
-            - Account_Take_4
-            - Account_Take_5
-            - Account_Take_6
-            - Account_Take_7
-            - Accountant
-            - Auditor
-            - Brand_Manager
-            - Communications_Officer
-            - Config_Equipment
-            - Config_Starbase_Equipment
-            - Container_Take_1
-            - Container_Take_2
-            - Container_Take_3
-            - Container_Take_4
-            - Container_Take_5
-            - Container_Take_6
-            - Container_Take_7
-            - Contract_Manager
-            - Deliveries_Container_Take
-            - Deliveries_Query
-            - Deliveries_Take
-            - Diplomat
-            - Director
-            - Factory_Manager
-            - Fitting_Manager
-            - Hangar_Query_1
-            - Hangar_Query_2
-            - Hangar_Query_3
-            - Hangar_Query_4
-            - Hangar_Query_5
-            - Hangar_Query_6
-            - Hangar_Query_7
-            - Hangar_Take_1
-            - Hangar_Take_2
-            - Hangar_Take_3
-            - Hangar_Take_4
-            - Hangar_Take_5
-            - Hangar_Take_6
-            - Hangar_Take_7
-            - Junior_Accountant
-            - Personnel_Manager
-            - Project_Manager
-            - Rent_Factory_Facility
-            - Rent_Office
-            - Rent_Research_Facility
-            - Security_Officer
-            - Skill_Plan_Manager
-            - Starbase_Defense_Operator
-            - Starbase_Fuel_Technician
-            - Station_Manager
-            - Trader
-            type: string
-          type: array
-          uniqueItems: true
-        roles_at_hq:
-          items:
-            description: roles_at_hq string
-            enum:
-            - Account_Take_1
-            - Account_Take_2
-            - Account_Take_3
-            - Account_Take_4
-            - Account_Take_5
-            - Account_Take_6
-            - Account_Take_7
-            - Accountant
-            - Auditor
-            - Brand_Manager
-            - Communications_Officer
-            - Config_Equipment
-            - Config_Starbase_Equipment
-            - Container_Take_1
-            - Container_Take_2
-            - Container_Take_3
-            - Container_Take_4
-            - Container_Take_5
-            - Container_Take_6
-            - Container_Take_7
-            - Contract_Manager
-            - Deliveries_Container_Take
-            - Deliveries_Query
-            - Deliveries_Take
-            - Diplomat
-            - Director
-            - Factory_Manager
-            - Fitting_Manager
-            - Hangar_Query_1
-            - Hangar_Query_2
-            - Hangar_Query_3
-            - Hangar_Query_4
-            - Hangar_Query_5
-            - Hangar_Query_6
-            - Hangar_Query_7
-            - Hangar_Take_1
-            - Hangar_Take_2
-            - Hangar_Take_3
-            - Hangar_Take_4
-            - Hangar_Take_5
-            - Hangar_Take_6
-            - Hangar_Take_7
-            - Junior_Accountant
-            - Personnel_Manager
-            - Project_Manager
-            - Rent_Factory_Facility
-            - Rent_Office
-            - Rent_Research_Facility
-            - Security_Officer
-            - Skill_Plan_Manager
-            - Starbase_Defense_Operator
-            - Starbase_Fuel_Technician
-            - Station_Manager
-            - Trader
-            type: string
-          type: array
-          uniqueItems: true
-        roles_at_other:
-          items:
-            description: roles_at_other string
-            enum:
-            - Account_Take_1
-            - Account_Take_2
-            - Account_Take_3
-            - Account_Take_4
-            - Account_Take_5
-            - Account_Take_6
-            - Account_Take_7
-            - Accountant
-            - Auditor
-            - Brand_Manager
-            - Communications_Officer
-            - Config_Equipment
-            - Config_Starbase_Equipment
-            - Container_Take_1
-            - Container_Take_2
-            - Container_Take_3
-            - Container_Take_4
-            - Container_Take_5
-            - Container_Take_6
-            - Container_Take_7
-            - Contract_Manager
-            - Deliveries_Container_Take
-            - Deliveries_Query
-            - Deliveries_Take
-            - Diplomat
-            - Director
-            - Factory_Manager
-            - Fitting_Manager
-            - Hangar_Query_1
-            - Hangar_Query_2
-            - Hangar_Query_3
-            - Hangar_Query_4
-            - Hangar_Query_5
-            - Hangar_Query_6
-            - Hangar_Query_7
-            - Hangar_Take_1
-            - Hangar_Take_2
-            - Hangar_Take_3
-            - Hangar_Take_4
-            - Hangar_Take_5
-            - Hangar_Take_6
-            - Hangar_Take_7
-            - Junior_Accountant
-            - Personnel_Manager
-            - Project_Manager
-            - Rent_Factory_Facility
-            - Rent_Office
-            - Rent_Research_Facility
-            - Security_Officer
-            - Skill_Plan_Manager
-            - Starbase_Defense_Operator
-            - Starbase_Fuel_Technician
-            - Station_Manager
-            - Trader
-            type: string
-          type: array
-          uniqueItems: true
-      type: object
-    CharacterID:
-      examples:
-      - 90000001
-      format: int64
-      type: integer
-      x-common-model: 'true'
-    CharactersCharacterIdAgentsResearchGet:
-      items:
-        properties:
-          agent_id:
-            format: int64
-            type: integer
-          points_per_day:
-            format: double
-            type: number
-          remainder_points:
-            format: double
-            type: number
-          skill_type_id:
-            format: int64
-            type: integer
-          started_at:
-            format: date-time
-            type: string
-        required:
-        - agent_id
-        - skill_type_id
-        - started_at
-        - points_per_day
-        - remainder_points
-        type: object
-      type: array
-    BloodlineID:
-      examples:
-      - 1
-      format: int64
-      type: integer
-      x-common-model: 'true'
-    AllianceID:
-      examples:
-      - 99000001
-      format: int64
-      type: integer
-      x-common-model: 'true'
-    RaceID:
-      examples:
-      - 1
-      format: int64
-      type: integer
-      x-common-model: 'true'
     CharactersCharacterIdMedalsGet:
       items:
         properties:
@@ -1090,6 +758,63 @@ components:
         - graphics
         type: object
       type: array
+    Error:
+      properties:
+        details:
+          description: List of individual error details.
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+          type: array
+        error:
+          description: Error message.
+          type: string
+      required:
+      - error
+      type: object
+    AllianceID:
+      examples:
+      - 99000001
+      format: int64
+      type: integer
+      x-common-model: 'true'
+    FactionID:
+      examples:
+      - 500002
+      format: int64
+      type: integer
+      x-common-model: 'true'
+    CharactersCharacterIdAgentsResearchGet:
+      items:
+        properties:
+          agent_id:
+            format: int64
+            type: integer
+          points_per_day:
+            format: double
+            type: number
+          remainder_points:
+            format: double
+            type: number
+          skill_type_id:
+            format: int64
+            type: integer
+          started_at:
+            format: date-time
+            type: string
+        required:
+        - agent_id
+        - skill_type_id
+        - started_at
+        - points_per_day
+        - remainder_points
+        type: object
+      type: array
+    RaceID:
+      examples:
+      - 1
+      format: int64
+      type: integer
+      x-common-model: 'true'
     CharactersAffiliationPost:
       items:
         properties:
@@ -1403,6 +1128,327 @@ components:
         - timestamp
         type: object
       type: array
+    CharactersCharacterIdTitlesGet:
+      items:
+        properties:
+          name:
+            type: string
+          title_id:
+            format: int64
+            type: integer
+        type: object
+      type: array
+    CharacterID:
+      examples:
+      - 90000001
+      format: int64
+      type: integer
+      x-common-model: 'true'
+    CharactersCharacterIdStandingsGet:
+      items:
+        properties:
+          from_id:
+            format: int64
+            type: integer
+          from_type:
+            enum:
+            - agent
+            - npc_corp
+            - faction
+            type: string
+          standing:
+            format: double
+            type: number
+        required:
+        - from_id
+        - from_type
+        - standing
+        type: object
+      type: array
+    CharactersCharacterIdNotificationsContactsGet:
+      items:
+        properties:
+          message:
+            type: string
+          notification_id:
+            format: int64
+            type: integer
+          send_date:
+            format: date-time
+            type: string
+          sender_character_id:
+            format: int64
+            type: integer
+          standing_level:
+            description: 'A number representing the standing level the receiver has been added at by the sender. The standing levels are as follows: -10 -> Terrible | -5 -> Bad |  0 -> Neutral |  5 -> Good |  10 -> Excellent'
+            format: double
+            type: number
+        required:
+        - notification_id
+        - send_date
+        - standing_level
+        - message
+        - sender_character_id
+        type: object
+      type: array
+    ErrorDetail:
+      properties:
+        location:
+          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
+          type: string
+        message:
+          description: Error message text
+          type: string
+        value:
+          description: The value at the given location
+      type: object
+    CharactersCharacterIdRolesGet:
+      properties:
+        roles:
+          items:
+            description: role string
+            enum:
+            - Account_Take_1
+            - Account_Take_2
+            - Account_Take_3
+            - Account_Take_4
+            - Account_Take_5
+            - Account_Take_6
+            - Account_Take_7
+            - Accountant
+            - Auditor
+            - Brand_Manager
+            - Communications_Officer
+            - Config_Equipment
+            - Config_Starbase_Equipment
+            - Container_Take_1
+            - Container_Take_2
+            - Container_Take_3
+            - Container_Take_4
+            - Container_Take_5
+            - Container_Take_6
+            - Container_Take_7
+            - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
+            - Diplomat
+            - Director
+            - Factory_Manager
+            - Fitting_Manager
+            - Hangar_Query_1
+            - Hangar_Query_2
+            - Hangar_Query_3
+            - Hangar_Query_4
+            - Hangar_Query_5
+            - Hangar_Query_6
+            - Hangar_Query_7
+            - Hangar_Take_1
+            - Hangar_Take_2
+            - Hangar_Take_3
+            - Hangar_Take_4
+            - Hangar_Take_5
+            - Hangar_Take_6
+            - Hangar_Take_7
+            - Junior_Accountant
+            - Personnel_Manager
+            - Project_Manager
+            - Rent_Factory_Facility
+            - Rent_Office
+            - Rent_Research_Facility
+            - Security_Officer
+            - Skill_Plan_Manager
+            - Starbase_Defense_Operator
+            - Starbase_Fuel_Technician
+            - Station_Manager
+            - Trader
+            type: string
+          type: array
+          uniqueItems: true
+        roles_at_base:
+          items:
+            description: roles_at_base string
+            enum:
+            - Account_Take_1
+            - Account_Take_2
+            - Account_Take_3
+            - Account_Take_4
+            - Account_Take_5
+            - Account_Take_6
+            - Account_Take_7
+            - Accountant
+            - Auditor
+            - Brand_Manager
+            - Communications_Officer
+            - Config_Equipment
+            - Config_Starbase_Equipment
+            - Container_Take_1
+            - Container_Take_2
+            - Container_Take_3
+            - Container_Take_4
+            - Container_Take_5
+            - Container_Take_6
+            - Container_Take_7
+            - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
+            - Diplomat
+            - Director
+            - Factory_Manager
+            - Fitting_Manager
+            - Hangar_Query_1
+            - Hangar_Query_2
+            - Hangar_Query_3
+            - Hangar_Query_4
+            - Hangar_Query_5
+            - Hangar_Query_6
+            - Hangar_Query_7
+            - Hangar_Take_1
+            - Hangar_Take_2
+            - Hangar_Take_3
+            - Hangar_Take_4
+            - Hangar_Take_5
+            - Hangar_Take_6
+            - Hangar_Take_7
+            - Junior_Accountant
+            - Personnel_Manager
+            - Project_Manager
+            - Rent_Factory_Facility
+            - Rent_Office
+            - Rent_Research_Facility
+            - Security_Officer
+            - Skill_Plan_Manager
+            - Starbase_Defense_Operator
+            - Starbase_Fuel_Technician
+            - Station_Manager
+            - Trader
+            type: string
+          type: array
+          uniqueItems: true
+        roles_at_hq:
+          items:
+            description: roles_at_hq string
+            enum:
+            - Account_Take_1
+            - Account_Take_2
+            - Account_Take_3
+            - Account_Take_4
+            - Account_Take_5
+            - Account_Take_6
+            - Account_Take_7
+            - Accountant
+            - Auditor
+            - Brand_Manager
+            - Communications_Officer
+            - Config_Equipment
+            - Config_Starbase_Equipment
+            - Container_Take_1
+            - Container_Take_2
+            - Container_Take_3
+            - Container_Take_4
+            - Container_Take_5
+            - Container_Take_6
+            - Container_Take_7
+            - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
+            - Diplomat
+            - Director
+            - Factory_Manager
+            - Fitting_Manager
+            - Hangar_Query_1
+            - Hangar_Query_2
+            - Hangar_Query_3
+            - Hangar_Query_4
+            - Hangar_Query_5
+            - Hangar_Query_6
+            - Hangar_Query_7
+            - Hangar_Take_1
+            - Hangar_Take_2
+            - Hangar_Take_3
+            - Hangar_Take_4
+            - Hangar_Take_5
+            - Hangar_Take_6
+            - Hangar_Take_7
+            - Junior_Accountant
+            - Personnel_Manager
+            - Project_Manager
+            - Rent_Factory_Facility
+            - Rent_Office
+            - Rent_Research_Facility
+            - Security_Officer
+            - Skill_Plan_Manager
+            - Starbase_Defense_Operator
+            - Starbase_Fuel_Technician
+            - Station_Manager
+            - Trader
+            type: string
+          type: array
+          uniqueItems: true
+        roles_at_other:
+          items:
+            description: roles_at_other string
+            enum:
+            - Account_Take_1
+            - Account_Take_2
+            - Account_Take_3
+            - Account_Take_4
+            - Account_Take_5
+            - Account_Take_6
+            - Account_Take_7
+            - Accountant
+            - Auditor
+            - Brand_Manager
+            - Communications_Officer
+            - Config_Equipment
+            - Config_Starbase_Equipment
+            - Container_Take_1
+            - Container_Take_2
+            - Container_Take_3
+            - Container_Take_4
+            - Container_Take_5
+            - Container_Take_6
+            - Container_Take_7
+            - Contract_Manager
+            - Deliveries_Container_Take
+            - Deliveries_Query
+            - Deliveries_Take
+            - Diplomat
+            - Director
+            - Factory_Manager
+            - Fitting_Manager
+            - Hangar_Query_1
+            - Hangar_Query_2
+            - Hangar_Query_3
+            - Hangar_Query_4
+            - Hangar_Query_5
+            - Hangar_Query_6
+            - Hangar_Query_7
+            - Hangar_Take_1
+            - Hangar_Take_2
+            - Hangar_Take_3
+            - Hangar_Take_4
+            - Hangar_Take_5
+            - Hangar_Take_6
+            - Hangar_Take_7
+            - Junior_Accountant
+            - Personnel_Manager
+            - Project_Manager
+            - Rent_Factory_Facility
+            - Rent_Office
+            - Rent_Research_Facility
+            - Security_Officer
+            - Skill_Plan_Manager
+            - Starbase_Defense_Operator
+            - Starbase_Fuel_Technician
+            - Station_Manager
+            - Trader
+            type: string
+          type: array
+          uniqueItems: true
+      type: object
     CharactersDetail:
       properties:
         alliance_id:
@@ -1455,112 +1501,6 @@ components:
       - gender
       - name
       - race_id
-      type: object
-    FactionID:
-      examples:
-      - 500002
-      format: int64
-      type: integer
-      x-common-model: 'true'
-    CharactersCharacterIdTitlesGet:
-      items:
-        properties:
-          name:
-            type: string
-          title_id:
-            format: int64
-            type: integer
-        type: object
-      type: array
-    CharactersCharacterIdFatigueGet:
-      properties:
-        jump_fatigue_expire_date:
-          description: Character's jump fatigue expiry
-          format: date-time
-          type: string
-        last_jump_date:
-          description: Character's last jump activation
-          format: date-time
-          type: string
-        last_update_date:
-          description: Character's last jump update
-          format: date-time
-          type: string
-      type: object
-    CorporationID:
-      examples:
-      - 98777771
-      format: int64
-      type: integer
-      x-common-model: 'true'
-    CharactersCharacterIdNotificationsContactsGet:
-      items:
-        properties:
-          message:
-            type: string
-          notification_id:
-            format: int64
-            type: integer
-          send_date:
-            format: date-time
-            type: string
-          sender_character_id:
-            format: int64
-            type: integer
-          standing_level:
-            description: 'A number representing the standing level the receiver has been added at by the sender. The standing levels are as follows: -10 -> Terrible | -5 -> Bad |  0 -> Neutral |  5 -> Good |  10 -> Excellent'
-            format: double
-            type: number
-        required:
-        - notification_id
-        - send_date
-        - standing_level
-        - message
-        - sender_character_id
-        type: object
-      type: array
-    CharactersCharacterIdPortraitGet:
-      properties:
-        px128x128:
-          type: string
-        px256x256:
-          type: string
-        px512x512:
-          type: string
-        px64x64:
-          type: string
-      type: object
-    CharactersCharacterIdStandingsGet:
-      items:
-        properties:
-          from_id:
-            format: int64
-            type: integer
-          from_type:
-            enum:
-            - agent
-            - npc_corp
-            - faction
-            type: string
-          standing:
-            format: double
-            type: number
-        required:
-        - from_id
-        - from_type
-        - standing
-        type: object
-      type: array
-    ErrorDetail:
-      properties:
-        location:
-          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
-          type: string
-        message:
-          description: Error message text
-          type: string
-        value:
-          description: The value at the given location
       type: object
     CharactersCharacterIdBlueprintsGet:
       items:
@@ -1683,29 +1623,80 @@ components:
         - runs
         type: object
       type: array
+    CorporationID:
+      examples:
+      - 98777771
+      format: int64
+      type: integer
+      x-common-model: 'true'
     CharactersCharacterIdCspaPost:
       description: 201 created number
       format: double
       type: number
-  headers:
-    CacheControl:
-      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
-      schema:
-        type: string
-    LastModified:
-      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
-      schema:
-        type: string
-    ETag:
-      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
-      schema:
-        type: string
+    CharactersCharacterIdCorporationhistoryGet:
+      items:
+        properties:
+          corporation_id:
+            format: int64
+            type: integer
+          is_deleted:
+            description: True if the corporation has been deleted
+            type: boolean
+          record_id:
+            description: An incrementing ID that can be used to canonically establish order of records in cases where dates may be ambiguous
+            format: int64
+            type: integer
+          start_date:
+            format: date-time
+            type: string
+        required:
+        - start_date
+        - corporation_id
+        - record_id
+        type: object
+      type: array
+    CharactersCharacterIdFatigueGet:
+      properties:
+        jump_fatigue_expire_date:
+          description: Character's jump fatigue expiry
+          format: date-time
+          type: string
+        last_jump_date:
+          description: Character's last jump activation
+          format: date-time
+          type: string
+        last_update_date:
+          description: Character's last jump update
+          format: date-time
+          type: string
+      type: object
+    BloodlineID:
+      examples:
+      - 1
+      format: int64
+      type: integer
+      x-common-model: 'true'
+    CharactersCharacterIdPortraitGet:
+      properties:
+        px128x128:
+          type: string
+        px256x256:
+          type: string
+        px512x512:
+          type: string
+        px64x64:
+          type: string
+      type: object
   parameters:
-    IfModifiedSince:
-      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
+    CompatibilityDate:
+      description: The compatibility date for the request.
       in: header
-      name: If-Modified-Since
+      name: X-Compatibility-Date
+      required: true
       schema:
+        enum:
+        - '2020-01-01'
+        format: date
         type: string
     AcceptLanguage:
       description: The language to use for the response.
@@ -1737,15 +1728,24 @@ components:
       name: If-None-Match
       schema:
         type: string
-    CompatibilityDate:
-      description: The compatibility date for the request.
+    IfModifiedSince:
+      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
       in: header
-      name: X-Compatibility-Date
-      required: true
+      name: If-Modified-Since
       schema:
-        enum:
-        - '2020-01-01'
-        format: date
+        type: string
+  headers:
+    ETag:
+      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
+      schema:
+        type: string
+    CacheControl:
+      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
+      schema:
+        type: string
+    LastModified:
+      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
+      schema:
         type: string
   securitySchemes:
     OAuth2:

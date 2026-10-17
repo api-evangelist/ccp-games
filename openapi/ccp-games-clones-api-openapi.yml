@@ -111,19 +111,6 @@ paths:
         max-tokens: 600
         window-size: 15m
 components:
-  headers:
-    ETag:
-      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
-      schema:
-        type: string
-    CacheControl:
-      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
-      schema:
-        type: string
-    LastModified:
-      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
-      schema:
-        type: string
   schemas:
     Error:
       properties:
@@ -138,11 +125,6 @@ components:
       required:
       - error
       type: object
-    CharactersCharacterIdImplantsGet:
-      items:
-        format: int64
-        type: integer
-      type: array
     ErrorDetail:
       properties:
         location:
@@ -154,12 +136,6 @@ components:
         value:
           description: The value at the given location
       type: object
-    CharacterID:
-      examples:
-      - 90000001
-      format: int64
-      type: integer
-      x-common-model: 'true'
     CharactersCharacterIdClonesGet:
       properties:
         home_location:
@@ -212,6 +188,30 @@ components:
       required:
       - jump_clones
       type: object
+    CharacterID:
+      examples:
+      - 90000001
+      format: int64
+      type: integer
+      x-common-model: 'true'
+    CharactersCharacterIdImplantsGet:
+      items:
+        format: int64
+        type: integer
+      type: array
+  headers:
+    LastModified:
+      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
+      schema:
+        type: string
+    CacheControl:
+      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
+      schema:
+        type: string
+    ETag:
+      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
+      schema:
+        type: string
   parameters:
     Tenant:
       description: The tenant ID for the request.
@@ -237,12 +237,6 @@ components:
       name: If-None-Match
       schema:
         type: string
-    IfModifiedSince:
-      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
-      in: header
-      name: If-Modified-Since
-      schema:
-        type: string
     AcceptLanguage:
       description: The language to use for the response.
       in: header
@@ -258,6 +252,12 @@ components:
         - zh
         - ko
         - es
+        type: string
+    IfModifiedSince:
+      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
+      in: header
+      name: If-Modified-Since
+      schema:
         type: string
   securitySchemes:
     OAuth2:

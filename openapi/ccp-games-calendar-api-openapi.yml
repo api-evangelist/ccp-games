@@ -244,19 +244,6 @@ paths:
         max-tokens: 600
         window-size: 15m
 components:
-  headers:
-    ETag:
-      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
-      schema:
-        type: string
-    CacheControl:
-      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
-      schema:
-        type: string
-    LastModified:
-      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
-      schema:
-        type: string
   schemas:
     Error:
       properties:
@@ -293,6 +280,40 @@ components:
             format: int64
             type: integer
           title:
+            type: string
+        type: object
+      type: array
+    ErrorDetail:
+      properties:
+        location:
+          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
+          type: string
+        message:
+          description: Error message text
+          type: string
+        value:
+          description: The value at the given location
+      type: object
+    CharacterID:
+      examples:
+      - 90000001
+      format: int64
+      type: integer
+      x-common-model: 'true'
+    CharactersCharacterIdCalendarEventIdAttendeesGet:
+      description: List of attendees for a given event
+      items:
+        description: character_id and response of an attendee
+        properties:
+          character_id:
+            format: int64
+            type: integer
+          event_response:
+            enum:
+            - declined
+            - not_responded
+            - accepted
+            - tentative
             type: string
         type: object
       type: array
@@ -343,40 +364,19 @@ components:
       - text
       - owner_type
       type: object
-    ErrorDetail:
-      properties:
-        location:
-          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
-          type: string
-        message:
-          description: Error message text
-          type: string
-        value:
-          description: The value at the given location
-      type: object
-    CharactersCharacterIdCalendarEventIdAttendeesGet:
-      description: List of attendees for a given event
-      items:
-        description: character_id and response of an attendee
-        properties:
-          character_id:
-            format: int64
-            type: integer
-          event_response:
-            enum:
-            - declined
-            - not_responded
-            - accepted
-            - tentative
-            type: string
-        type: object
-      type: array
-    CharacterID:
-      examples:
-      - 90000001
-      format: int64
-      type: integer
-      x-common-model: 'true'
+  headers:
+    LastModified:
+      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
+      schema:
+        type: string
+    CacheControl:
+      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
+      schema:
+        type: string
+    ETag:
+      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
+      schema:
+        type: string
   parameters:
     Tenant:
       description: The tenant ID for the request.
@@ -402,12 +402,6 @@ components:
       name: If-None-Match
       schema:
         type: string
-    IfModifiedSince:
-      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
-      in: header
-      name: If-Modified-Since
-      schema:
-        type: string
     AcceptLanguage:
       description: The language to use for the response.
       in: header
@@ -423,6 +417,12 @@ components:
         - zh
         - ko
         - es
+        type: string
+    IfModifiedSince:
+      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
+      in: header
+      name: If-Modified-Since
+      schema:
         type: string
   securitySchemes:
     OAuth2:

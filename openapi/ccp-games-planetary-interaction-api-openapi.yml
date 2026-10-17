@@ -222,19 +222,6 @@ paths:
       x-cache-age: 3600
       x-compatibility-date: '2020-01-01'
 components:
-  headers:
-    ETag:
-      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
-      schema:
-        type: string
-    CacheControl:
-      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
-      schema:
-        type: string
-    LastModified:
-      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
-      schema:
-        type: string
   schemas:
     Error:
       properties:
@@ -248,17 +235,6 @@ components:
           type: string
       required:
       - error
-      type: object
-    ErrorDetail:
-      properties:
-        location:
-          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
-          type: string
-        message:
-          description: Error message text
-          type: string
-        value:
-          description: The value at the given location
       type: object
     CharactersCharacterIdPlanetsPlanetIdGet:
       properties:
@@ -415,6 +391,29 @@ components:
       - pins
       - routes
       type: object
+    UniverseSchematicsSchematicIdGet:
+      properties:
+        cycle_time:
+          description: Time in seconds to process a run
+          format: int64
+          type: integer
+        schematic_name:
+          type: string
+      required:
+      - schematic_name
+      - cycle_time
+      type: object
+    ErrorDetail:
+      properties:
+        location:
+          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
+          type: string
+        message:
+          description: Error message text
+          type: string
+        value:
+          description: The value at the given location
+      type: object
     CorporationsCorporationIdCustomsOfficesGet:
       items:
         properties:
@@ -483,12 +482,6 @@ components:
         - allow_access_with_standings
         type: object
       type: array
-    CharacterID:
-      examples:
-      - 90000001
-      format: int64
-      type: integer
-      x-common-model: 'true'
     CharactersCharacterIdPlanetsGet:
       items:
         properties:
@@ -531,24 +524,18 @@ components:
         - num_pins
         type: object
       type: array
+    CharacterID:
+      examples:
+      - 90000001
+      format: int64
+      type: integer
+      x-common-model: 'true'
     CorporationID:
       examples:
       - 98777771
       format: int64
       type: integer
       x-common-model: 'true'
-    UniverseSchematicsSchematicIdGet:
-      properties:
-        cycle_time:
-          description: Time in seconds to process a run
-          format: int64
-          type: integer
-        schematic_name:
-          type: string
-      required:
-      - schematic_name
-      - cycle_time
-      type: object
   parameters:
     Tenant:
       description: The tenant ID for the request.
@@ -574,12 +561,6 @@ components:
       name: If-None-Match
       schema:
         type: string
-    IfModifiedSince:
-      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
-      in: header
-      name: If-Modified-Since
-      schema:
-        type: string
     AcceptLanguage:
       description: The language to use for the response.
       in: header
@@ -595,6 +576,25 @@ components:
         - zh
         - ko
         - es
+        type: string
+    IfModifiedSince:
+      description: The date the resource was last modified. A 304 will be returned if the resource has not been modified since this date.
+      in: header
+      name: If-Modified-Since
+      schema:
+        type: string
+  headers:
+    LastModified:
+      description: The last modified date of the response. Use this with If-Modified-Since to check whether the resource has changed.
+      schema:
+        type: string
+    ETag:
+      description: The ETag value of the response body. Use this with If-None-Match to check whether the resource has changed.
+      schema:
+        type: string
+    CacheControl:
+      description: Directives for caching mechanisms. It controls how the response can be cached, by whom, and for how long.
+      schema:
         type: string
   securitySchemes:
     OAuth2:
