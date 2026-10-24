@@ -235,7 +235,7 @@ apis:
   humanURL: https://developers.eveonline.com/
   baseURL: https://esi.evetech.net
   tags:
-  - Fleet
+  - Fleet Management
   tags_raw:
   - Fleets
   properties:
